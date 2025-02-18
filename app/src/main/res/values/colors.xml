@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="taskforge_bg_main">#03071e</color>
+    <color name="taskforge_orange_1">#e85d04</color>
+</resources>
