@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp">
+
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/back"
+            android:layout_alignParentstart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp">
+        </ImageButton>
+
+        <TextView
+            android:id="@+id/tasks_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About the developer"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:layout_centerInParent="true"
+            android:letterSpacing="0.05">
+        </TextView>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/profile"
+        android:background="@drawable/edit_text_border"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp">
+
+    </ImageView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello! I'm Dymes!"
+        android:textStyle="bold"
+        android:textColor="@color/taskforge_orange_1"
+        android:textSize="25dp"
+        android:gravity="center_horizontal"
+        android:letterSpacing="0.05">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="A Computer Science student, currently exploring the world of programming."
+        android:textColor="@color/white"
+        android:textSize="22dp"
+        android:gravity="center_horizontal"
+        android:letterSpacing="0.05"
+        android:layout_marginBottom="25dp">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="The languages I use:"
+        android:textStyle="bold"
+        android:textColor="@color/taskforge_orange_1"
+        android:textSize="25dp"
+        android:gravity="center_horizontal"
+        android:letterSpacing="0.05">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="C, C++, Dart, Java, Kotlin"
+        android:textColor="@color/white"
+        android:textSize="22dp"
+        android:gravity="center_horizontal"
+        android:letterSpacing="0.05">
+    </TextView>
+
+</LinearLayout>
