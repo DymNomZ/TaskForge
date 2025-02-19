@@ -15,7 +15,7 @@
         android:layout_height="150dp"
         android:src="@drawable/logo"
         android:cropToPadding="true"
-        android:layout_marginTop="80dp">
+        android:layout_marginTop="50dp">
     </ImageView>
 
     <TextView
@@ -28,10 +28,11 @@
         android:gravity="center_horizontal"
         android:letterSpacing="0.05"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="50dp">
+        android:layout_marginBottom="25dp">
     </TextView>
 
     <EditText
+        android:id="@+id/username_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_border"
@@ -49,6 +50,61 @@
     </EditText>
 
     <EditText
+        android:id="@+id/email_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_border"
+        android:hint="Email"
+        android:textColorHint="@color/taskforge_orange_1"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:gravity="left"
+        android:letterSpacing="0.05"
+        android:padding="12dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="10dp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/birthday_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_border"
+        android:hint="Birthday"
+        android:textColorHint="@color/taskforge_orange_1"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:gravity="left"
+        android:letterSpacing="0.05"
+        android:padding="12dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="10dp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/address_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_border"
+        android:hint="Address"
+        android:textColorHint="@color/taskforge_orange_1"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:gravity="left"
+        android:letterSpacing="0.05"
+        android:padding="12dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="10dp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/password_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_border"
@@ -66,6 +122,7 @@
     </EditText>
 
     <Button
+        android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginHorizontal="30dp"
@@ -80,17 +137,17 @@
 
     </Button>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Create an account"
-        android:textStyle="bold"
-        android:textColor="@color/taskforge_orange_1"
-        android:textSize="15dp"
-        android:gravity="center_horizontal"
-        android:letterSpacing="0.05"
-        android:layout_marginVertical="15dp">
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Create an account"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textColor="@color/taskforge_orange_1"-->
+<!--        android:textSize="15dp"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        android:letterSpacing="0.05"-->
+<!--        android:layout_marginVertical="15dp">-->
 
-    </TextView>
+<!--    </TextView>-->
 
 </LinearLayout>

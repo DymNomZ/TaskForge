@@ -1,4 +1,4 @@
-package com.example.taskforge
+package com.dymnomz.task_forge
 
 import org.junit.Test
 

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".LogoutActivity"
     android:background="@color/black"
     android:orientation="vertical"
     android:gravity="center_horizontal">
@@ -48,6 +48,7 @@
         android:gravity="center">
 
         <Button
+            android:id="@+id/cancel_button"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_marginStart="30dp"
@@ -64,6 +65,7 @@
         </Button>
 
         <Button
+            android:id="@+id/logout_btn"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_marginStart="15dp"

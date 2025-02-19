@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.taskforge"
+    namespace = "com.dymnomz.task_forge"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.taskforge"
+        applicationId = "com.dymnomz.task_forge"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
