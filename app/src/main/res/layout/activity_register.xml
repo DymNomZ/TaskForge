@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".RegisterActivity"
     android:background="@color/black"
     android:orientation="vertical"
     android:gravity="center_horizontal">
@@ -50,6 +50,42 @@
     </EditText>
 
     <EditText
+        android:id="@+id/email_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_border"
+        android:hint="Email"
+        android:textColorHint="@color/taskforge_orange_1"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:gravity="left"
+        android:letterSpacing="0.05"
+        android:padding="12dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="10dp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/birthday_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_border"
+        android:hint="Birthday"
+        android:textColorHint="@color/taskforge_orange_1"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:gravity="left"
+        android:letterSpacing="0.05"
+        android:padding="12dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="10dp">
+
+    </EditText>
+
+    <EditText
         android:id="@+id/password_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,14 +104,14 @@
     </EditText>
 
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/register_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:layout_marginVertical="15dp"
         android:backgroundTint="@color/taskforge_orange_1"
         android:background="@drawable/rounded_button"
-        android:text="LOGIN"
+        android:text="REGISTER"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="20dp"
@@ -83,18 +119,5 @@
         android:textAlignment="center">
 
     </Button>
-
-    <TextView
-        android:id="@+id/create_accountTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create an account"
-        android:textColor="@color/taskforge_orange_1"
-        android:clickable="true"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:padding="8dp">
-
-    </TextView>
 
 </LinearLayout>
