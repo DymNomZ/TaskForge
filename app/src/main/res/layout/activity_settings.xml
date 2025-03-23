@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:text="Theme"
             android:textStyle="bold"
-            android:textColor="@color/taskforge_orange_1"
+            android:textColor="@color/orange_1"
             android:textSize="25dp"
             android:gravity="left"
             android:letterSpacing="0.05"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:text="Font"
             android:textStyle="bold"
-            android:textColor="@color/taskforge_orange_1"
+            android:textColor="@color/orange_1"
             android:textSize="25dp"
             android:gravity="left"
             android:letterSpacing="0.05"
@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:text="Font Size"
             android:textStyle="bold"
-            android:textColor="@color/taskforge_orange_1"
+            android:textColor="@color/orange_1"
             android:textSize="25dp"
             android:gravity="left"
             android:letterSpacing="0.05"
@@ -129,7 +129,7 @@
         android:layout_height="60dp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="100dp"
-        android:backgroundTint="@color/taskforge_orange_1"
+        android:backgroundTint="@color/orange_1"
         android:text="About the developer"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -151,7 +151,7 @@
             android:layout_marginBottom="16dp"
             android:layout_marginStart="50dp"
             android:background="@drawable/profile_icon"
-            android:backgroundTint="@color/taskforge_red_1" />
+            android:backgroundTint="@color/red_1" />
 
         <Button
             android:id="@+id/to_landing_btn"
@@ -162,7 +162,7 @@
             android:layout_toEndOf="@id/to_profile_btn"
             android:layout_marginStart="60dp"
             android:background="@drawable/landing_icon"
-            android:backgroundTint="@color/taskforge_red_1" />
+            android:backgroundTint="@color/red_1" />
 
         <Button
             android:id="@+id/to_settings_btn"
@@ -173,7 +173,7 @@
             android:layout_toEndOf="@id/to_landing_btn"
             android:layout_marginStart="60dp"
             android:background="@drawable/settings_icon"
-            android:backgroundTint="@color/taskforge_orange_1" />
+            android:backgroundTint="@color/orange_1" />
 
     </RelativeLayout>
 

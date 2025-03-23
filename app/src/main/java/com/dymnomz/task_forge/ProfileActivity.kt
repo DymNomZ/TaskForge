@@ -35,7 +35,7 @@ class ProfileActivity : Activity() {
         ToLandingButton.setOnClickListener {
             Log.e("ToLandingButton", "ToLandingButton is clicked")
 
-            val intent = Intent(this, LandingActivity::class.java)
+            val intent = Intent(this, TasksActivity::class.java)
             startActivity(intent)
         }
 

@@ -28,7 +28,7 @@
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LandingActivity"
+            android:name=".TasksActivity"
             android:exported="false" />
         <activity
             android:name=".DeveloperActivity"

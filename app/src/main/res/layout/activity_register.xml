@@ -6,40 +6,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity"
-    android:background="@color/black"
+    android:background="@drawable/background"
     android:orientation="vertical"
     android:gravity="center_horizontal">
 
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/logo"
+        android:src="@drawable/logo_white"
         android:cropToPadding="true"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="70dp">
     </ImageView>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TaskForge"
-        android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="25dp"
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="30dp"
         android:gravity="center_horizontal"
         android:letterSpacing="0.05"
         android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp">
+        android:layout_marginBottom="50dp">
     </TextView>
 
     <EditText
         android:id="@+id/username_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_border"
+        android:background="@drawable/basic"
         android:hint="Username"
-        android:textColorHint="@color/taskforge_orange_1"
-        android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColorHint="@color/orange_1"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/orange_1"
         android:textSize="18dp"
         android:gravity="left"
         android:letterSpacing="0.05"
@@ -53,29 +53,11 @@
         android:id="@+id/email_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_border"
+        android:background="@drawable/basic"
         android:hint="Email"
-        android:textColorHint="@color/taskforge_orange_1"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:textSize="18dp"
-        android:gravity="left"
-        android:letterSpacing="0.05"
-        android:padding="12dp"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginVertical="10dp">
-
-    </EditText>
-
-    <EditText
-        android:id="@+id/birthday_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_border"
-        android:hint="Birthday"
-        android:textColorHint="@color/taskforge_orange_1"
-        android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColorHint="@color/orange_1"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/orange_1"
         android:textSize="18dp"
         android:gravity="left"
         android:letterSpacing="0.05"
@@ -89,11 +71,29 @@
         android:id="@+id/password_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_border"
+        android:background="@drawable/basic"
         android:hint="Password"
-        android:textColorHint="@color/taskforge_orange_1"
-        android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColorHint="@color/orange_1"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/orange_1"
+        android:textSize="18dp"
+        android:gravity="left"
+        android:letterSpacing="0.05"
+        android:padding="12dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="10dp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/confirm_password_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/basic"
+        android:hint="Confirm Password"
+        android:textColorHint="@color/orange_1"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/orange_1"
         android:textSize="18dp"
         android:gravity="left"
         android:letterSpacing="0.05"
@@ -109,11 +109,11 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:layout_marginVertical="15dp"
-        android:backgroundTint="@color/taskforge_orange_1"
+        android:backgroundTint="@color/orange_2"
         android:background="@drawable/rounded_button"
         android:text="REGISTER"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_regular"
         android:textSize="20dp"
         android:letterSpacing="0.05"
         android:textAlignment="center">

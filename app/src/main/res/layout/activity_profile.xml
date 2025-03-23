@@ -27,7 +27,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/profile"
-        android:background="@drawable/edit_text_border"
+        android:background="@drawable/basic"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="25dp">
 
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:text="Username"
             android:textStyle="bold"
-            android:textColor="@color/taskforge_orange_1"
+            android:textColor="@color/orange_1"
             android:textSize="20dp"
             android:letterSpacing="0.05"
             android:layout_marginHorizontal="32dp">
@@ -54,7 +54,7 @@
             android:id="@+id/username_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edit_text_border"
+            android:background="@drawable/basic"
             android:hint="username"
             android:textColorHint="@color/white"
             android:textStyle="bold"
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:text="Email"
             android:textStyle="bold"
-            android:textColor="@color/taskforge_orange_1"
+            android:textColor="@color/orange_1"
             android:textSize="20dp"
             android:letterSpacing="0.05"
             android:layout_marginHorizontal="32dp">
@@ -83,7 +83,7 @@
             android:id="@+id/email_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edit_text_border"
+            android:background="@drawable/basic"
             android:hint="email"
             android:textColorHint="@color/white"
             android:textStyle="bold"
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:text="Birthday"
             android:textStyle="bold"
-            android:textColor="@color/taskforge_orange_1"
+            android:textColor="@color/orange_1"
             android:textSize="20dp"
             android:letterSpacing="0.05"
             android:layout_marginHorizontal="32dp">
@@ -112,7 +112,7 @@
             android:id="@+id/birthday_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edit_text_border"
+            android:background="@drawable/basic"
             android:hint="birthday"
             android:textColorHint="@color/white"
             android:textStyle="bold"
@@ -131,7 +131,7 @@
             android:layout_height="wrap_content"
             android:text="Address"
             android:textStyle="bold"
-            android:textColor="@color/taskforge_orange_1"
+            android:textColor="@color/orange_1"
             android:textSize="20dp"
             android:letterSpacing="0.05"
             android:layout_marginHorizontal="32dp">
@@ -141,7 +141,7 @@
             android:id="@+id/address_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edit_text_border"
+            android:background="@drawable/basic"
             android:hint="address"
             android:textColorHint="@color/white"
             android:textStyle="bold"
@@ -163,7 +163,7 @@
         android:layout_height="60dp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginVertical="15dp"
-        android:backgroundTint="@color/taskforge_orange_1"
+        android:backgroundTint="@color/orange_1"
         android:text="SAVE"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -185,7 +185,7 @@
             android:layout_marginBottom="16dp"
             android:layout_marginStart="50dp"
             android:background="@drawable/profile_icon"
-            android:backgroundTint="@color/taskforge_orange_1" />
+            android:backgroundTint="@color/orange_1" />
 
         <Button
             android:id="@+id/to_landing_btn"
@@ -196,7 +196,7 @@
             android:layout_toEndOf="@id/to_profile_btn"
             android:layout_marginStart="60dp"
             android:background="@drawable/landing_icon"
-            android:backgroundTint="@color/taskforge_red_1" />
+            android:backgroundTint="@color/red_1" />
 
         <Button
             android:id="@+id/to_settings_btn"
@@ -207,7 +207,7 @@
             android:layout_toEndOf="@id/to_landing_btn"
             android:layout_marginStart="60dp"
             android:background="@drawable/settings_icon"
-            android:backgroundTint="@color/taskforge_red_1" />
+            android:backgroundTint="@color/red_1" />
 
     </RelativeLayout>
 

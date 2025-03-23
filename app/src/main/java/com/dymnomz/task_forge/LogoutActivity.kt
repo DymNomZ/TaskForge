@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.ImageButton
 
 class LogoutActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +15,7 @@ class LogoutActivity : Activity() {
         CancelButton.setOnClickListener {
             Log.e("CancelButton", "CancelButton is clicked")
 
-            val intent = Intent(this, LandingActivity::class.java)
+            val intent = Intent(this, TasksActivity::class.java)
             startActivity(intent)
         }
 

@@ -5,31 +5,31 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LandingActivity"
-    android:background="@color/black"
+    tools:context=".TasksActivity"
+    android:background="@drawable/background"
     android:orientation="vertical"
     android:gravity="center_horizontal">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tasks_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tasks"
-            android:textStyle="bold"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="@color/white"
-            android:textSize="25dp"
+            android:textSize="30dp"
             android:layout_centerInParent="true"
-            android:letterSpacing="0.05">
+            android:letterSpacing="0.05"
+            android:layout_marginTop="50dp">
         </TextView>
 
         <ImageButton
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@drawable/add"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
@@ -42,15 +42,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="12dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/basic"
         android:gravity="center">
 
         <ImageView
-            android:layout_width="125dp"
-            android:layout_height="125dp"
-            android:src="@drawable/avatar"
-            android:background="@drawable/edit_text_border">
-
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/avatar">
         </ImageView>
 
         <LinearLayout
@@ -67,40 +67,18 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_margin="12dp"
-                    android:src="@drawable/heart">
-
+                    android:src="@drawable/heart"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="12dp">
                 </ImageView>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
                     android:text="100"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
-                    android:gravity="center_horizontal"
-                    android:letterSpacing="0.05">
-
-                </TextView>
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="12dp"
-                    android:src="@drawable/mana">
-
-                </ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
-                    android:text="100"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
                     android:gravity="center_horizontal"
                     android:letterSpacing="0.05">
 
@@ -116,40 +94,46 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_margin="12dp"
-                    android:src="@drawable/level">
-
+                    android:src="@drawable/coin"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="12dp">
                 </ImageView>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
                     android:text="100"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
                     android:gravity="center_horizontal"
                     android:letterSpacing="0.05">
 
                 </TextView>
 
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_margin="12dp"
-                    android:src="@drawable/coin">
-
+                    android:src="@drawable/level"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="12dp">
                 </ImageView>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
-                    android:text="100"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
+                    android:text="Level 1"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/orange_1"
+                    android:textSize="20dp"
                     android:gravity="center_horizontal"
                     android:letterSpacing="0.05">
 
@@ -161,25 +145,38 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/tasks_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/tasks"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:visibility="visible">
+    </ImageView>
+
     <TextView
+        android:id="@+id/these_are_your_tasks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome to TaskForge!"
-        android:textStyle="bold"
-        android:textColor="@color/taskforge_orange_1"
+        android:text="These are your tasks"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/white"
         android:textSize="25dp"
         android:gravity="center_horizontal"
         android:letterSpacing="0.05"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp">
+        android:visibility="visible">
     </TextView>
 
     <TextView
+        android:id="@+id/ready_to_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ready to start a task?"
+        android:text="Ready to start one?"
         android:textColor="@color/white"
         android:textSize="22dp"
+        android:fontFamily="@font/poppins_regular"
         android:gravity="center_horizontal"
         android:letterSpacing="0.05">
     </TextView>
@@ -189,36 +186,58 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/to_profile_btn"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:id="@+id/to_quests_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="16dp"
-            android:layout_marginStart="50dp"
-            android:background="@drawable/profile_icon"
-            android:backgroundTint="@color/taskforge_red_1" />
+            android:layout_marginStart="30dp"
+            android:background="@drawable/quests"
+            android:backgroundTint="@color/red_1" />
 
         <Button
-            android:id="@+id/to_landing_btn"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:id="@+id/to_inventory_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="16dp"
-            android:layout_toEndOf="@id/to_profile_btn"
-            android:layout_marginStart="60dp"
-            android:background="@drawable/landing_icon"
-            android:backgroundTint="@color/taskforge_orange_1" />
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@id/to_quests_btn"
+            android:background="@drawable/inventory"
+            android:backgroundTint="@color/red_1" />
+
+        <Button
+            android:id="@+id/to_tasks_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:layout_toEndOf="@id/to_inventory_btn"
+            android:layout_marginStart="40dp"
+            android:background="@drawable/tasks"
+            android:backgroundTint="@color/white" />
+
+        <Button
+            android:id="@+id/to_shop_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@id/to_tasks_btn"
+            android:background="@drawable/shop"
+            android:backgroundTint="@color/red_1" />
 
         <Button
             android:id="@+id/to_settings_btn"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="16dp"
-            android:layout_toEndOf="@id/to_landing_btn"
-            android:layout_marginStart="60dp"
-            android:background="@drawable/settings_icon"
-            android:backgroundTint="@color/taskforge_red_1" />
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@id/to_shop_btn"
+            android:background="@drawable/menu"
+            android:backgroundTint="@color/red_1" />
 
     </RelativeLayout>
 
