@@ -3,11 +3,11 @@ package com.dymnomz.task_forge
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.Toast
 
 class ProfileActivity : Activity() {
 
@@ -22,6 +22,19 @@ class ProfileActivity : Activity() {
         val ToSettingsButton = findViewById<ImageButton>(R.id.settings_btn)
         val EditButton = findViewById<Button>(R.id.edit_btn)
         val PetsButton = findViewById<Button>(R.id.pets_btn)
+        val NicknameET = findViewById<EditText>(R.id.nickname_et)
+
+        NicknameET.setOnEditorActionListener { textView, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE ||
+                event?.keyCode == KeyEvent.KEYCODE_ENTER) {
+                //sample lpgic
+                val text = textView.text.toString()
+                println("Entered text: $text")
+                true
+            } else {
+                false
+            }
+        }
 
         EditButton.setOnClickListener {
             val intent = Intent(this, EditProfileActivity::class.java)

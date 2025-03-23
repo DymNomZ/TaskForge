@@ -11,27 +11,32 @@ class SettingsActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        val ToProfileButton = findViewById<Button>(R.id.to_profile_btn)
-        ToProfileButton.setOnClickListener {
-            Log.e("ToProfileButton", "ToProfileButton is clicked")
+        var AboutTheDevButton = findViewById<Button>(R.id.developer_btn)
+        var ToggleDarkModeButton = findViewById<Button>(R.id.dark_mode_btn)
+        var ResetProgressButton = findViewById<Button>(R.id.reset_btn)
+        var DeleteAccButton = findViewById<Button>(R.id.delete_acc_btn)
+        var LogoutButton = findViewById<Button>(R.id.logout_btn)
 
-            val intent = Intent(this, ProfileActivity::class.java)
-            startActivity(intent)
-        }
-
-        val ToLandingButton = findViewById<Button>(R.id.to_landing_btn)
-        ToLandingButton.setOnClickListener {
-            Log.e("ToLandingButton", "ToLandingButton is clicked")
-
-            val intent = Intent(this, TasksActivity::class.java)
-            startActivity(intent)
-        }
-
-        val AboutDevButton = findViewById<Button>(R.id.about_dev_btn)
-        AboutDevButton.setOnClickListener {
-            Log.e("AboutDevButton", "AboutDevButton is clicked")
-
+        AboutTheDevButton.setOnClickListener {
             val intent = Intent(this, DeveloperActivity::class.java)
+            startActivity(intent)
+        }
+
+        ToggleDarkModeButton.setOnClickListener {
+            //logic here
+        }
+
+        ResetProgressButton.setOnClickListener {
+            //logic here
+        }
+
+        DeleteAccButton.setOnClickListener {
+            //logic here
+        }
+
+        LogoutButton.setOnClickListener {
+            //popup
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }

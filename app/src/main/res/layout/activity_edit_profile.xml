@@ -1,10 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditProfileActivity">
+    tools:context=".EditProfileActivity"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Profile"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:layout_centerInParent="true"
+        android:letterSpacing="0.05"
+        android:layout_marginVertical="25dp">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_gravity="left"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="20dp">
+    </TextView>
+
+    <EditText
+        android:id="@+id/username_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/basic"
+        android:layout_marginHorizontal="30dp"
+        android:textSize="20dp"
+        android:textColorHint="@color/orange_1"
+        android:hint="username"
+        android:padding="12dp"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/orange_1">
+    </EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="email"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_gravity="left"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="20dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/email_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/basic"
+        android:layout_marginHorizontal="30dp"
+        android:textSize="20dp"
+        android:textColorHint="@color/orange_1"
+        android:hint="email"
+        android:padding="12dp"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/orange_1">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_gravity="left"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="20dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/password_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/basic"
+        android:layout_marginHorizontal="30dp"
+        android:textSize="20dp"
+        android:textColorHint="@color/orange_1"
+        android:hint="password"
+        android:padding="12dp"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/orange_1">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="25dp">
+
+        <Button
+            android:id="@+id/cancel_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:marginRight="30dp"
+            android:layout_marginVertical="15dp"
+            android:backgroundTint="@color/orange_2"
+            android:background="@drawable/rounded_button"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="20dp"
+            android:padding="12dp"
+            android:letterSpacing="0.05"
+            android:textAlignment="center">
+        </Button>
+
+        <Button
+            android:id="@+id/save_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginVertical="15dp"
+            android:backgroundTint="@color/orange_2"
+            android:background="@drawable/rounded_button"
+            android:text="Save"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="20dp"
+            android:padding="12dp"
+            android:letterSpacing="0.05"
+            android:textAlignment="center">
+        </Button>
+
+    </LinearLayout>
+
+</LinearLayout>

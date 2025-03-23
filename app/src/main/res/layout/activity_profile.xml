@@ -69,7 +69,8 @@
                 android:textSize="30dp"
                 android:layout_gravity="left"
                 android:letterSpacing="0.05"
-                android:layout_marginLeft="20dp">
+                android:layout_marginLeft="20dp"
+                android:imeOptions="actionDone">
             </EditText>
 
             <TextView
@@ -248,6 +249,7 @@
             android:textColor="@color/white"
             android:fontFamily="@font/poppins_regular"
             android:textSize="20dp"
+            android:padding="12dp"
             android:letterSpacing="0.05"
             android:textAlignment="center">
         </Button>
@@ -264,6 +266,7 @@
             android:textColor="@color/white"
             android:fontFamily="@font/poppins_regular"
             android:textSize="20dp"
+            android:padding="12dp"
             android:letterSpacing="0.05"
             android:textAlignment="center">
         </Button>
