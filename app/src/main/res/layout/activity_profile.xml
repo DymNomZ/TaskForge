@@ -6,208 +6,327 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileActivity"
-    android:background="@color/black"
+    android:background="@drawable/background"
     android:orientation="vertical"
     android:gravity="center_horizontal">
 
-    <TextView
-        android:id="@+id/tasks_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User Profile"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:textSize="25dp"
-        android:layout_centerInParent="true"
-        android:letterSpacing="0.05"
-        android:layout_marginTop="12dp">
-    </TextView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/profile"
-        android:background="@drawable/basic"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:layout_centerInParent="true"
+            android:letterSpacing="0.05"
+            android:layout_marginTop="50dp">
+        </TextView>
 
-    </ImageView>
+        <ImageButton
+            android:id="@+id/settings_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/settings"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp">
+        </ImageButton>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="left">
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/basic"
+        android:gravity="center">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Username"
-            android:textStyle="bold"
-            android:textColor="@color/orange_1"
-            android:textSize="20dp"
-            android:letterSpacing="0.05"
-            android:layout_marginHorizontal="32dp">
-        </TextView>
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/avatar">
+        </ImageView>
 
-        <EditText
-            android:id="@+id/username_et"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/basic"
-            android:hint="username"
-            android:textColorHint="@color/white"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            android:gravity="left"
-            android:letterSpacing="0.05"
-            android:padding="12dp"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginVertical="10dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
 
-        </EditText>
+            <EditText
+                android:id="@+id/nickname_et"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dymes"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/orange_2"
+                android:textSize="30dp"
+                android:layout_gravity="left"
+                android:letterSpacing="0.05"
+                android:layout_marginLeft="20dp">
+            </EditText>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:textStyle="bold"
-            android:textColor="@color/orange_1"
-            android:textSize="20dp"
-            android:letterSpacing="0.05"
-            android:layout_marginHorizontal="32dp">
-        </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\@DymNomZ"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/red_1"
+                android:textSize="18dp"
+                android:layout_gravity="left"
+                android:letterSpacing="0.05"
+                android:layout_marginLeft="20dp">
+            </TextView>
 
-        <EditText
-            android:id="@+id/email_et"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/basic"
-            android:hint="email"
-            android:textColorHint="@color/white"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            android:gravity="left"
-            android:letterSpacing="0.05"
-            android:padding="12dp"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginVertical="10dp">
-
-        </EditText>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Birthday"
-            android:textStyle="bold"
-            android:textColor="@color/orange_1"
-            android:textSize="20dp"
-            android:letterSpacing="0.05"
-            android:layout_marginHorizontal="32dp">
-        </TextView>
-
-        <EditText
-            android:id="@+id/birthday_et"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/basic"
-            android:hint="birthday"
-            android:textColorHint="@color/white"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            android:gravity="left"
-            android:letterSpacing="0.05"
-            android:padding="12dp"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginVertical="10dp">
-
-        </EditText>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Address"
-            android:textStyle="bold"
-            android:textColor="@color/orange_1"
-            android:textSize="20dp"
-            android:letterSpacing="0.05"
-            android:layout_marginHorizontal="32dp">
-        </TextView>
-
-        <EditText
-            android:id="@+id/address_et"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/basic"
-            android:hint="address"
-            android:textColorHint="@color/white"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            android:gravity="left"
-            android:letterSpacing="0.05"
-            android:padding="12dp"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginVertical="10dp">
-
-        </EditText>
+        </LinearLayout>
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/save_profile_btn"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginVertical="15dp"
-        android:backgroundTint="@color/orange_1"
-        android:text="SAVE"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:letterSpacing="0.05"
-        android:textAlignment="center">
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="25dp"
+        android:layout_marginHorizontal="25dp"
+        android:background="@drawable/basic"
+        android:orientation="vertical"
+        android:gravity="center">
 
-    </Button>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/heart"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="12dp">
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/orange_2"
+                android:textSize="18dp"
+                android:layout_gravity="center"
+                android:letterSpacing="0.05">
+
+            </TextView>
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/coin"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="12dp">
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/orange_2"
+                android:textSize="18dp"
+                android:layout_gravity="center"
+                android:letterSpacing="0.05">
+
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginVertical="16dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/level"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="12dp">
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Level 1"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/orange_1"
+                android:textSize="18dp"
+                android:layout_gravity="center"
+                android:letterSpacing="0.05">
+
+            </TextView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Member Since"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_gravity="left"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="20dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/member_since_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/basic"
+        android:layout_marginHorizontal="30dp"
+        android:textSize="20dp"
+        android:textColorHint="@color/orange_1"
+        android:hint="Date"
+        android:padding="12dp"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/orange_1">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last Logged In"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_gravity="left"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="20dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/last_log_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/basic"
+        android:layout_marginHorizontal="30dp"
+        android:textSize="20dp"
+        android:textColorHint="@color/orange_1"
+        android:hint="Date"
+        android:padding="12dp"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/orange_1">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="25dp">
+
+        <Button
+            android:id="@+id/edit_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:marginRight="30dp"
+            android:layout_marginVertical="15dp"
+            android:backgroundTint="@color/orange_2"
+            android:background="@drawable/rounded_button"
+            android:text="Edit Profile"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="20dp"
+            android:letterSpacing="0.05"
+            android:textAlignment="center">
+        </Button>
+
+        <Button
+            android:id="@+id/pets_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginVertical="15dp"
+            android:backgroundTint="@color/orange_2"
+            android:background="@drawable/rounded_button"
+            android:text="View Pets"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="20dp"
+            android:letterSpacing="0.05"
+            android:textAlignment="center">
+        </Button>
+
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/to_profile_btn"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:id="@+id/to_quests_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="16dp"
-            android:layout_marginStart="50dp"
-            android:background="@drawable/profile_icon"
-            android:backgroundTint="@color/orange_1" />
-
-        <Button
-            android:id="@+id/to_landing_btn"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="16dp"
-            android:layout_toEndOf="@id/to_profile_btn"
-            android:layout_marginStart="60dp"
-            android:background="@drawable/landing_icon"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/quests"
             android:backgroundTint="@color/red_1" />
 
         <Button
-            android:id="@+id/to_settings_btn"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:id="@+id/to_inventory_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="16dp"
-            android:layout_toEndOf="@id/to_landing_btn"
-            android:layout_marginStart="60dp"
-            android:background="@drawable/settings_icon"
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@id/to_quests_btn"
+            android:background="@drawable/inventory"
             android:backgroundTint="@color/red_1" />
+
+        <Button
+            android:id="@+id/to_tasks_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:layout_toEndOf="@id/to_inventory_btn"
+            android:layout_marginStart="40dp"
+            android:background="@drawable/tasks"
+            android:backgroundTint="@color/red_1" />
+
+        <Button
+            android:id="@+id/to_shop_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@id/to_tasks_btn"
+            android:background="@drawable/shop"
+            android:backgroundTint="@color/red_1" />
+
+        <Button
+            android:id="@+id/to_menu_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@id/to_shop_btn"
+            android:background="@drawable/menu"
+            android:backgroundTint="@color/white" />
 
     </RelativeLayout>
 

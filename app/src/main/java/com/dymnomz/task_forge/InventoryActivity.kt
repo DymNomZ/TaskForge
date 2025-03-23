@@ -13,7 +13,7 @@ class InventoryActivity : Activity() {
         val ToQuestsButton = findViewById<Button>(R.id.to_quests_btn)
         val ToTasksButton = findViewById<Button>(R.id.to_tasks_btn)
         val ToShopButton = findViewById<Button>(R.id.to_shop_btn)
-        val ToSettingsButton = findViewById<Button>(R.id.to_settings_btn)
+        val ToProfileButton = findViewById<Button>(R.id.to_menu_btn)
 
         ToQuestsButton.setOnClickListener {
             val intent = Intent(this, QuestsActivity::class.java)
@@ -30,8 +30,8 @@ class InventoryActivity : Activity() {
             startActivity(intent)
         }
 
-        ToSettingsButton.setOnClickListener {
-            val intent = Intent(this, CreateTaskActivity::class.java)
+        ToProfileButton.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
 

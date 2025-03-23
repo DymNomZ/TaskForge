@@ -81,7 +81,6 @@
         android:textSize="20dp"
         android:letterSpacing="0.05"
         android:textAlignment="center">
-
     </Button>
 
     <TextView

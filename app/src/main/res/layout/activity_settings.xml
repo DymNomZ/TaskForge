@@ -165,7 +165,7 @@
             android:backgroundTint="@color/red_1" />
 
         <Button
-            android:id="@+id/to_settings_btn"
+            android:id="@+id/to_menu_btn"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentBottom="true"

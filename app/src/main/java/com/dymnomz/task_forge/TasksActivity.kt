@@ -14,7 +14,7 @@ class TasksActivity : Activity() {
         val ToQuestsButton = findViewById<Button>(R.id.to_quests_btn)
         val ToInventoryButton = findViewById<Button>(R.id.to_inventory_btn)
         val ToShopButton = findViewById<Button>(R.id.to_shop_btn)
-        val ToSettingsButton = findViewById<Button>(R.id.to_settings_btn)
+        val ToProfileButton = findViewById<Button>(R.id.to_menu_btn)
         val CreateTaskButton = findViewById<ImageButton>(R.id.create_task_btn)
 
         CreateTaskButton.setOnClickListener {
@@ -37,7 +37,7 @@ class TasksActivity : Activity() {
             startActivity(intent)
         }
 
-        ToSettingsButton.setOnClickListener {
+        ToProfileButton.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }

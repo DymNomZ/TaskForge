@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageButton
 
 class QuestsActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +13,7 @@ class QuestsActivity : Activity() {
         val ToInventoryButton = findViewById<Button>(R.id.to_inventory_btn)
         val ToTasksButton = findViewById<Button>(R.id.to_tasks_btn)
         val ToShopButton = findViewById<Button>(R.id.to_shop_btn)
-        val ToSettingsButton = findViewById<Button>(R.id.to_settings_btn)
+        val ToProfileButton = findViewById<Button>(R.id.to_menu_btn)
 
         ToInventoryButton.setOnClickListener {
             val intent = Intent(this, InventoryActivity::class.java)
@@ -31,8 +30,8 @@ class QuestsActivity : Activity() {
             startActivity(intent)
         }
 
-        ToSettingsButton.setOnClickListener {
-            val intent = Intent(this, CreateTaskActivity::class.java)
+        ToProfileButton.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
 
