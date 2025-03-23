@@ -16,6 +16,12 @@
         android:theme="@style/Theme.TaskForge"
         tools:targetApi="31">
         <activity
+            android:name=".ShopActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InventoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".QuestsActivity"
             android:exported="false" />
         <activity

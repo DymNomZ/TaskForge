@@ -20,7 +20,7 @@
             android:text="Tasks"
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/white"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:layout_centerInParent="true"
             android:letterSpacing="0.05"
             android:layout_marginTop="50dp">
@@ -47,8 +47,8 @@
         android:gravity="center">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_margin="20dp"
             android:background="@drawable/avatar">
         </ImageView>
@@ -62,11 +62,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/heart"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="12dp">
@@ -77,23 +78,16 @@
                     android:layout_height="wrap_content"
                     android:text="100"
                     android:fontFamily="@font/poppins_semibold"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:gravity="center_horizontal"
+                    android:textColor="@color/orange_2"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
                     android:letterSpacing="0.05">
 
                 </TextView>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/coin"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="12dp">
@@ -104,9 +98,9 @@
                     android:layout_height="wrap_content"
                     android:text="100"
                     android:fontFamily="@font/poppins_semibold"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:gravity="center_horizontal"
+                    android:textColor="@color/orange_2"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
                     android:letterSpacing="0.05">
 
                 </TextView>
@@ -116,11 +110,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="8dp">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/level"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="12dp">
@@ -132,8 +128,8 @@
                     android:text="Level 1"
                     android:fontFamily="@font/poppins_semibold"
                     android:textColor="@color/orange_1"
-                    android:textSize="20dp"
-                    android:gravity="center_horizontal"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
                     android:letterSpacing="0.05">
 
                 </TextView>
@@ -182,10 +178,10 @@
     </TextView>
 
     <ListView
+        android:id="@+id/tasks_list"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="400dp"
         android:layout_margin="20dp">
-
     </ListView>
 
     <RelativeLayout
