@@ -12,28 +12,35 @@ class TasksActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tasks)
 
-//        val ToProfileButton = findViewById<Button>(R.id.to_profile_btn)
-//        ToProfileButton.setOnClickListener {
-//            Log.e("ToProfileButton", "ToProfileButton is clicked")
-//
-//            val intent = Intent(this, ProfileActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        val ToSettingsButton = findViewById<Button>(R.id.to_settings_btn)
-//        ToSettingsButton.setOnClickListener {
-//            Log.e("ToSettingsButton", "ToSettingsButton is clicked")
-//
-//            val intent = Intent(this, SettingsActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        val LogoutButton = findViewById<ImageButton>(R.id.logout_btn)
-//        LogoutButton.setOnClickListener {
-//            Log.e("LogoutButton", "LogoutButton is clicked")
-//
-//            val intent = Intent(this, LogoutActivity::class.java)
-//            startActivity(intent)
-//        }
+        val ToQuestsButton = findViewById<Button>(R.id.to_quests_btn)
+        val ToInventoryButton = findViewById<Button>(R.id.to_inventory_btn)
+        val ToShopButton = findViewById<Button>(R.id.to_shop_btn)
+        val ToSettingsButton = findViewById<Button>(R.id.to_settings_btn)
+        val CreateTaskButton = findViewById<ImageButton>(R.id.create_task_btn)
+
+        CreateTaskButton.setOnClickListener {
+            val intent = Intent(this, CreateTaskActivity::class.java)
+            startActivity(intent)
+        }
+
+        ToQuestsButton.setOnClickListener {
+            val intent = Intent(this, QuestsActivity::class.java)
+            startActivity(intent)
+        }
+
+        ToInventoryButton.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        ToShopButton.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        ToSettingsButton.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
