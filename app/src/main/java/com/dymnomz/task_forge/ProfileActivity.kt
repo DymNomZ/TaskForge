@@ -19,7 +19,7 @@ class ProfileActivity : Activity() {
         val ToInventoryButton = findViewById<Button>(R.id.to_inventory_btn)
         val ToTasksButton = findViewById<Button>(R.id.to_tasks_btn)
         val ToShopButton = findViewById<Button>(R.id.to_shop_btn)
-        val ToSettingsButton = findViewById<ImageButton>(R.id.settings_btn)
+        val SettingsButton = findViewById<ImageButton>(R.id.settings_btn)
         val EditButton = findViewById<Button>(R.id.edit_btn)
         val PetsButton = findViewById<Button>(R.id.pets_btn)
         val NicknameET = findViewById<EditText>(R.id.nickname_et)
@@ -42,11 +42,11 @@ class ProfileActivity : Activity() {
         }
 
         PetsButton.setOnClickListener {
-            val intent = Intent(this, QuestsActivity::class.java)
+            val intent = Intent(this, PetsActivity::class.java)
             startActivity(intent)
         }
 
-        ToSettingsButton.setOnClickListener {
+        SettingsButton.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }

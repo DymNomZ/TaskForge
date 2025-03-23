@@ -8,6 +8,10 @@ class UserData : Application() {
     var email: String = ""
     var password: String = ""
 
+    fun isUserDataEmpty(): Boolean {
+        return username.isNullOrEmpty() && email.isNullOrEmpty() && password.isNullOrEmpty()
+    }
+
     override fun onCreate() {
         super.onCreate()
     }

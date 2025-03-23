@@ -21,9 +21,11 @@ class EditProfileActivity : Activity() {
 
         var userdata = application as UserData
 
-        UsernameET.setText(userdata.username)
-        EmailET.setText(userdata.email)
-        PasswordET.setText(userdata.password)
+//        if(!userdata.isUserDataEmpty()){
+//            UsernameET.setText(userdata.username)
+//            EmailET.setText(userdata.email)
+//            PasswordET.setText(userdata.password)
+//        }
 
         CancelButton.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
@@ -38,9 +40,9 @@ class EditProfileActivity : Activity() {
             ) {
 
                 //save to UserData class
-                userdata.username = UsernameET.text.toString()
-                userdata.email = EmailET.text.toString()
-                userdata.password = PasswordET.text.toString()
+//                userdata.username = UsernameET.text.toString()
+//                userdata.email = EmailET.text.toString()
+//                userdata.password = PasswordET.text.toString()
 
                 val intent = Intent(this, ProfileActivity::class.java)
                 startActivity(intent)

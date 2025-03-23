@@ -12,12 +12,5 @@ class DeveloperActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_developer)
 
-        val BackButton = findViewById<ImageButton>(R.id.back_btn)
-        BackButton.setOnClickListener {
-            Log.e("BackButton", "BackButton is clicked")
-
-            val intent = Intent(this, SettingsActivity::class.java)
-            startActivity(intent)
-        }
     }
 }
