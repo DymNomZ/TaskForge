@@ -38,6 +38,7 @@ class SettingsActivity : Activity() {
             //popup
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

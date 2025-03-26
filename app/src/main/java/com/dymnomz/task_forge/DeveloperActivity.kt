@@ -12,5 +12,12 @@ class DeveloperActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_developer)
 
+        var CloseButton = findViewById<ImageButton>(R.id.close_btn)
+
+        CloseButton.setOnClickListener{
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

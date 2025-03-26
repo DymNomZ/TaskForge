@@ -39,6 +39,7 @@ class LoginActivity : Activity() {
                 if(UsernameET.text.toString() == userdata.username && PasswordET.text.toString() == userdata.password){
                     val intent = Intent(this, TasksActivity::class.java)
                     startActivity(intent)
+                    finish()
                 }
                 else{
                     Toast.makeText(this, "Invalid credentials!", Toast.LENGTH_SHORT).show()
