@@ -9,6 +9,8 @@ import android.widget.ListView
 import android.widget.Toast
 import com.dymnomz.task_forge.data.Task
 import com.dymnomz.task_forge.helper.CustomListAdapterTask
+import com.dymnomz.task_forge.helper.convertMonthReversed
+import com.dymnomz.task_forge.helper.getWords
 
 class TasksActivity : Activity() {
 
@@ -41,11 +43,13 @@ class TasksActivity : Activity() {
         adapter = CustomListAdapterTask(
             this, tasks,
             onClick = {task, position ->
-                Toast.makeText(
-                    this,
-                    "clicked on task",
-                    Toast.LENGTH_LONG
-                ).show()
+
+                var intent = Intent(this, EditTaskActivity::class.java).apply{
+                    putExtra("difficulty", task.difficulty)
+                    putExtra("title", task.title)
+                }
+                startActivity(intent)
+                finish()
             }
         )
         listView.adapter = adapter

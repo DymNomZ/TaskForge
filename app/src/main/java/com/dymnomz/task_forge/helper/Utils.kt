@@ -11,6 +11,29 @@ fun getCurrentDate() : String {
     return formatter.format(date)
 }
 
+fun getWords(text: String): List<String> {
+    return text.split(" ")
+}
+
+fun convertMonthReversed(month: String) : Int {
+
+    return when (month) {
+        "January" -> 1
+        "February" -> 2
+        "March" -> 3
+        "April" -> 4
+        "May" -> 5
+        "June" -> 6
+        "July" -> 7
+        "August" -> 8
+        "September" -> 9
+        "October" -> 10
+        "November" -> 11
+        "December" -> 12
+        else -> 0
+    }
+}
+
 fun convertMonth(month: String) : String {
 
     return when (month) {
