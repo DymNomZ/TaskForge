@@ -1,7 +1,9 @@
 package com.dymnomz.task_forge
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -18,24 +20,39 @@ class LoginActivity : Activity() {
         val UsernameET = findViewById<EditText>(R.id.username_et)
         val PasswordET = findViewById<EditText>(R.id.password_et)
 
-        intent?.let {
-            it.getStringExtra("username")?.let { username ->
-                UsernameET.setText(username)
-            }
-            it.getStringExtra("password")?.let { password ->
-                PasswordET.setText(password)
-            }
+        var sp = getSharedPreferences("UserData", Context.MODE_PRIVATE)
+        var username = sp.getString("username", "")
+        var email = sp.getString("email", "")
+        var password = sp.getString("password", "")
+
+        //save to UserData class
+        (application as UserData).username = username!!
+        (application as UserData).email = email!!
+        (application as UserData).password = password!!
+
+        //to check if there exists an account
+        var hasAccount = false
+        if(!username.isNullOrEmpty() && !email.isNullOrEmpty() && !password.isNullOrEmpty()){
+            hasAccount = true
         }
+
+        UsernameET.setText(username)
+        PasswordET.setText(password)
 
         val LoginButton = findViewById<Button>(R.id.login_button)
         LoginButton.setOnClickListener {
+
+            //since no account, inform the user
+            if(!hasAccount){
+                Toast.makeText(this, "No account created yet!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
             //only proceed if all edit texts are filled with values
             if(UsernameET.text.toString().isNotEmpty() && PasswordET.text.toString().isNotEmpty()){
 
                 //validate
-                if(UsernameET.text.toString() == (application as UserData).username
-                    && PasswordET.text.toString() == (application as UserData).password){
+                if(UsernameET.text.toString() == username && PasswordET.text.toString() == password){
                     val intent = Intent(this, TasksActivity::class.java)
                     startActivity(intent)
                     finish()

@@ -1,6 +1,7 @@
 package com.dymnomz.task_forge
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -19,14 +20,20 @@ class EditProfileActivity : Activity() {
         var SaveButton = findViewById<Button>(R.id.save_btn)
         var CancelButton = findViewById<Button>(R.id.cancel_btn)
 
-        UsernameET.setText((application as UserData).username)
-        EmailET.setText((application as UserData).email)
-        PasswordET.setText((application as UserData).password)
+        var sp = getSharedPreferences("UserData", Context.MODE_PRIVATE)
+        var username = sp.getString("username", "")
+        var email = sp.getString("email", "")
+        var password = sp.getString("password", "")
+
+        UsernameET.setText(username)
+        EmailET.setText(email)
+        PasswordET.setText(password)
 
 
         CancelButton.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         SaveButton.setOnClickListener {
@@ -37,12 +44,24 @@ class EditProfileActivity : Activity() {
             ) {
 
                 //save to UserData class
-                (application as UserData).username = UsernameET.text.toString()
-                (application as UserData).email = EmailET.text.toString()
-                (application as UserData).password = PasswordET.text.toString()
+//                (application as UserData).username = UsernameET.text.toString()
+//                (application as UserData).email = EmailET.text.toString()
+//                (application as UserData).password = PasswordET.text.toString()
+
+                //save to device
+                var editor = sp.edit();
+                username = UsernameET.text.toString()
+                email = EmailET.text.toString()
+                password = PasswordET.text.toString()
+
+                editor.putString("username", username)
+                editor.putString("email", email)
+                editor.putString("password", password)
+                editor.commit()
 
                 val intent = Intent(this, ProfileActivity::class.java)
                 startActivity(intent)
+                finish()
 
             } else {
                 Toast.makeText(this, "Must input all fields!", Toast.LENGTH_SHORT).show()

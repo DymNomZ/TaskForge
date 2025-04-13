@@ -2,6 +2,7 @@ package com.dymnomz.task_forge.app
 
 import android.app.Application
 import android.content.Context
+import android.content.SharedPreferences
 
 class UserData : Application() {
 
@@ -10,6 +11,5 @@ class UserData : Application() {
     var password: String = ""
     override fun onCreate() {
         super.onCreate()
-        val sharedPreferences = getSharedPreferences("Mode", Context.MODE_PRIVATE)
     }
 }

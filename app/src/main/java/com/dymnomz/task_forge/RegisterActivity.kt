@@ -1,6 +1,7 @@
 package com.dymnomz.task_forge
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -25,16 +26,22 @@ class RegisterActivity : Activity() {
             if(UsernameET.text.toString().isNotEmpty() && PasswordET.text.toString().isNotEmpty() &&
                 ConfirmPasswordET.text.toString().isNotEmpty() && EmailET.text.toString().isNotEmpty()){
 
-                //save to UserData class
-                (application as UserData).username = UsernameET.text.toString()
-                (application as UserData).email = EmailET.text.toString()
-                (application as UserData).password = PasswordET.text.toString()
+                var username = UsernameET.text.toString()
+                var email = EmailET.text.toString()
+                var password = PasswordET.text.toString()
 
-                val intent = Intent(this, LoginActivity::class.java).apply {
-                    putExtra("username", (application as UserData).username)
-                    putExtra("password", (application as UserData).password)
-                }
+                //save to device
+                var sp = getSharedPreferences("UserData", Context.MODE_PRIVATE)
+                var editor = sp.edit();
+
+                editor.putString("username", username)
+                editor.putString("email", email)
+                editor.putString("password", password)
+                editor.commit()
+
+                val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
+                finish()
 
             }
             else {
