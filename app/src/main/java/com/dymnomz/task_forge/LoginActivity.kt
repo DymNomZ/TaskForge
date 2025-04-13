@@ -3,16 +3,13 @@ package com.dymnomz.task_forge
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.dymnomz.task_forge.app.UserData
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Locale
+import com.dymnomz.task_forge.helper.getCurrentDate
 
 class LoginActivity : Activity() {
 
@@ -23,9 +20,7 @@ class LoginActivity : Activity() {
         val UsernameET = findViewById<EditText>(R.id.username_et)
         val PasswordET = findViewById<EditText>(R.id.password_et)
 
-        val date = Calendar.getInstance().time
-        val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
-        val dateInString = formatter.format(date)
+        val dateInString = getCurrentDate()
 
         var sp = getSharedPreferences("UserData", Context.MODE_PRIVATE)
         var username = sp.getString("username", "")

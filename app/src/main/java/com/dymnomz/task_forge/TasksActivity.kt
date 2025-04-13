@@ -11,13 +11,9 @@ import com.dymnomz.task_forge.data.Task
 import com.dymnomz.task_forge.helper.CustomListAdapterTask
 
 class TasksActivity : Activity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tasks)
 
-        val listView =findViewById<ListView>(R.id.tasks_list)
-
-        val tasks = listOf(
+    companion object {
+        val tasks = mutableListOf(
             Task("Conquer the Inbox Beast", "April 24, 2025", "Easy"),
             Task("Forge a Daily Habit", "April 24, 2025", "Easy"),
             Task("Slay the Procrastination Dragon","April 24, 2025", "Easy"),
@@ -32,8 +28,17 @@ class TasksActivity : Activity() {
             Task("Repair the Broken Bridge", "April 24, 2025", "Easy"),
             Task("Explore the Wild Unknown", "April 24, 2025", "Easy"),
         )
+    }
 
-        val adapter = CustomListAdapterTask(
+    lateinit var listView: ListView
+    lateinit var adapter: CustomListAdapterTask
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_tasks)
+
+        listView = findViewById<ListView>(R.id.tasks_list)
+
+        adapter = CustomListAdapterTask(
             this, tasks,
             onClick = {task, position ->
                 Toast.makeText(
@@ -54,6 +59,7 @@ class TasksActivity : Activity() {
         CreateTaskButton.setOnClickListener {
             val intent = Intent(this, CreateTaskActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         ToQuestsButton.setOnClickListener {
@@ -79,5 +85,10 @@ class TasksActivity : Activity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        adapter.notifyDataSetChanged()
     }
 }

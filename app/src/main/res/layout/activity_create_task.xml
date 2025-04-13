@@ -66,11 +66,11 @@
         android:textColor="@color/white"
         android:textSize="25dp"
         android:layout_gravity="left"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="40dp">
+        android:layout_marginHorizontal="30dp">
     </TextView>
 
     <EditText
+        android:id="@+id/task_title_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/basic"
@@ -95,18 +95,16 @@
         android:layout_marginTop="20dp">
     </TextView>
 
-    <EditText
+    <DatePicker
+        android:id="@+id/datepicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"
         android:background="@drawable/basic"
-        android:layout_marginHorizontal="30dp"
-        android:textSize="20dp"
-        android:textColorHint="@color/orange_1"
-        android:hint="Select Date"
-        android:padding="12dp"
-        android:fontFamily="@font/poppins_regular"
-        android:textColor="@color/orange_1">
-    </EditText>
+        android:layout_margin="20dp">
+
+    </DatePicker>
 
     <TextView
         android:layout_width="wrap_content"
@@ -136,6 +134,7 @@
             android:layout_marginTop="12dp">
 
             <Button
+                android:id="@+id/trivial_btn"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@drawable/trivial"
@@ -143,6 +142,7 @@
             </Button>
 
             <Button
+                android:id="@+id/easy_btn"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@drawable/easy"
@@ -150,6 +150,7 @@
             </Button>
 
             <Button
+                android:id="@+id/medium_btn"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@drawable/medium"
@@ -157,6 +158,7 @@
             </Button>
 
             <Button
+                android:id="@+id/hard_btn"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@drawable/hard"
