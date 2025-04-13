@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.TextView
 import com.dymnomz.task_forge.R
+import com.dymnomz.task_forge.data.Item
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -17,10 +18,47 @@ fun getCurrentDate() : String {
     return formatter.format(date)
 }
 
-fun showCustomDialogue(
+fun showPurchaseItemDialogue(
     context: Context,
     title: String,
     description: String,
+    item: Item,
+    onPurchase: () -> Unit
+) {
+    val builder = AlertDialog.Builder(context)
+    val inflater = LayoutInflater.from(context)
+    val dialogView = inflater.inflate(R.layout.purchase_item_dialogue_layout, null)
+
+    val titleTextView = dialogView.findViewById<TextView>(R.id.dialog_title)
+    val descriptionTextView = dialogView.findViewById<TextView>(R.id.dialog_description)
+    val itemCostTextView = dialogView.findViewById<TextView>(R.id.item_cost_tv)
+    val cancelButton = dialogView.findViewById<Button>(R.id.canel_btn)
+    val purchaseButton = dialogView.findViewById<Button>(R.id.purchase_btn)
+
+    builder.setView(dialogView)
+    val alertDialog = builder.create()
+
+    titleTextView.text = title
+    descriptionTextView.text = description
+    itemCostTextView.text = item.cost.toString()
+
+    purchaseButton.setOnClickListener {
+        onPurchase()
+        alertDialog.dismiss()
+    }
+
+    cancelButton.setOnClickListener {
+        alertDialog.dismiss()
+    }
+
+    alertDialog.show()
+}
+
+fun showBasicDialogue(
+    context: Context,
+    title: String,
+    description: String,
+    confirmText: String,
     onConfirm: () -> Unit
 ) {
     val builder = AlertDialog.Builder(context)
@@ -31,6 +69,8 @@ fun showCustomDialogue(
     val descriptionTextView = dialogView.findViewById<TextView>(R.id.dialog_description)
     val cancelButton = dialogView.findViewById<Button>(R.id.canel_btn)
     val confirmButton = dialogView.findViewById<Button>(R.id.confirm_btn)
+
+    confirmButton.setText(confirmText)
 
     builder.setView(dialogView)
     val alertDialog = builder.create()

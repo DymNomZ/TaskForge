@@ -12,9 +12,7 @@ import android.widget.Toast
 import com.dymnomz.task_forge.app.UserData
 import com.dymnomz.task_forge.data.Task
 import com.dymnomz.task_forge.helper.CustomListAdapterTask
-import com.dymnomz.task_forge.helper.convertMonthReversed
-import com.dymnomz.task_forge.helper.getWords
-import com.dymnomz.task_forge.helper.showCustomDialogue
+import com.dymnomz.task_forge.helper.showBasicDialogue
 
 class TasksActivity : Activity() {
 
@@ -112,10 +110,11 @@ class TasksActivity : Activity() {
                 onResume()
             },
             deleteTask = {task, position ->
-                showCustomDialogue(
+                showBasicDialogue(
                     this,
                     "Delete Task",
                     "Are you sure you want to delete this task?",
+                    "Confirm",
                     onConfirm = {
                         tasks.removeAt(position)
                         onResume()

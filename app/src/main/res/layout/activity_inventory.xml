@@ -34,12 +34,11 @@
         android:letterSpacing="0.05"
         android:padding="8dp"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="25dp"
         android:background="@drawable/basic">
     </TextView>
 
     <ListView
-        android:id="@+id/gear_list"
+        android:id="@+id/gears_list"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_margin="20dp">
@@ -57,12 +56,12 @@
         android:letterSpacing="0.05"
         android:padding="12dp"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="25dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/basic">
     </TextView>
 
     <ListView
-        android:id="@+id/food_list"
+        android:id="@+id/consumables_list"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_margin="20dp">

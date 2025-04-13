@@ -3,10 +3,9 @@ package com.dymnomz.task_forge
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
-import com.dymnomz.task_forge.helper.showCustomDialogue
+import com.dymnomz.task_forge.helper.showBasicDialogue
 
 class SettingsActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,10 +45,11 @@ class SettingsActivity : Activity() {
 
         LogoutButton.setOnClickListener {
             //popup
-            showCustomDialogue(
+            showBasicDialogue(
              this,
              "Confirm Logout",
              "Are you sure you want to logout?",
+                "Confirm",
              onConfirm = {
                  val intent = Intent(this, LoginActivity::class.java)
                  startActivity(intent)
