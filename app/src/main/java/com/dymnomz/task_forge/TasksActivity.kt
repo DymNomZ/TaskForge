@@ -50,6 +50,16 @@ class TasksActivity : Activity() {
                 }
                 startActivity(intent)
                 finish()
+            },
+            completeTask = {task, position ->
+                Toast.makeText(this, "Player earnings logic here!", Toast.LENGTH_SHORT).show()
+                tasks.removeAt(position)
+                onResume()
+            },
+            deleteTask = {task, position ->
+                Toast.makeText(this, "Delete pop up here!", Toast.LENGTH_SHORT).show()
+                tasks.removeAt(position)
+                onResume()
             }
         )
         listView.adapter = adapter

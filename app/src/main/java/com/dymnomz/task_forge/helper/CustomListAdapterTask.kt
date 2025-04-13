@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.CheckBox
+import android.widget.ImageButton
 import android.widget.TextView
 import com.dymnomz.task_forge.R
 import com.dymnomz.task_forge.data.Task
@@ -12,7 +14,9 @@ import com.dymnomz.task_forge.data.Task
 class CustomListAdapterTask (
     val contex: Context,
     val listofTasks: List<Task>,
-    val onClick: (Task, Int) -> Unit
+    val onClick: (Task, Int) -> Unit,
+    val completeTask: (Task, Int) -> Unit,
+    val deleteTask: (Task, Int) -> Unit
 ): BaseAdapter() {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -23,10 +27,21 @@ class CustomListAdapterTask (
         val TaskTitleTV = view.findViewById<TextView>(R.id.task_title_tv)
         val TaskDifficultyTV = view.findViewById<TextView>(R.id.task_difficulty_tv)
         val TaskDueTV = view.findViewById<TextView>(R.id.task_due_tv)
+        val CheckBox = view.findViewById<CheckBox>(R.id.complete_task_cb)
+        val DeleteBtn = view.findViewById<ImageButton>(R.id.delete_task_btn)
 
         TaskTitleTV.setText(task.title)
         TaskDifficultyTV.setText(task.difficulty)
         TaskDueTV.setText(task.due)
+        CheckBox.isChecked = false
+
+        CheckBox.setOnClickListener{
+            completeTask(task, position)
+        }
+
+        DeleteBtn.setOnClickListener{
+            deleteTask(task,position)
+        }
 
         view.setOnClickListener{
             onClick(task, position)
