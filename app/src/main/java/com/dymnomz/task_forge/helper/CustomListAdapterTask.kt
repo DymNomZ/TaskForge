@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.ImageView
 import android.widget.TextView
 import com.dymnomz.task_forge.R
 import com.dymnomz.task_forge.data.Task
@@ -21,11 +20,13 @@ class CustomListAdapterTask (
 
         val task =listofTasks[position]
 
-        val imageViewPhoto = view.findViewById<ImageView>(R.id.imageview_img)
-        val textViewLabel = view.findViewById<TextView>(R.id.textview_label)
+        val TaskTitleTV = view.findViewById<TextView>(R.id.task_title_tv)
+        val TaskDifficultyTV = view.findViewById<TextView>(R.id.task_difficulty_tv)
+        val TaskDueTV = view.findViewById<TextView>(R.id.task_due_tv)
 
-        imageViewPhoto.setImageResource(task.img)
-        textViewLabel.setText(task.label)
+        TaskTitleTV.setText(task.title)
+        TaskDifficultyTV.setText(task.difficulty)
+        TaskDueTV.setText(task.due)
 
         view.setOnClickListener{
             onClick(task, position)

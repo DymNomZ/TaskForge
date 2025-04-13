@@ -1,13 +1,16 @@
 package com.dymnomz.task_forge
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.TextView
 
 class ProfileActivity : Activity() {
 
@@ -23,6 +26,12 @@ class ProfileActivity : Activity() {
         val EditButton = findViewById<Button>(R.id.edit_btn)
         val PetsButton = findViewById<Button>(R.id.pets_btn)
         val NicknameET = findViewById<EditText>(R.id.nickname_et)
+        val UsernameTV = findViewById<TextView>(R.id.username_tv)
+
+        var sp = getSharedPreferences("UserData", Context.MODE_PRIVATE)
+        var username = sp.getString("username", "")
+
+        UsernameTV.setText(username)
 
         NicknameET.setOnEditorActionListener { textView, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE ||
@@ -30,6 +39,7 @@ class ProfileActivity : Activity() {
                 //sample lpgic
                 val text = textView.text.toString()
                 println("Entered text: $text")
+                Log.i("YourTag", "Activity created.")
                 true
             } else {
                 false

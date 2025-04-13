@@ -18,19 +18,19 @@ class TasksActivity : Activity() {
         val listView =findViewById<ListView>(R.id.tasks_list)
 
         val tasks = listOf(
-            Task("Conquer the Inbox Beast", R.drawable.dymes),
-            Task("Forge a Daily Habit", R.drawable.dymes),
-            Task("Slay the Procrastination Dragon", R.drawable.dymes),
-            Task("Craft a Masterpiece", R.drawable.dymes),
-            Task("Journey to Fitness Peak", R.drawable.dymes),
-            Task("Unearth Hidden Knowledge", R.drawable.dymes),
-            Task("Tame the To-Do List", R.drawable.dymes),
-            Task("Cultivate Inner Peace", R.drawable.dymes),
-            Task("Build a Social Stronghold", R.drawable.dymes),
-            Task("Master the Culinary Arts", R.drawable.dymes),
-            Task("Chart a Financial Course", R.drawable.dymes),
-            Task("Repair the Broken Bridge", R.drawable.dymes),
-            Task("Explore the Wild Unknown", R.drawable.dymes)
+            Task("Conquer the Inbox Beast", "April 24, 2025", "Easy"),
+            Task("Forge a Daily Habit", "April 24, 2025", "Easy"),
+            Task("Slay the Procrastination Dragon","April 24, 2025", "Easy"),
+            Task("Craft a Masterpiece","April 24, 2025", "Easy"),
+            Task("Journey to Fitness Peak", "April 24, 2025", "Easy"),
+            Task("Unearth Hidden Knowledge", "April 24, 2025", "Easy"),
+            Task("Tame the To-Do List", "April 24, 2025", "Easy"),
+            Task("Cultivate Inner Peace", "April 24, 2025", "Easy"),
+            Task("Build a Social Stronghold", "April 24, 2025", "Easy"),
+            Task("Master the Culinary Arts", "April 24, 2025", "Easy"),
+            Task("Chart a Financial Course", "April 24, 2025", "Easy"),
+            Task("Repair the Broken Bridge", "April 24, 2025", "Easy"),
+            Task("Explore the Wild Unknown", "April 24, 2025", "Easy"),
         )
 
         val adapter = CustomListAdapterTask(

@@ -3,26 +3,85 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="4dp">
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:padding="8dp">
 
-        <ImageView
-            android:id="@+id/imageview_img"
-            android:layout_width="70dp"
-            android:layout_height="100dp"
-            android:background="@drawable/basic"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/basic">
 
-        <Button
-            android:id="@+id/textview_label"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="4dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/imageview_img"
-            android:background="@drawable/basic"/>
+        <CheckBox
+            android:layout_marginLeft="8dp"
+            android:layout_gravity="center"
+            android:id="@+id/complete_task_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/orange_2">
+        </CheckBox>
 
-    </RelativeLayout>
+        <LinearLayout
+            android:padding="12dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/task_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:letterSpacing="0.05">
+
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_marginRight="12dp"
+                    android:id="@+id/task_difficulty_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
+                    android:textSize="10dp"
+                    android:letterSpacing="0.05">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/task_due_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/black"
+                    android:textSize="10dp"
+                    android:letterSpacing="0.05">
+
+                </TextView>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/delete_task_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/delete"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/orange_1">
+        </ImageButton>
+
+    </LinearLayout>
 </LinearLayout>
