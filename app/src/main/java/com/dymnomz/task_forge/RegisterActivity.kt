@@ -7,7 +7,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.dymnomz.task_forge.app.UserData
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
+import java.util.Calendar
+import java.util.Locale
 
 class RegisterActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,9 +37,14 @@ class RegisterActivity : Activity() {
                 var sp = getSharedPreferences("UserData", Context.MODE_PRIVATE)
                 var editor = sp.edit();
 
+                val date = Calendar.getInstance().time
+                val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
+                val dateInString = formatter.format(date)
+
                 editor.putString("username", username)
                 editor.putString("email", email)
                 editor.putString("password", password)
+                editor.putString("creation_date", dateInString)
                 editor.commit()
 
                 val intent = Intent(this, LoginActivity::class.java)

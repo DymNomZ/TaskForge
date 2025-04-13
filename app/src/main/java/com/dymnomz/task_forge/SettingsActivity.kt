@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 
 class SettingsActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,10 +17,18 @@ class SettingsActivity : Activity() {
         var ResetProgressButton = findViewById<Button>(R.id.reset_btn)
         var DeleteAccButton = findViewById<Button>(R.id.delete_acc_btn)
         var LogoutButton = findViewById<Button>(R.id.logout_btn)
+        var BackButton = findViewById<ImageButton>(R.id.back_btn)
+
+        BackButton.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         AboutTheDevButton.setOnClickListener {
             val intent = Intent(this, DeveloperActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         ToggleDarkModeButton.setOnClickListener {

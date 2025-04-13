@@ -27,11 +27,17 @@ class ProfileActivity : Activity() {
         val PetsButton = findViewById<Button>(R.id.pets_btn)
         val NicknameET = findViewById<EditText>(R.id.nickname_et)
         val UsernameTV = findViewById<TextView>(R.id.username_tv)
+        var MemberSinceTV = findViewById<TextView>(R.id.member_since_tv)
+        var LastLoggedTV = findViewById<TextView>(R.id.last_log_tv)
 
         var sp = getSharedPreferences("UserData", Context.MODE_PRIVATE)
         var username = sp.getString("username", "")
+        var memeber_since_date = sp.getString("creation_date", "")
+        var last_logged_in_Date = sp.getString("logged_in_date", "")
 
-        UsernameTV.setText(username)
+        UsernameTV.setText("@" + username)
+        MemberSinceTV.setText(memeber_since_date)
+        LastLoggedTV.setText(last_logged_in_Date)
 
         NicknameET.setOnEditorActionListener { textView, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE ||
@@ -54,31 +60,37 @@ class ProfileActivity : Activity() {
         PetsButton.setOnClickListener {
             val intent = Intent(this, PetsActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         SettingsButton.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         ToQuestsButton.setOnClickListener {
             val intent = Intent(this, QuestsActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         ToInventoryButton.setOnClickListener {
             val intent = Intent(this, InventoryActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         ToTasksButton.setOnClickListener {
             val intent = Intent(this, TasksActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         ToShopButton.setOnClickListener {
             val intent = Intent(this, ShopActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

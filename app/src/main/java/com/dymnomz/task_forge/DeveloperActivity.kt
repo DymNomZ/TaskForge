@@ -17,6 +17,7 @@ class DeveloperActivity : Activity() {
         CloseButton.setOnClickListener{
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
     }

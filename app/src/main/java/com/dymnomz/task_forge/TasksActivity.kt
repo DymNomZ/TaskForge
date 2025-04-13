@@ -59,21 +59,25 @@ class TasksActivity : Activity() {
         ToQuestsButton.setOnClickListener {
             val intent = Intent(this, QuestsActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         ToInventoryButton.setOnClickListener {
             val intent = Intent(this, InventoryActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         ToShopButton.setOnClickListener {
             val intent = Intent(this, ShopActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         ToProfileButton.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

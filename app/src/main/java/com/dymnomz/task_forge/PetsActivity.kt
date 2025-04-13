@@ -19,6 +19,7 @@ class PetsActivity : Activity() {
         BackButton.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         PetNameET.setOnEditorActionListener { textView, actionId, event ->

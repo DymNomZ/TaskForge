@@ -10,6 +10,9 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.dymnomz.task_forge.app.UserData
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class LoginActivity : Activity() {
 
@@ -19,6 +22,10 @@ class LoginActivity : Activity() {
 
         val UsernameET = findViewById<EditText>(R.id.username_et)
         val PasswordET = findViewById<EditText>(R.id.password_et)
+
+        val date = Calendar.getInstance().time
+        val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
+        val dateInString = formatter.format(date)
 
         var sp = getSharedPreferences("UserData", Context.MODE_PRIVATE)
         var username = sp.getString("username", "")
@@ -53,6 +60,11 @@ class LoginActivity : Activity() {
 
                 //validate
                 if(UsernameET.text.toString() == username && PasswordET.text.toString() == password){
+
+                    var editor = sp.edit();
+                    editor.putString("logged_in_date", dateInString)
+                    editor.commit()
+
                     val intent = Intent(this, TasksActivity::class.java)
                     startActivity(intent)
                     finish()
