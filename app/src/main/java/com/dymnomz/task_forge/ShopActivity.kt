@@ -12,6 +12,8 @@ import com.dymnomz.task_forge.data.Consumable
 import com.dymnomz.task_forge.data.Gear
 import com.dymnomz.task_forge.data.Item
 import com.dymnomz.task_forge.helper.CustomListAdapterItem
+import com.dymnomz.task_forge.helper.saveConsumablesToDevice
+import com.dymnomz.task_forge.helper.saveGearsToDevice
 import com.dymnomz.task_forge.helper.showPurchaseItemDialogue
 
 class ShopActivity : Activity() {
@@ -78,6 +80,8 @@ class ShopActivity : Activity() {
                         if(checkCoins(item)){
                             gears.removeAt(position)
                             InventoryActivity.gears.add(item as Gear)
+                            saveGearsToDevice(this, "shop_gears", gears)
+                            saveGearsToDevice(this, "inventory_gears", InventoryActivity.gears)
                             onResume()
                         }
                         else{
@@ -98,6 +102,8 @@ class ShopActivity : Activity() {
                         if(checkCoins(item)){
                             consumables.removeAt(position)
                             InventoryActivity.consumables.add(item as Consumable)
+                            saveConsumablesToDevice(this, "shop_consumables", consumables)
+                            saveConsumablesToDevice(this, "inventory_consumables", InventoryActivity.consumables)
                             onResume()
                         }
                         else{

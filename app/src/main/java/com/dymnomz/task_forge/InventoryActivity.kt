@@ -1,6 +1,7 @@
 package com.dymnomz.task_forge
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -8,14 +9,16 @@ import android.widget.ListView
 import com.dymnomz.task_forge.data.Consumable
 import com.dymnomz.task_forge.data.Gear
 import com.dymnomz.task_forge.helper.CustomListAdapterItem
+import com.dymnomz.task_forge.helper.getConsumablesFromDevice
+import com.dymnomz.task_forge.helper.getGearsFromDevice
 import com.dymnomz.task_forge.helper.showBasicDialogue
 import com.dymnomz.task_forge.helper.showPurchaseItemDialogue
 
 class InventoryActivity : Activity() {
 
     companion object {
-        val gears : MutableList<Gear> = mutableListOf()
-        val consumables : MutableList<Consumable> = mutableListOf()
+        var gears : MutableList<Gear> = mutableListOf()
+        var consumables : MutableList<Consumable> = mutableListOf()
     }
 
     lateinit var gearsListView: ListView
@@ -28,6 +31,9 @@ class InventoryActivity : Activity() {
 
         gearsListView = findViewById<ListView>(R.id.gears_list)
         consumablesListView = findViewById<ListView>(R.id.consumables_list)
+
+        gears = getGearsFromDevice(this, "inventory_gears")
+        consumables = getConsumablesFromDevice(this, "inventory_consumables")
 
         gearsAdapter = CustomListAdapterItem(
             this, gears,

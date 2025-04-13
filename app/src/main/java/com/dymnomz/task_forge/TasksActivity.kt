@@ -12,26 +12,14 @@ import android.widget.Toast
 import com.dymnomz.task_forge.app.UserData
 import com.dymnomz.task_forge.data.Task
 import com.dymnomz.task_forge.helper.CustomListAdapterTask
+import com.dymnomz.task_forge.helper.getTasksFromDevice
+import com.dymnomz.task_forge.helper.saveTasksToDevice
 import com.dymnomz.task_forge.helper.showBasicDialogue
 
 class TasksActivity : Activity() {
 
     companion object {
-        val tasks = mutableListOf(
-            Task("Conquer the Inbox Beast", "April 24, 2025", "Easy"),
-            Task("Forge a Daily Habit", "April 24, 2025", "Easy"),
-            Task("Slay the Procrastination Dragon","April 24, 2025", "Easy"),
-            Task("Craft a Masterpiece","April 24, 2025", "Easy"),
-            Task("Journey to Fitness Peak", "April 24, 2025", "Easy"),
-            Task("Unearth Hidden Knowledge", "April 24, 2025", "Easy"),
-            Task("Tame the To-Do List", "April 24, 2025", "Easy"),
-            Task("Cultivate Inner Peace", "April 24, 2025", "Easy"),
-            Task("Build a Social Stronghold", "April 24, 2025", "Easy"),
-            Task("Master the Culinary Arts", "April 24, 2025", "Easy"),
-            Task("Chart a Financial Course", "April 24, 2025", "Easy"),
-            Task("Repair the Broken Bridge", "April 24, 2025", "Easy"),
-            Task("Explore the Wild Unknown", "April 24, 2025", "Easy"),
-        )
+        var tasks : MutableList<Task> = mutableListOf()
     }
 
     lateinit var listView: ListView
@@ -84,6 +72,8 @@ class TasksActivity : Activity() {
 
         listView = findViewById<ListView>(R.id.tasks_list)
 
+        tasks = getTasksFromDevice(this, "user_tasks")
+
         HPTV = findViewById<TextView>(R.id.hp_tv)
         CoinsTV = findViewById<TextView>(R.id.coins_tv)
         LevelTV = findViewById<TextView>(R.id.level_tv)
@@ -107,6 +97,7 @@ class TasksActivity : Activity() {
 
                 Toast.makeText(this, "Player earnings logic here!", Toast.LENGTH_SHORT).show()
                 tasks.removeAt(position)
+                saveTasksToDevice(this, "user_tasks", tasks)
                 onResume()
             },
             deleteTask = {task, position ->
@@ -117,6 +108,7 @@ class TasksActivity : Activity() {
                     "Confirm",
                     onConfirm = {
                         tasks.removeAt(position)
+                        saveTasksToDevice(this, "user_tasks", tasks)
                         onResume()
                     }
                 )
