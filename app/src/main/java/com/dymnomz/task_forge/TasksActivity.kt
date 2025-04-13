@@ -14,6 +14,7 @@ import com.dymnomz.task_forge.data.Task
 import com.dymnomz.task_forge.helper.CustomListAdapterTask
 import com.dymnomz.task_forge.helper.convertMonthReversed
 import com.dymnomz.task_forge.helper.getWords
+import com.dymnomz.task_forge.helper.showCustomDialogue
 
 class TasksActivity : Activity() {
 
@@ -111,9 +112,15 @@ class TasksActivity : Activity() {
                 onResume()
             },
             deleteTask = {task, position ->
-                Toast.makeText(this, "Delete pop up here!", Toast.LENGTH_SHORT).show()
-                tasks.removeAt(position)
-                onResume()
+                showCustomDialogue(
+                    this,
+                    "Delete Task",
+                    "Are you sure you want to delete this task?",
+                    onConfirm = {
+                        tasks.removeAt(position)
+                        onResume()
+                    }
+                )
             }
         )
         listView.adapter = adapter

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="12dp"
+    android:background="@drawable/basic">
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dialogue Title"
+        android:textSize="25dp"
+        android:textColor="@color/orange_2"
+        android:fontFamily="@font/poppins_semibold">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/dialog_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dialogue description"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:fontFamily="@font/poppins_regular">
+
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/canel_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_marginVertical="15dp"
+            android:backgroundTint="@color/orange_2"
+            android:background="@drawable/rounded_button"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="16dp"
+            android:padding="12dp"
+            android:letterSpacing="0.05"
+            android:textAlignment="center">
+        </Button>
+
+        <Button
+            android:id="@+id/confirm_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginVertical="15dp"
+            android:backgroundTint="@color/orange_2"
+            android:background="@drawable/rounded_button"
+            android:text="Confirm"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="16dp"
+            android:padding="12dp"
+            android:letterSpacing="0.05"
+            android:textAlignment="center">
+        </Button>
+
+    </LinearLayout>
+
+</LinearLayout>

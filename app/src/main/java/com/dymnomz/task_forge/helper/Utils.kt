@@ -1,5 +1,11 @@
 package com.dymnomz.task_forge.helper
 
+import android.app.AlertDialog
+import android.content.Context
+import android.view.LayoutInflater
+import android.widget.Button
+import android.widget.TextView
+import com.dymnomz.task_forge.R
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -9,6 +15,39 @@ fun getCurrentDate() : String {
     val date = Calendar.getInstance().time
     val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
     return formatter.format(date)
+}
+
+fun showCustomDialogue(
+    context: Context,
+    title: String,
+    description: String,
+    onConfirm: () -> Unit
+) {
+    val builder = AlertDialog.Builder(context)
+    val inflater = LayoutInflater.from(context)
+    val dialogView = inflater.inflate(R.layout.basic_dialogue_layout, null)
+
+    val titleTextView = dialogView.findViewById<TextView>(R.id.dialog_title)
+    val descriptionTextView = dialogView.findViewById<TextView>(R.id.dialog_description)
+    val cancelButton = dialogView.findViewById<Button>(R.id.canel_btn)
+    val confirmButton = dialogView.findViewById<Button>(R.id.confirm_btn)
+
+    builder.setView(dialogView)
+    val alertDialog = builder.create()
+
+    titleTextView.text = title
+    descriptionTextView.text = description
+
+    confirmButton.setOnClickListener {
+        onConfirm()
+        alertDialog.dismiss()
+    }
+
+    cancelButton.setOnClickListener {
+        alertDialog.dismiss()
+    }
+
+    alertDialog.show()
 }
 
 fun getWords(text: String): List<String> {

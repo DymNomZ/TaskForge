@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
+import com.dymnomz.task_forge.helper.showCustomDialogue
 
 class SettingsActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,9 +46,17 @@ class SettingsActivity : Activity() {
 
         LogoutButton.setOnClickListener {
             //popup
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
+            showCustomDialogue(
+             this,
+             "Confirm Logout",
+             "Are you sure you want to logout?",
+             onConfirm = {
+                 val intent = Intent(this, LoginActivity::class.java)
+                 startActivity(intent)
+                 finish()
+             }
+         )
+
         }
     }
 }
