@@ -26,11 +26,10 @@ class LoginActivity : Activity() {
         var username = sp.getString("username", "")
         var email = sp.getString("email", "")
         var password = sp.getString("password", "")
-
-        //save to UserData class
-        (application as UserData).username = username!!
-        (application as UserData).email = email!!
-        (application as UserData).password = password!!
+        var hp = sp.getInt("hp", 100)
+        var coins = sp.getInt("coins", 100)
+        var level = sp.getInt("level", 1)
+        var xp = sp.getInt("xp", 0)
 
         //to check if there exists an account
         var hasAccount = false
@@ -59,6 +58,15 @@ class LoginActivity : Activity() {
                     var editor = sp.edit();
                     editor.putString("logged_in_date", dateInString)
                     editor.commit()
+
+                    //save to UserData class
+                    (application as UserData).username = username!!
+                    (application as UserData).email = email!!
+                    (application as UserData).password = password!!
+                    (application as UserData).hp = hp!!
+                    (application as UserData).coins = coins!!
+                    (application as UserData).level = level!!
+                    (application as UserData).xp = xp!!
 
                     val intent = Intent(this, TasksActivity::class.java)
                     startActivity(intent)

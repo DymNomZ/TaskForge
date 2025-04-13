@@ -1,12 +1,15 @@
 package com.dymnomz.task_forge
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ListView
+import android.widget.TextView
 import android.widget.Toast
+import com.dymnomz.task_forge.app.UserData
 import com.dymnomz.task_forge.data.Task
 import com.dymnomz.task_forge.helper.CustomListAdapterTask
 import com.dymnomz.task_forge.helper.convertMonthReversed
@@ -34,11 +37,59 @@ class TasksActivity : Activity() {
 
     lateinit var listView: ListView
     lateinit var adapter: CustomListAdapterTask
+    lateinit var HPTV: TextView
+    lateinit var CoinsTV: TextView
+    lateinit var LevelTV: TextView
+
+    fun updatePlayerValues(){
+
+        var hp = (application as UserData).hp.toString()
+        var coins = (application as UserData).coins.toString()
+        var level = (application as UserData).level.toString()
+
+        HPTV.setText(hp)
+        CoinsTV.setText(coins)
+        LevelTV.setText("Level " + level)
+    }
+
+    fun awardPlayer(){
+
+        (application as UserData).coins += 10
+        (application as UserData).xp += 10
+
+        //check xp
+        if((application as UserData).xp >= 100){
+            (application as UserData).xp = 0;
+            (application as UserData).level += 1
+        }
+
+        var sp = getSharedPreferences("UserData", Context.MODE_PRIVATE)
+        var hp = (application as UserData).hp
+        var coins = (application as UserData).coins
+        var level = (application as UserData).level
+        var xp = (application as UserData).xp
+
+        var editor = sp.edit()
+        editor.putInt("hp", hp)
+        editor.putInt("coins", coins)
+        editor.putInt("level", level)
+        editor.putInt("xp", xp)
+        editor.commit()
+
+        //update values
+        updatePlayerValues()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tasks)
 
         listView = findViewById<ListView>(R.id.tasks_list)
+
+        HPTV = findViewById<TextView>(R.id.hp_tv)
+        CoinsTV = findViewById<TextView>(R.id.coins_tv)
+        LevelTV = findViewById<TextView>(R.id.level_tv)
+
+        updatePlayerValues()
 
         adapter = CustomListAdapterTask(
             this, tasks,
@@ -52,6 +103,9 @@ class TasksActivity : Activity() {
                 finish()
             },
             completeTask = {task, position ->
+
+                awardPlayer()
+
                 Toast.makeText(this, "Player earnings logic here!", Toast.LENGTH_SHORT).show()
                 tasks.removeAt(position)
                 onResume()

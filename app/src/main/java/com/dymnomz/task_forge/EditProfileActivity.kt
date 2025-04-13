@@ -44,11 +44,6 @@ class EditProfileActivity : Activity() {
                 && EmailET.text.toString().isNotEmpty()
             ) {
 
-                //save to UserData class
-//                (application as UserData).username = UsernameET.text.toString()
-//                (application as UserData).email = EmailET.text.toString()
-//                (application as UserData).password = PasswordET.text.toString()
-
                 //save to device
                 var editor = sp.edit();
                 username = UsernameET.text.toString()

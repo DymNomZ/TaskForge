@@ -9,6 +9,10 @@ class UserData : Application() {
     var username: String = ""
     var email: String = ""
     var password: String = ""
+    var hp: Int = 0
+    var coins: Int = 0
+    var level: Int = 0
+    var xp: Int = 0
     override fun onCreate() {
         super.onCreate()
     }

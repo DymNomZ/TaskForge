@@ -33,7 +33,6 @@ class RegisterActivity : Activity() {
                 var sp = getSharedPreferences("UserData", Context.MODE_PRIVATE)
                 var editor = sp.edit();
 
-
                 val dateInString = getCurrentDate()
 
                 editor.putString("username", username)
