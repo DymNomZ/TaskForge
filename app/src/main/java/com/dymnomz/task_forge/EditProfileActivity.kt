@@ -19,13 +19,10 @@ class EditProfileActivity : Activity() {
         var SaveButton = findViewById<Button>(R.id.save_btn)
         var CancelButton = findViewById<Button>(R.id.cancel_btn)
 
-        var userdata = application as UserData
+        UsernameET.setText((application as UserData).username)
+        EmailET.setText((application as UserData).email)
+        PasswordET.setText((application as UserData).password)
 
-//        if(!userdata.isUserDataEmpty()){
-//            UsernameET.setText(userdata.username)
-//            EmailET.setText(userdata.email)
-//            PasswordET.setText(userdata.password)
-//        }
 
         CancelButton.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
@@ -40,9 +37,9 @@ class EditProfileActivity : Activity() {
             ) {
 
                 //save to UserData class
-//                userdata.username = UsernameET.text.toString()
-//                userdata.email = EmailET.text.toString()
-//                userdata.password = PasswordET.text.toString()
+                (application as UserData).username = UsernameET.text.toString()
+                (application as UserData).email = EmailET.text.toString()
+                (application as UserData).password = PasswordET.text.toString()
 
                 val intent = Intent(this, ProfileActivity::class.java)
                 startActivity(intent)

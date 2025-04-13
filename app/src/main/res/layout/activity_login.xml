@@ -45,7 +45,8 @@
         android:letterSpacing="0.05"
         android:padding="12dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginVertical="10dp">
+        android:layout_marginVertical="10dp"
+        android:inputType="text">
 
     </EditText>
 
@@ -63,7 +64,8 @@
         android:letterSpacing="0.05"
         android:padding="12dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginVertical="10dp">
+        android:layout_marginVertical="10dp"
+        android:inputType="text">
 
     </EditText>
 

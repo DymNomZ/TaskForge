@@ -33,10 +33,9 @@ class LoginActivity : Activity() {
             //only proceed if all edit texts are filled with values
             if(UsernameET.text.toString().isNotEmpty() && PasswordET.text.toString().isNotEmpty()){
 
-                var userdata = application as UserData
-
                 //validate
-                if(UsernameET.text.toString() == userdata.username && PasswordET.text.toString() == userdata.password){
+                if(UsernameET.text.toString() == (application as UserData).username
+                    && PasswordET.text.toString() == (application as UserData).password){
                     val intent = Intent(this, TasksActivity::class.java)
                     startActivity(intent)
                     finish()

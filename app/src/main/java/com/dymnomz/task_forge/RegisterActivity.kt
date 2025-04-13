@@ -25,16 +25,14 @@ class RegisterActivity : Activity() {
             if(UsernameET.text.toString().isNotEmpty() && PasswordET.text.toString().isNotEmpty() &&
                 ConfirmPasswordET.text.toString().isNotEmpty() && EmailET.text.toString().isNotEmpty()){
 
-                var userdata = application as UserData
-
                 //save to UserData class
-                userdata.username = UsernameET.text.toString()
-                userdata.email = EmailET.text.toString()
-                userdata.password = PasswordET.text.toString()
+                (application as UserData).username = UsernameET.text.toString()
+                (application as UserData).email = EmailET.text.toString()
+                (application as UserData).password = PasswordET.text.toString()
 
                 val intent = Intent(this, LoginActivity::class.java).apply {
-                    putExtra("username", userdata.username)
-                    putExtra("password", userdata.password)
+                    putExtra("username", (application as UserData).username)
+                    putExtra("password", (application as UserData).password)
                 }
                 startActivity(intent)
 
