@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ListView
 import android.widget.Toast
 
@@ -12,7 +13,11 @@ class QuestsActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quests)
-        val questList = listOf("The Daily Forge", "Chronicles of the Steadfast", "The Aetherium Grind", "Summit of Self-Mastery", "Echoes of Efficiency", "The Luminary Path")
+
+        val questList = listOf(
+            "The Daily Forge", "Chronicles of the Steadfast", "The Aetherium Grind",
+            "Summit of Self-Mastery", "Echoes of Efficiency", "The Luminary Path"
+        )
 
         val arrayAdapter = ArrayAdapter(
             this,
@@ -31,6 +36,9 @@ class QuestsActivity : Activity() {
             ).show()
         }
 
+        val bossImageView = findViewById<ImageView>(R.id.boss)
+        bossImageView.setImageResource(R.drawable.boss)
+        bossImageView.drawable?.isFilterBitmap = false //prevents blurring
 
         val ToInventoryButton = findViewById<Button>(R.id.to_inventory_btn)
         val ToTasksButton = findViewById<Button>(R.id.to_tasks_btn)

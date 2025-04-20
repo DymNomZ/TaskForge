@@ -21,21 +21,21 @@ class ShopActivity : Activity() {
         var lorem = "Dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 
         val gears = mutableListOf(
-            Gear("Helmets", 1, lorem, R.drawable.dymes),
-            Gear("Armor", 2, lorem, R.drawable.dymes),
-            Gear("Left Hand Item", 3, lorem, R.drawable.dymes),
-            Gear("Right Hand Item", 4, lorem, R.drawable.dymes),
-            Gear("Eyewear", 5, lorem, R.drawable.dymes),
-            Gear("Back Item", 6, lorem, R.drawable.dymes),
+            Gear("Helmet", 1, lorem, R.drawable.helmet),
+            Gear("Armor", 2, lorem, R.drawable.armor),
+            Gear("Left Sword", 3, lorem, R.drawable.left_sword),
+            Gear("Right Sword", 4, lorem, R.drawable.right_sword),
+            Gear("Glasses", 5, lorem, R.drawable.glasses),
+            Gear("Wings", 6, lorem, R.drawable.wings),
         )
 
         val consumables = mutableListOf(
-            Consumable("Potions", 1, lorem, R.drawable.dymes),
-            Consumable("Meats", 2, lorem, R.drawable.dymes),
-            Consumable("Fruits", 3, lorem, R.drawable.dymes),
-            Consumable("Vegetables", 4, lorem, R.drawable.dymes),
-            Consumable("Drinks", 5, lorem, R.drawable.dymes),
-            Consumable("Snacks", 300, lorem, R.drawable.dymes),
+            Consumable("Potion", 1, lorem, R.drawable.potion),
+            Consumable("Steak", 2, lorem, R.drawable.steak),
+            Consumable("Mango", 3, lorem, R.drawable.mango),
+            Consumable("Carrot", 4, lorem, R.drawable.carrot),
+            Consumable("Drink", 5, lorem, R.drawable.drink),
+            Consumable("Cake", 300, lorem, R.drawable.cake),
         )
     }
 
@@ -74,11 +74,10 @@ class ShopActivity : Activity() {
             this, gears,
             onClick = {item, position ->
                 showPurchaseItemDialogue(
-                    this,
-                    item.name, item.description, item,
+                    this, item,
                     onPurchase = {
                         if(checkCoins(item)){
-                            gears.removeAt(position)
+//                            gears.removeAt(position)
                             InventoryActivity.gears.add(item as Gear)
                             saveGearsToDevice(this, "shop_gears", gears)
                             saveGearsToDevice(this, "inventory_gears", InventoryActivity.gears)
@@ -96,11 +95,9 @@ class ShopActivity : Activity() {
             this, consumables,
             onClick = {item, position ->
                 showPurchaseItemDialogue(
-                    this,
-                    item.name, item.description, item,
+                    this, item,
                     onPurchase = {
                         if(checkCoins(item)){
-                            consumables.removeAt(position)
                             InventoryActivity.consumables.add(item as Consumable)
                             saveConsumablesToDevice(this, "shop_consumables", consumables)
                             saveConsumablesToDevice(this, "inventory_consumables", InventoryActivity.consumables)

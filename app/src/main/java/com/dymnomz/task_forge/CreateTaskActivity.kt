@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import com.dymnomz.task_forge.data.Task
 import com.dymnomz.task_forge.helper.convertMonth
+import com.dymnomz.task_forge.helper.saveTasksToDevice
 
 class CreateTaskActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +54,8 @@ class CreateTaskActivity : Activity() {
                     selectedDifficulty
                 )
             )
+
+            saveTasksToDevice(this, "user_tasks", TasksActivity.tasks)
 
             val intent = Intent(this, TasksActivity::class.java)
             startActivity(intent)

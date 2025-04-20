@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import com.dymnomz.task_forge.R
 import com.dymnomz.task_forge.data.Consumable
@@ -28,13 +29,13 @@ fun saveTasksToDevice(context: Context, key: String, gears: MutableList<Task>) {
     val editor = sharedPreferences.edit()
     val gson = Gson()
     val jsonString = gson.toJson(gears)
-    editor.putString(key, jsonString)
+    editor.putString("user_tasks", jsonString)
     editor.commit()
 }
 
 fun getTasksFromDevice(context: Context, key: String): MutableList<Task> {
     val sharedPreferences = context.getSharedPreferences("UserData", Context.MODE_PRIVATE)
-    val jsonString = sharedPreferences.getString(key, null)
+    val jsonString = sharedPreferences.getString("user_tasks", null)
     if (jsonString != null) {
         val gson = Gson()
         val type = object : TypeToken<MutableList<Task>>() {}.type
@@ -48,13 +49,13 @@ fun saveGearsToDevice(context: Context, key: String, gears: MutableList<Gear>) {
     val editor = sharedPreferences.edit()
     val gson = Gson()
     val jsonString = gson.toJson(gears)
-    editor.putString(key, jsonString)
+    editor.putString("inventory_gears", jsonString)
     editor.commit()
 }
 
 fun getGearsFromDevice(context: Context, key: String): MutableList<Gear> {
     val sharedPreferences = context.getSharedPreferences("UserData", Context.MODE_PRIVATE)
-    val jsonString = sharedPreferences.getString(key, null)
+    val jsonString = sharedPreferences.getString("inventory_gears", null)
     if (jsonString != null) {
         val gson = Gson()
         val type = object : TypeToken<MutableList<Gear>>() {}.type
@@ -68,13 +69,13 @@ fun saveConsumablesToDevice(context: Context, key: String, gears: MutableList<Co
     val editor = sharedPreferences.edit()
     val gson = Gson()
     val jsonString = gson.toJson(gears)
-    editor.putString(key, jsonString)
+    editor.putString("inventory_consumables", jsonString)
     editor.commit()
 }
 
 fun getConsumablesFromDevice(context: Context, key: String): MutableList<Consumable> {
     val sharedPreferences = context.getSharedPreferences("UserData", Context.MODE_PRIVATE)
-    val jsonString = sharedPreferences.getString(key, null)
+    val jsonString = sharedPreferences.getString("inventory_consumables", null)
     if (jsonString != null) {
         val gson = Gson()
         val type = object : TypeToken<MutableList<Consumable>>() {}.type
@@ -83,10 +84,47 @@ fun getConsumablesFromDevice(context: Context, key: String): MutableList<Consuma
     return mutableListOf() // Return an empty list if no data is found
 }
 
+fun showInventoryItemDialogue(
+    context: Context,
+    item: Item,
+    text: String,
+    onAction: () -> Unit,
+    onDiscard: () -> Unit
+) {
+    val builder = AlertDialog.Builder(context)
+    val inflater = LayoutInflater.from(context)
+    val dialogView = inflater.inflate(R.layout.inventory_item_dialogue_layout, null)
+
+    val titleTextView = dialogView.findViewById<TextView>(R.id.dialog_title)
+    val descriptionTextView = dialogView.findViewById<TextView>(R.id.dialog_description)
+    val discardButton = dialogView.findViewById<Button>(R.id.discard_btn)
+    val actionButton = dialogView.findViewById<Button>(R.id.action_btn)
+    val imageView = dialogView.findViewById<ImageView>(R.id.imageview_img)
+
+    builder.setView(dialogView)
+    val alertDialog = builder.create()
+
+    titleTextView.text = item.name
+    descriptionTextView.text = item.description
+    imageView.setImageResource(item.img)
+    imageView.drawable?.isFilterBitmap = false
+    actionButton.setText(text)
+
+    actionButton.setOnClickListener {
+        onAction()
+        alertDialog.dismiss()
+    }
+
+    discardButton.setOnClickListener {
+        onDiscard()
+        alertDialog.dismiss()
+    }
+
+    alertDialog.show()
+}
+
 fun showPurchaseItemDialogue(
     context: Context,
-    title: String,
-    description: String,
     item: Item,
     onPurchase: () -> Unit
 ) {
@@ -99,13 +137,16 @@ fun showPurchaseItemDialogue(
     val itemCostTextView = dialogView.findViewById<TextView>(R.id.item_cost_tv)
     val cancelButton = dialogView.findViewById<Button>(R.id.canel_btn)
     val purchaseButton = dialogView.findViewById<Button>(R.id.purchase_btn)
+    val imageView = dialogView.findViewById<ImageView>(R.id.imageview_img)
 
     builder.setView(dialogView)
     val alertDialog = builder.create()
 
-    titleTextView.text = title
-    descriptionTextView.text = description
+    titleTextView.text = item.name
+    descriptionTextView.text = item.description
     itemCostTextView.text = item.cost.toString()
+    imageView.setImageResource(item.img)
+    imageView.drawable?.isFilterBitmap = false
 
     purchaseButton.setOnClickListener {
         onPurchase()

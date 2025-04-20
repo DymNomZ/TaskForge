@@ -6,13 +6,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ListView
+import android.widget.Toast
+import com.dymnomz.task_forge.app.UserData
 import com.dymnomz.task_forge.data.Consumable
 import com.dymnomz.task_forge.data.Gear
+import com.dymnomz.task_forge.helper.CustomListAdapterInventory
 import com.dymnomz.task_forge.helper.CustomListAdapterItem
 import com.dymnomz.task_forge.helper.getConsumablesFromDevice
 import com.dymnomz.task_forge.helper.getGearsFromDevice
+import com.dymnomz.task_forge.helper.saveConsumablesToDevice
+import com.dymnomz.task_forge.helper.saveGearsToDevice
 import com.dymnomz.task_forge.helper.showBasicDialogue
-import com.dymnomz.task_forge.helper.showPurchaseItemDialogue
+import com.dymnomz.task_forge.helper.showInventoryItemDialogue
 
 class InventoryActivity : Activity() {
 
@@ -23,8 +28,8 @@ class InventoryActivity : Activity() {
 
     lateinit var gearsListView: ListView
     lateinit var consumablesListView: ListView
-    lateinit var gearsAdapter: CustomListAdapterItem
-    lateinit var consumablesAdapter: CustomListAdapterItem
+    lateinit var gearsAdapter: CustomListAdapterInventory
+    lateinit var consumablesAdapter: CustomListAdapterInventory
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inventory)
@@ -35,26 +40,60 @@ class InventoryActivity : Activity() {
         gears = getGearsFromDevice(this, "inventory_gears")
         consumables = getConsumablesFromDevice(this, "inventory_consumables")
 
-        gearsAdapter = CustomListAdapterItem(
+        gearsAdapter = CustomListAdapterInventory(
             this, gears,
             onClick = {item, position ->
-                showBasicDialogue(
-                    this,
-                    item.name, item.description,
-                    "Equip", //to be changed
-                    onConfirm = {}
+                showInventoryItemDialogue(
+                    this, item, "Equip",
+                    onAction = {
+                              //logic
+                    },
+                    onDiscard = {
+                        gears.removeAt(position)
+                        saveGearsToDevice(this, "user_tasks", gears)
+                        onResume()
+                    }
                 )
             }
         )
 
-        consumablesAdapter = CustomListAdapterItem(
+        consumablesAdapter = CustomListAdapterInventory(
             this, consumables,
             onClick = {item, position ->
-                showBasicDialogue(
-                    this,
-                    item.name, item.description,
-                    "Equip", //to be changed
-                    onConfirm = {}
+                showInventoryItemDialogue(
+                    this, item, "Consume",
+                    onAction = {
+                        //check if player health is less than 100
+                        if((application as UserData).hp < 100){
+
+                            (application as UserData).hp += 10
+
+                            //check if over 100
+                            if((application as UserData).hp > 100){
+                                (application as UserData).hp = 100
+                            }
+
+                            var sp = getSharedPreferences("UserData", Context.MODE_PRIVATE)
+                            var hp = (application as UserData).hp
+                            var editor = sp.edit()
+                            editor.putInt("hp", hp)
+                            editor.commit()
+
+                            Toast.makeText(this, "Restored player health by 10hp!!", Toast.LENGTH_SHORT).show()
+
+                            consumables.removeAt(position)
+                            saveConsumablesToDevice(this, "user_tasks", consumables)
+                            onResume()
+                        }
+                        else{
+                            Toast.makeText(this, "Player health is full!", Toast.LENGTH_SHORT).show()
+                        }
+                    },
+                    onDiscard = {
+                        consumables.removeAt(position)
+                        saveConsumablesToDevice(this, "user_tasks", consumables)
+                        onResume()
+                    }
                 )
             }
         )
@@ -91,5 +130,11 @@ class InventoryActivity : Activity() {
             finish()
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        gearsAdapter.notifyDataSetChanged()
+        consumablesAdapter.notifyDataSetChanged()
     }
 }

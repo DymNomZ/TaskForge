@@ -39,58 +39,20 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            android:text="Cost:"
-            android:letterSpacing="0.05">
-
-        </TextView>
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/coin"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="12dp">
-        </ImageView>
-
-        <TextView
-            android:id="@+id/item_cost_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
-            android:textColor="@color/orange_2"
-            android:textSize="16dp"
-            android:letterSpacing="0.05">
-
-        </TextView>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
 
         <Button
-            android:id="@+id/canel_btn"
+            android:id="@+id/discard_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="30dp"
             android:layout_marginVertical="15dp"
             android:backgroundTint="@color/orange_2"
             android:background="@drawable/rounded_button"
-            android:text="Cancel"
-            android:textColor="@color/white"
+            android:text="Discard"
+            android:textColor="@color/red_2"
             android:fontFamily="@font/poppins_regular"
             android:textSize="16dp"
             android:padding="12dp"
@@ -99,14 +61,14 @@
         </Button>
 
         <Button
-            android:id="@+id/purchase_btn"
+            android:id="@+id/action_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginVertical="15dp"
             android:backgroundTint="@color/orange_2"
             android:background="@drawable/rounded_button"
-            android:text="Purchase"
+            android:text=""
             android:textColor="@color/white"
             android:fontFamily="@font/poppins_regular"
             android:textSize="16dp"
