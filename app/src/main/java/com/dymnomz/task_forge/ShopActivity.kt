@@ -24,7 +24,7 @@ class ShopActivity : Activity() {
             Gear("Armor", 2, "Shrug off sword swipes like a boss in this shiny getup.", R.drawable.armor, "body_item", false),
             Gear("Left Sword", 3, "For slicing foes with finesse (left-handed style!).", R.drawable.left_sword, "left_item", false),
             Gear("Right Sword", 4, "The perfect partner for your left sword, ready to strike!", R.drawable.right_sword, "right_item", false),
-            Gear("Glasses", 5, "See the world with +5 charisma (and maybe read tiny text).", R.drawable.glasses, "eye_tem", false),
+            Gear("Glasses", 5, "See the world with +5 charisma (and maybe read tiny text).", R.drawable.glasses, "eye_item", false),
             Gear("Wings", 6, "Soar through the skies, or at least look really cool trying.", R.drawable.wings, "back_item", false),
         )
 

@@ -55,8 +55,7 @@
                 android:id="@+id/back_item"
                 android:layout_width="120dp"
                 android:layout_height="80dp"
-                android:layout_margin="20dp"
-                android:src="@drawable/wings">
+                android:layout_margin="20dp">
             </ImageView>
 
             <!--body-->
@@ -68,6 +67,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/head"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
@@ -75,6 +75,7 @@
                 </ImageView>
 
                 <ImageView
+                    android:id="@+id/body"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
@@ -95,16 +96,14 @@
                     android:id="@+id/eye_wear"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/glasses">
+                    android:layout_gravity="center">
                 </ImageView>
 
                 <ImageView
                     android:id="@+id/armor"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/armor">
+                    android:layout_gravity="center">
                 </ImageView>
 
             </LinearLayout>
@@ -123,8 +122,7 @@
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:src="@drawable/left_sword">
+                    android:layout_marginBottom="10dp">
                 </ImageView>
 
                 <ImageView
@@ -139,8 +137,7 @@
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:src="@drawable/right_sword">
+                    android:layout_marginBottom="10dp">
                 </ImageView>
 
             </LinearLayout>
@@ -157,8 +154,7 @@
                     android:id="@+id/helmet"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/helmet">
+                    android:layout_gravity="center">
                 </ImageView>
 
                 <ImageView

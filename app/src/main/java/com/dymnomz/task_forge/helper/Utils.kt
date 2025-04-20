@@ -197,30 +197,28 @@ fun showBasicDialogue(
 }
 
 fun checkGearType(gear: Gear) {
+
+    var img = gear.img
+    if(!gear.isEquipped) img = R.drawable.blank
+
     when(gear.type){
         "back_item" -> {
-            EquipmentTracker.backSelected = gear.img
-            EquipmentTracker.backEquipped = gear.isEquipped
+            EquipmentTracker.backSelected = img
         }
         "head_item" -> {
-            EquipmentTracker.headSelected = gear.img
-            EquipmentTracker.headEquipped = gear.isEquipped
+            EquipmentTracker.headSelected = img
         }
         "body_item" -> {
-            EquipmentTracker.bodySelected = gear.img
-            EquipmentTracker.bodyEquipped = gear.isEquipped
+            EquipmentTracker.bodySelected = img
         }
         "eye_item" -> {
-            EquipmentTracker.eyeSelected = gear.img
-            EquipmentTracker.eyeEquipped = gear.isEquipped
+            EquipmentTracker.eyeSelected = img
         }
         "left_item" -> {
-            EquipmentTracker.leftSelected = gear.img
-            EquipmentTracker.leftEquipped = gear.isEquipped
+            EquipmentTracker.leftSelected = img
         }
         "right_item" -> {
-            EquipmentTracker.rightSelected = gear.img
-            EquipmentTracker.rightEquipped = gear.isEquipped
+            EquipmentTracker.rightSelected = img
         }
     }
 }

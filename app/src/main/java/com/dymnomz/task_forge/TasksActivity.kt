@@ -13,6 +13,7 @@ import android.widget.Toast
 import com.dymnomz.task_forge.app.UserData
 import com.dymnomz.task_forge.data.Task
 import com.dymnomz.task_forge.helper.CustomListAdapterTask
+import com.dymnomz.task_forge.helper.EquipmentTracker
 import com.dymnomz.task_forge.helper.getTasksFromDevice
 import com.dymnomz.task_forge.helper.saveTasksToDevice
 import com.dymnomz.task_forge.helper.showBasicDialogue
@@ -75,6 +76,8 @@ class TasksActivity : Activity() {
 
         tasks = getTasksFromDevice(this, "user_tasks")
 
+        var Head = findViewById<ImageView>(R.id.head)
+        var Body = findViewById<ImageView>(R.id.body)
         var BackItem = findViewById<ImageView>(R.id.back_item)
         var EyeWear = findViewById<ImageView>(R.id.eye_wear)
         var LeftItem = findViewById<ImageView>(R.id.left_hand_item)
@@ -82,7 +85,17 @@ class TasksActivity : Activity() {
         var Helmet = findViewById<ImageView>(R.id.helmet)
         var Armor = findViewById<ImageView>(R.id.armor)
 
+        //set image
+        BackItem.setImageResource(EquipmentTracker.backSelected)
+        EyeWear.setImageResource(EquipmentTracker.eyeSelected)
+        LeftItem.setImageResource(EquipmentTracker.leftSelected)
+        RightItem.setImageResource(EquipmentTracker.rightSelected)
+        Helmet.setImageResource(EquipmentTracker.headSelected)
+        Armor.setImageResource(EquipmentTracker.bodySelected)
+
         //anti blurry
+        Head.drawable?.isFilterBitmap = false
+        Body.drawable?.isFilterBitmap = false
         BackItem.drawable?.isFilterBitmap = false
         EyeWear.drawable?.isFilterBitmap = false
         LeftItem.drawable?.isFilterBitmap = false

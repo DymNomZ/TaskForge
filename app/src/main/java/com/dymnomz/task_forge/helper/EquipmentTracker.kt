@@ -6,13 +6,6 @@ class EquipmentTracker{
 
     companion object{
 
-        var backEquipped = false
-        var eyeEquipped = false
-        var leftEquipped = false
-        var rightEquipped = false
-        var headEquipped = false
-        var bodyEquipped = false
-
         var backSelected = R.drawable.blank_large
         var eyeSelected = R.drawable.blank
         var leftSelected = R.drawable.blank
