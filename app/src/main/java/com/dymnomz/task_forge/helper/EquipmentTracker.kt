@@ -7,7 +7,6 @@ class EquipmentTracker{
 
     companion object{
 
-        private const val PREF_NAME = "equipment_tracker_prefs"
         private const val KEY_BACK = "backSelected"
         private const val KEY_EYE = "eyeSelected"
         private const val KEY_LEFT = "leftSelected"
@@ -22,8 +21,8 @@ class EquipmentTracker{
         var headSelected = R.drawable.blank
         var bodySelected = R.drawable.blank
 
-        fun saveEquipment(context: Context) {
-            val sharedPrefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        fun saveEquipment(context: Context, username: String) {
+            val sharedPrefs = context.getSharedPreferences(username, Context.MODE_PRIVATE)
             val editor = sharedPrefs.edit()
             editor.putInt(KEY_BACK, backSelected)
             editor.putInt(KEY_EYE, eyeSelected)
@@ -33,8 +32,8 @@ class EquipmentTracker{
             editor.putInt(KEY_BODY, bodySelected)
             editor.commit()
         }
-        fun loadEquipment(context: Context) {
-            val sharedPrefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        fun loadEquipment(context: Context, username: String) {
+            val sharedPrefs = context.getSharedPreferences(username, Context.MODE_PRIVATE)
             backSelected = sharedPrefs.getInt(KEY_BACK, R.drawable.blank_large)
             eyeSelected = sharedPrefs.getInt(KEY_EYE, R.drawable.blank)
             leftSelected = sharedPrefs.getInt(KEY_LEFT, R.drawable.blank)

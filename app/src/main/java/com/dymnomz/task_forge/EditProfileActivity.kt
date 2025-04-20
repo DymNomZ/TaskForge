@@ -22,7 +22,7 @@ class EditProfileActivity : Activity() {
 
         var playername = (application as UserData).playername
         var email = (application as UserData).email
-        var password = (application as UserData).username
+        var password = (application as UserData).password
 
         PlayernameET.setText(playername)
         EmailET.setText(email)
@@ -48,7 +48,7 @@ class EditProfileActivity : Activity() {
                 //save to device
                 var userPrefsManager = UserPreferenceManager(this)
                 var username = (application as UserData).username
-                userPrefsManager.saveUser(username, email, password)
+                userPrefsManager.saveUser(username, email, password, playername)
 
                 val intent = Intent(this, ProfileActivity::class.java)
                 startActivity(intent)

@@ -97,7 +97,9 @@ class UserPreferenceManager(private val context: Context) {
                 "username" to sp.getString("username", ""),
                 "email" to sp.getString("email", ""),
                 "password" to sp.getString("password", ""),
-                "playername" to sp.getString("playername", "Player")
+                "playername" to sp.getString("playername", "Player"),
+                "creation_date" to sp.getString("creation_date", ""),
+                "logged_in_date" to sp.getString("logged_in_date", "")
             )
         } else {
             null
@@ -109,7 +111,7 @@ class UserPreferenceManager(private val context: Context) {
         return if (sp.contains("username")) {
             mapOf(
                 "hp" to sp.getInt("hp", 100),
-                "coins" to sp.getInt("coins", 100),
+                "coins" to sp.getInt("coins", 0),
                 "level" to sp.getInt("level", 1),
                 "xp" to sp.getInt("hp", 0)
             )
@@ -123,6 +125,24 @@ class UserPreferenceManager(private val context: Context) {
         val sp = context.getSharedPreferences(username, Context.MODE_PRIVATE)
         val editor = sp.edit()
         editor.putString("logged_in_date", date)
+        editor.commit()
+
+    }
+
+    fun updateCoins(username: String, coins: Int){
+
+        val sp = context.getSharedPreferences(username, Context.MODE_PRIVATE)
+        val editor = sp.edit()
+        editor.putInt("coins", coins)
+        editor.commit()
+
+    }
+
+    fun updateHealth(username: String, hp: Int){
+
+        val sp = context.getSharedPreferences(username, Context.MODE_PRIVATE)
+        val editor = sp.edit()
+        editor.putInt("hp", hp)
         editor.commit()
 
     }
@@ -146,13 +166,14 @@ class UserPreferenceManager(private val context: Context) {
 
     }
 
-    fun saveUser(username: String, email: String, password: String) {
+    fun saveUser(username: String, email: String, password: String, playername: String) {
 
         val sp = context.getSharedPreferences(username, Context.MODE_PRIVATE)
         val editor = sp.edit()
         editor.putString("username", username)
         editor.putString("email", email)
         editor.putString("password", password)
+        editor.putString("playername", playername)
         editor.commit()
 
         Toast.makeText(context, "Profile Saved", Toast.LENGTH_LONG).show()

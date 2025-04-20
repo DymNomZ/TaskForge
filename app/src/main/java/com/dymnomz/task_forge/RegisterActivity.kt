@@ -28,13 +28,13 @@ class RegisterActivity : Activity() {
             val password = PasswordET.text.toString()
             val confirmpassword = ConfirmPasswordET.text.toString()
 
-            if(!email.contains("@")){
-                Toast.makeText(this, "Not a valid email address", Toast.LENGTH_LONG).show()
+            if(username.isEmpty() || password.isEmpty() || confirmpassword.isEmpty()){
+                Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
 
-            if(username.isEmpty() || password.isEmpty() || confirmpassword.isEmpty()){
-                Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_LONG).show()
+            if(!email.contains("@")){
+                Toast.makeText(this, "Not a valid email address", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
 

@@ -68,12 +68,12 @@ class LoginActivity : Activity() {
             (application as UserData).password = userDetailsString?.get("password") ?: ""
             (application as UserData).playername = userDetailsString?.get("playername") ?: "Player"
             (application as UserData).hp = userDetailsInt?.get("hp") ?: 100
-            (application as UserData).coins = userDetailsInt?.get("coins") ?: 100
+            (application as UserData).coins = userDetailsInt?.get("coins") ?: 0
             (application as UserData).level = userDetailsInt?.get("level") ?: 1
             (application as UserData).xp = userDetailsInt?.get("xp") ?: 0
 
             //get equipments
-            EquipmentTracker.loadEquipment(this)
+            EquipmentTracker.loadEquipment(this, username)
 
             val intent = Intent(this, TasksActivity::class.java)
             startActivity(intent)

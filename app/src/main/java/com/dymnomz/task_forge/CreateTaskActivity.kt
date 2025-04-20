@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.dymnomz.task_forge.app.UserData
 import com.dymnomz.task_forge.data.Task
 import com.dymnomz.task_forge.helper.UserPreferenceManager
@@ -35,10 +36,22 @@ class CreateTaskActivity : Activity() {
         }
 
         //Assign difficulty
-        TrivialBtn.setOnClickListener { selectedDifficulty = "Trivial" }
-        EasyBtn.setOnClickListener { selectedDifficulty = "Easy" }
-        MediumBtn.setOnClickListener { selectedDifficulty = "Medium" }
-        HardBtn.setOnClickListener { selectedDifficulty = "Hard" }
+        TrivialBtn.setOnClickListener {
+            selectedDifficulty = "Trivial"
+            Toast.makeText(this, "Task Difficulty: $selectedDifficulty", Toast.LENGTH_LONG).show()
+        }
+        EasyBtn.setOnClickListener {
+            selectedDifficulty = "Easy"
+            Toast.makeText(this, "Task Difficulty: $selectedDifficulty", Toast.LENGTH_LONG).show()
+        }
+        MediumBtn.setOnClickListener {
+            selectedDifficulty = "Medium"
+            Toast.makeText(this, "Task Difficulty: $selectedDifficulty", Toast.LENGTH_LONG).show()
+        }
+        HardBtn.setOnClickListener {
+            selectedDifficulty = "Hard"
+            Toast.makeText(this, "Task Difficulty: $selectedDifficulty", Toast.LENGTH_LONG).show()
+        }
 
         CreateButton.setOnClickListener {
 

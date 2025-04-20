@@ -62,16 +62,16 @@ class InventoryActivity : Activity() {
                         //save
                         userPrefsManager.saveGearsToDevice(
                             this, username,
-                            "user_tasks", gears
+                            "inventory_gears", gears
                         )
-                        EquipmentTracker.saveEquipment(this)
+                        EquipmentTracker.saveEquipment(this, username)
 
                     },
                     onDiscard = {
                         gears.removeAt(position)
                         userPrefsManager.saveGearsToDevice(
                             this, username,
-                            "user_tasks", gears
+                            "inventory_gears", gears
                         )
                         onResume()
                     }
@@ -95,18 +95,15 @@ class InventoryActivity : Activity() {
                                 (application as UserData).hp = 100
                             }
 
-                            var sp = getSharedPreferences("UserData", Context.MODE_PRIVATE)
                             var hp = (application as UserData).hp
-                            var editor = sp.edit()
-                            editor.putInt("hp", hp)
-                            editor.commit()
+                            userPrefsManager.updateHealth(username, hp)
 
-                            Toast.makeText(this, "Restored player health by 10hp!!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Restored player health by 10hp!", Toast.LENGTH_SHORT).show()
 
                             consumables.removeAt(position)
                             userPrefsManager.saveConsumablesToDevice(
                                 this, username,
-                                "user_tasks", consumables
+                                "inventory_consumables", consumables
                             )
                             onResume()
                         }
@@ -118,7 +115,7 @@ class InventoryActivity : Activity() {
                         consumables.removeAt(position)
                         userPrefsManager.saveConsumablesToDevice(
                             this, username,
-                            "user_tasks", consumables
+                            "inventory_consumables", consumables
                         )
                         onResume()
                     }

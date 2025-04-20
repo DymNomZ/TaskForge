@@ -51,10 +51,9 @@ class ShopActivity : Activity() {
             (application as UserData).coins -= item.cost
             coins = (application as UserData).coins
 
-            var sp = getSharedPreferences("UserData", Context.MODE_PRIVATE)
-            var editor = sp.edit()
-            editor.putInt("coins", coins)
-            editor.commit()
+            var userPrefsManager = UserPreferenceManager(this)
+            var username = (application as UserData).username
+            userPrefsManager.updateCoins(username, coins)
 
             return true
         }
