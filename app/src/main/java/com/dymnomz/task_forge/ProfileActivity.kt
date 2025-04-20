@@ -1,15 +1,10 @@
 package com.dymnomz.task_forge
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.util.Log
-import android.view.KeyEvent
-import android.view.inputmethod.EditorInfo
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -89,4 +84,5 @@ class ProfileActivity : Activity() {
             finish()
         }
     }
+
 }

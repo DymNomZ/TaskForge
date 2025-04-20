@@ -13,6 +13,11 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
+fun min(a: Int, b: Int): Int {
+    return if (a <= b) a else b
+}
+
+
 fun getCurrentDate() : String {
 
     val date = Calendar.getInstance().time
