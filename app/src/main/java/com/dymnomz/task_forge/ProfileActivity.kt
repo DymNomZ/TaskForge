@@ -3,6 +3,7 @@ package com.dymnomz.task_forge
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
@@ -10,7 +11,11 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
+import com.dymnomz.task_forge.app.UserData
+import com.dymnomz.task_forge.helper.UserPreferenceManager
+import java.io.File
 
 class ProfileActivity : Activity() {
 
@@ -24,43 +29,34 @@ class ProfileActivity : Activity() {
         val ToShopButton = findViewById<Button>(R.id.to_shop_btn)
         val SettingsButton = findViewById<ImageButton>(R.id.settings_btn)
         val EditButton = findViewById<Button>(R.id.edit_btn)
-        val PetsButton = findViewById<Button>(R.id.pets_btn)
-        val NicknameET = findViewById<EditText>(R.id.nickname_et)
+        val PlayernameTV = findViewById<TextView>(R.id.playername_tv)
         val UsernameTV = findViewById<TextView>(R.id.username_tv)
+        val ProfilePic = findViewById<ImageView>(R.id.profile_pic)
+
         var MemberSinceTV = findViewById<TextView>(R.id.member_since_tv)
         var LastLoggedTV = findViewById<TextView>(R.id.last_log_tv)
 
-        var sp = getSharedPreferences("UserData", Context.MODE_PRIVATE)
-        var username = sp.getString("username", "")
-        var memeber_since_date = sp.getString("creation_date", "")
-        var last_logged_in_Date = sp.getString("logged_in_date", "")
+        var userPrefsManager = UserPreferenceManager(this)
+        var username = (application as UserData).username
+        var userDetails = userPrefsManager.getUserDetailsString(username)
 
+        var playername = userDetails?.get("playername") ?: "Player"
+        var memeber_since_date = userDetails?.get("creation_date") ?: ""
+        var last_logged_in_Date = userDetails?.get("logged_in_date") ?: ""
+
+        val userPicture = File(applicationContext.filesDir, username + "_profile_picture.png")
+        if (userPicture.exists()) {
+            ProfilePic.setImageBitmap(BitmapFactory.decodeFile(userPicture.path))
+        }
+
+        PlayernameTV.setText(playername)
         UsernameTV.setText("@" + username)
         MemberSinceTV.setText(memeber_since_date)
         LastLoggedTV.setText(last_logged_in_Date)
 
-        NicknameET.setOnEditorActionListener { textView, actionId, event ->
-            if (actionId == EditorInfo.IME_ACTION_DONE ||
-                event?.keyCode == KeyEvent.KEYCODE_ENTER) {
-                //sample lpgic
-                val text = textView.text.toString()
-                println("Entered text: $text")
-                Log.i("YourTag", "Activity created.")
-                true
-            } else {
-                false
-            }
-        }
-
         EditButton.setOnClickListener {
             val intent = Intent(this, EditProfileActivity::class.java)
             startActivity(intent)
-        }
-
-        PetsButton.setOnClickListener {
-            val intent = Intent(this, PetsActivity::class.java)
-            startActivity(intent)
-            finish()
         }
 
         SettingsButton.setOnClickListener {

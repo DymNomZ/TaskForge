@@ -38,146 +38,49 @@
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginHorizontal="20dp"
-        android:background="@drawable/basic"
-        android:gravity="center">
+        app:cardCornerRadius="140dp"
+        android:elevation="12dp"
+        android:layout_gravity="center">
 
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/avatar">
-        </ImageView>
+            android:id="@+id/profile_pic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/ic_launcher_round"
+            android:layout_gravity="center_horizontal"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
+    </androidx.cardview.widget.CardView>
 
-            <EditText
-                android:id="@+id/nickname_et"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dymes"
-                android:fontFamily="@font/poppins_semibold"
-                android:textColor="@color/orange_2"
-                android:textSize="30dp"
-                android:layout_gravity="left"
-                android:letterSpacing="0.05"
-                android:layout_marginLeft="20dp"
-                android:imeOptions="actionDone">
-            </EditText>
-
-            <TextView
-                android:id="@+id/username_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="\@username"
-                android:fontFamily="@font/poppins_semibold"
-                android:textColor="@color/red_1"
-                android:textSize="18dp"
-                android:layout_gravity="left"
-                android:letterSpacing="0.05"
-                android:layout_marginLeft="20dp">
-            </TextView>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/playername_tv"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="25dp"
-        android:layout_marginHorizontal="25dp"
         android:background="@drawable/basic"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_marginHorizontal="30dp"
+        android:textSize="20dp"
+        android:text="Player"
+        android:padding="12dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/orange_1">
+    </TextView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/heart"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="12dp">
-            </ImageView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="100"
-                android:fontFamily="@font/poppins_semibold"
-                android:textColor="@color/orange_2"
-                android:textSize="18dp"
-                android:layout_gravity="center"
-                android:letterSpacing="0.05">
-
-            </TextView>
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/coin"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="12dp">
-            </ImageView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="100"
-                android:fontFamily="@font/poppins_semibold"
-                android:textColor="@color/orange_2"
-                android:textSize="18dp"
-                android:layout_gravity="center"
-                android:letterSpacing="0.05">
-
-            </TextView>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginVertical="16dp"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/level"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="12dp">
-            </ImageView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Level 1"
-                android:fontFamily="@font/poppins_semibold"
-                android:textColor="@color/orange_1"
-                android:textSize="18dp"
-                android:layout_gravity="center"
-                android:letterSpacing="0.05">
-
-            </TextView>
-
-        </LinearLayout>
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/username_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/basic"
+        android:layout_marginHorizontal="30dp"
+        android:textSize="14dp"
+        android:text="\@username"
+        android:padding="12dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/orange_1">
+    </TextView>
 
     <TextView
         android:layout_width="wrap_content"
@@ -231,48 +134,22 @@
         android:textColor="@color/orange_1">
     </TextView>
 
-    <LinearLayout
+    <Button
+        android:id="@+id/edit_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="25dp">
-
-        <Button
-            android:id="@+id/edit_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:layout_marginVertical="15dp"
-            android:backgroundTint="@color/orange_2"
-            android:background="@drawable/rounded_button"
-            android:text="Edit Profile"
-            android:textColor="@color/white"
-            android:fontFamily="@font/poppins_regular"
-            android:textSize="20dp"
-            android:padding="12dp"
-            android:letterSpacing="0.05"
-            android:textAlignment="center">
-        </Button>
-
-        <Button
-            android:id="@+id/pets_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginVertical="15dp"
-            android:backgroundTint="@color/orange_2"
-            android:background="@drawable/rounded_button"
-            android:text="View Pets"
-            android:textColor="@color/white"
-            android:fontFamily="@font/poppins_regular"
-            android:textSize="20dp"
-            android:padding="12dp"
-            android:letterSpacing="0.05"
-            android:textAlignment="center">
-        </Button>
-
-    </LinearLayout>
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="20dp"
+        android:backgroundTint="@color/orange_2"
+        android:background="@drawable/rounded_button"
+        android:text="Edit Profile"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="20dp"
+        android:padding="12dp"
+        android:letterSpacing="0.05"
+        android:textAlignment="center">
+    </Button>
 
     <RelativeLayout
         android:layout_width="match_parent"

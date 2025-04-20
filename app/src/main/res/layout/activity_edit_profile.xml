@@ -25,7 +25,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username"
+        android:text="Playername"
         android:fontFamily="@font/poppins_regular"
         android:textColor="@color/white"
         android:textSize="20dp"
@@ -35,14 +35,14 @@
     </TextView>
 
     <EditText
-        android:id="@+id/username_et"
+        android:id="@+id/playername_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/basic"
         android:layout_marginHorizontal="30dp"
         android:textSize="20dp"
         android:textColorHint="@color/orange_1"
-        android:hint="username"
+        android:hint="playername"
         android:padding="12dp"
         android:fontFamily="@font/poppins_regular"
         android:textColor="@color/orange_1"

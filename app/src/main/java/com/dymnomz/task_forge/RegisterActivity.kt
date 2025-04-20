@@ -1,13 +1,15 @@
 package com.dymnomz.task_forge
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.dymnomz.task_forge.app.UserData
+import com.dymnomz.task_forge.helper.UserPreferenceManager
 import com.dymnomz.task_forge.helper.getCurrentDate
+
 class RegisterActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,33 +23,49 @@ class RegisterActivity : Activity() {
         val RegisterButton = findViewById<Button>(R.id.register_button)
         RegisterButton.setOnClickListener {
 
-            //only proceed if all edit texts are filled with values
-            if(UsernameET.text.toString().isNotEmpty() && PasswordET.text.toString().isNotEmpty() &&
-                ConfirmPasswordET.text.toString().isNotEmpty() && EmailET.text.toString().isNotEmpty()){
+            val username = UsernameET.text.toString()
+            val email = EmailET.text.toString()
+            val password = PasswordET.text.toString()
+            val confirmpassword = ConfirmPasswordET.text.toString()
 
-                var username = UsernameET.text.toString()
-                var email = EmailET.text.toString()
-                var password = PasswordET.text.toString()
+            if(!email.contains("@")){
+                Toast.makeText(this, "Not a valid email address", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
 
-                //save to device
-                var sp = getSharedPreferences("UserData", Context.MODE_PRIVATE)
-                var editor = sp.edit();
+            if(username.isEmpty() || password.isEmpty() || confirmpassword.isEmpty()){
+                Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
 
-                val dateInString = getCurrentDate()
+            if(password != confirmpassword){
+                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
 
-                editor.putString("username", username)
-                editor.putString("email", email)
-                editor.putString("password", password)
-                editor.putString("creation_date", dateInString)
-                editor.commit()
+            val date = getCurrentDate()
 
-                val intent = Intent(this, LoginActivity::class.java)
+            //save to device
+            val userPrefsManager = UserPreferenceManager(this)
+
+            if(!userPrefsManager.userExists(username)){
+
+                (application as UserData).username = username
+                (application as UserData).email = email
+                (application as UserData).password = password
+
+                userPrefsManager.addUser(username, email, password, date)
+
+                val intent = Intent(this, LoginActivity::class.java).apply{
+                    putExtra("username", username)
+                    putExtra("password", password)
+                }
                 startActivity(intent)
                 finish()
-
             }
-            else {
-                Toast.makeText(this, "Must input all fields!", Toast.LENGTH_SHORT).show()
+            else{
+                Toast.makeText(this, "Username is taken", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
             }
 
         }

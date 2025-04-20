@@ -12,11 +12,8 @@ import com.dymnomz.task_forge.data.Consumable
 import com.dymnomz.task_forge.data.Gear
 import com.dymnomz.task_forge.helper.CustomListAdapterInventory
 import com.dymnomz.task_forge.helper.EquipmentTracker
+import com.dymnomz.task_forge.helper.UserPreferenceManager
 import com.dymnomz.task_forge.helper.checkGearType
-import com.dymnomz.task_forge.helper.getConsumablesFromDevice
-import com.dymnomz.task_forge.helper.getGearsFromDevice
-import com.dymnomz.task_forge.helper.saveConsumablesToDevice
-import com.dymnomz.task_forge.helper.saveGearsToDevice
 import com.dymnomz.task_forge.helper.showInventoryItemDialogue
 
 class InventoryActivity : Activity() {
@@ -34,11 +31,14 @@ class InventoryActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inventory)
 
+        var userPrefsManager = UserPreferenceManager(this)
+        var username = (application as UserData).username
+
         gearsListView = findViewById<ListView>(R.id.gears_list)
         consumablesListView = findViewById<ListView>(R.id.consumables_list)
 
-        gears = getGearsFromDevice(this, "inventory_gears")
-        consumables = getConsumablesFromDevice(this, "inventory_consumables")
+        gears = userPrefsManager.getGearsFromDevice(this, username, "inventory_gears")
+        consumables = userPrefsManager.getConsumablesFromDevice(this, username, "inventory_consumables")
 
         gearsAdapter = CustomListAdapterInventory(
             this, gears,
@@ -60,13 +60,19 @@ class InventoryActivity : Activity() {
                         checkGearType(gear)
 
                         //save
-                        saveGearsToDevice(this, "user_tasks", gears)
+                        userPrefsManager.saveGearsToDevice(
+                            this, username,
+                            "user_tasks", gears
+                        )
                         EquipmentTracker.saveEquipment(this)
 
                     },
                     onDiscard = {
                         gears.removeAt(position)
-                        saveGearsToDevice(this, "user_tasks", gears)
+                        userPrefsManager.saveGearsToDevice(
+                            this, username,
+                            "user_tasks", gears
+                        )
                         onResume()
                     }
                 )
@@ -98,7 +104,10 @@ class InventoryActivity : Activity() {
                             Toast.makeText(this, "Restored player health by 10hp!!", Toast.LENGTH_SHORT).show()
 
                             consumables.removeAt(position)
-                            saveConsumablesToDevice(this, "user_tasks", consumables)
+                            userPrefsManager.saveConsumablesToDevice(
+                                this, username,
+                                "user_tasks", consumables
+                            )
                             onResume()
                         }
                         else{
@@ -107,7 +116,10 @@ class InventoryActivity : Activity() {
                     },
                     onDiscard = {
                         consumables.removeAt(position)
-                        saveConsumablesToDevice(this, "user_tasks", consumables)
+                        userPrefsManager.saveConsumablesToDevice(
+                            this, username,
+                            "user_tasks", consumables
+                        )
                         onResume()
                     }
                 )

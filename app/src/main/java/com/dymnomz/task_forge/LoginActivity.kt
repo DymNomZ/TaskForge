@@ -1,7 +1,6 @@
 package com.dymnomz.task_forge
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -10,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.dymnomz.task_forge.app.UserData
 import com.dymnomz.task_forge.helper.EquipmentTracker
+import com.dymnomz.task_forge.helper.UserPreferenceManager
 import com.dymnomz.task_forge.helper.getCurrentDate
 
 class LoginActivity : Activity() {
@@ -21,71 +21,63 @@ class LoginActivity : Activity() {
         val UsernameET = findViewById<EditText>(R.id.username_et)
         val PasswordET = findViewById<EditText>(R.id.password_et)
 
-        val dateInString = getCurrentDate()
-
-        var sp = getSharedPreferences("UserData", Context.MODE_PRIVATE)
-        var username = sp.getString("username", "")
-        var email = sp.getString("email", "")
-        var password = sp.getString("password", "")
-        var hp = sp.getInt("hp", 100)
-        var coins = sp.getInt("coins", 100)
-        var level = sp.getInt("level", 1)
-        var xp = sp.getInt("xp", 0)
-
-        //to check if there exists an account
-        var hasAccount = false
-        if(!username.isNullOrEmpty() && !email.isNullOrEmpty() && !password.isNullOrEmpty()){
-            hasAccount = true
+        intent?.let {
+            it.getStringExtra("username")?.let { username->
+                UsernameET.setText(username)
+            }
+            it.getStringExtra("password")?.let { password->
+                PasswordET.setText(password)
+            }
         }
-
-        UsernameET.setText(username)
-        PasswordET.setText(password)
 
         val LoginButton = findViewById<Button>(R.id.login_button)
         LoginButton.setOnClickListener {
 
-            //since no account, inform the user
-            if(!hasAccount){
-                Toast.makeText(this, "No account created yet!", Toast.LENGTH_SHORT).show()
+            var username = UsernameET.text.toString()
+            var password = PasswordET.text.toString()
+
+            //get details via shared prefs
+            val userPrefsManager = UserPreferenceManager(this)
+
+            if(username.isEmpty() || password.isEmpty()){
+                Toast.makeText(this, "Username and password cannot be empty", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+            if(!userPrefsManager.userExists(username)){
+                Toast.makeText(this, "No such account, please register", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
 
-            //only proceed if all edit texts are filled with values
-            if(UsernameET.text.toString().isNotEmpty() && PasswordET.text.toString().isNotEmpty()){
+            val userDetailsString = userPrefsManager.getUserDetailsString(username)
+            val userDetailsInt = userPrefsManager.getUserDetailsInt(username)
 
-                //validate
-                if(UsernameET.text.toString() == username && PasswordET.text.toString() == password){
+            var userPassword = userDetailsString?.get("password") ?: ""
 
-                    var editor = sp.edit();
-                    editor.putString("logged_in_date", dateInString)
-                    editor.commit()
-
-                    //save to UserData class
-                    (application as UserData).username = username!!
-                    (application as UserData).email = email!!
-                    (application as UserData).password = password!!
-                    (application as UserData).hp = hp!!
-                    (application as UserData).coins = coins!!
-                    (application as UserData).level = level!!
-                    (application as UserData).xp = xp!!
-
-                    //get equipments
-                    EquipmentTracker.loadEquipment(this)
-
-                    val intent = Intent(this, TasksActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                else{
-                    Toast.makeText(this, "Invalid credentials!", Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
-                }
-
-            }
-            else {
-                Toast.makeText(this, "Must input all fields!", Toast.LENGTH_SHORT).show()
+            if(password != userPassword){
+                Toast.makeText(this, "Invalid password", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
+
+            val date = getCurrentDate()
+
+            userPrefsManager.logDate(username, date)
+
+            //save to UserData class
+            (application as UserData).username = userDetailsString?.get("username") ?: ""
+            (application as UserData).email = userDetailsString?.get("email") ?: ""
+            (application as UserData).password = userDetailsString?.get("password") ?: ""
+            (application as UserData).playername = userDetailsString?.get("playername") ?: "Player"
+            (application as UserData).hp = userDetailsInt?.get("hp") ?: 100
+            (application as UserData).coins = userDetailsInt?.get("coins") ?: 100
+            (application as UserData).level = userDetailsInt?.get("level") ?: 1
+            (application as UserData).xp = userDetailsInt?.get("xp") ?: 0
+
+            //get equipments
+            EquipmentTracker.loadEquipment(this)
+
+            val intent = Intent(this, TasksActivity::class.java)
+            startActivity(intent)
+            finish()
 
         }
 

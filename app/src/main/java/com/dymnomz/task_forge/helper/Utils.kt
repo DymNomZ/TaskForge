@@ -7,12 +7,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.dymnomz.task_forge.R
-import com.dymnomz.task_forge.data.Consumable
 import com.dymnomz.task_forge.data.Gear
 import com.dymnomz.task_forge.data.Item
-import com.dymnomz.task_forge.data.Task
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -22,66 +18,6 @@ fun getCurrentDate() : String {
     val date = Calendar.getInstance().time
     val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
     return formatter.format(date)
-}
-
-fun saveTasksToDevice(context: Context, key: String, gears: MutableList<Task>) {
-    val sharedPreferences = context.getSharedPreferences("UserData", Context.MODE_PRIVATE)
-    val editor = sharedPreferences.edit()
-    val gson = Gson()
-    val jsonString = gson.toJson(gears)
-    editor.putString("user_tasks", jsonString)
-    editor.commit()
-}
-
-fun getTasksFromDevice(context: Context, key: String): MutableList<Task> {
-    val sharedPreferences = context.getSharedPreferences("UserData", Context.MODE_PRIVATE)
-    val jsonString = sharedPreferences.getString("user_tasks", null)
-    if (jsonString != null) {
-        val gson = Gson()
-        val type = object : TypeToken<MutableList<Task>>() {}.type
-        return gson.fromJson(jsonString, type)
-    }
-    return mutableListOf() // Return an empty list if no data is found
-}
-
-fun saveGearsToDevice(context: Context, key: String, gears: MutableList<Gear>) {
-    val sharedPreferences = context.getSharedPreferences("UserData", Context.MODE_PRIVATE)
-    val editor = sharedPreferences.edit()
-    val gson = Gson()
-    val jsonString = gson.toJson(gears)
-    editor.putString("inventory_gears", jsonString)
-    editor.commit()
-}
-
-fun getGearsFromDevice(context: Context, key: String): MutableList<Gear> {
-    val sharedPreferences = context.getSharedPreferences("UserData", Context.MODE_PRIVATE)
-    val jsonString = sharedPreferences.getString("inventory_gears", null)
-    if (jsonString != null) {
-        val gson = Gson()
-        val type = object : TypeToken<MutableList<Gear>>() {}.type
-        return gson.fromJson(jsonString, type)
-    }
-    return mutableListOf() // Return an empty list if no data is found
-}
-
-fun saveConsumablesToDevice(context: Context, key: String, gears: MutableList<Consumable>) {
-    val sharedPreferences = context.getSharedPreferences("UserData", Context.MODE_PRIVATE)
-    val editor = sharedPreferences.edit()
-    val gson = Gson()
-    val jsonString = gson.toJson(gears)
-    editor.putString("inventory_consumables", jsonString)
-    editor.commit()
-}
-
-fun getConsumablesFromDevice(context: Context, key: String): MutableList<Consumable> {
-    val sharedPreferences = context.getSharedPreferences("UserData", Context.MODE_PRIVATE)
-    val jsonString = sharedPreferences.getString("inventory_consumables", null)
-    if (jsonString != null) {
-        val gson = Gson()
-        val type = object : TypeToken<MutableList<Consumable>>() {}.type
-        return gson.fromJson(jsonString, type)
-    }
-    return mutableListOf() // Return an empty list if no data is found
 }
 
 fun showInventoryItemDialogue(

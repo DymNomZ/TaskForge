@@ -12,8 +12,7 @@ import com.dymnomz.task_forge.data.Consumable
 import com.dymnomz.task_forge.data.Gear
 import com.dymnomz.task_forge.data.Item
 import com.dymnomz.task_forge.helper.CustomListAdapterItem
-import com.dymnomz.task_forge.helper.saveConsumablesToDevice
-import com.dymnomz.task_forge.helper.saveGearsToDevice
+import com.dymnomz.task_forge.helper.UserPreferenceManager
 import com.dymnomz.task_forge.helper.showPurchaseItemDialogue
 
 class ShopActivity : Activity() {
@@ -66,6 +65,9 @@ class ShopActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
 
+        var userPrefsManager = UserPreferenceManager(this)
+        var username = (application as UserData).username
+
         gearsListView = findViewById<ListView>(R.id.gears_list)
         consumablesListView = findViewById<ListView>(R.id.consumables_list)
 
@@ -78,8 +80,16 @@ class ShopActivity : Activity() {
                         if(checkCoins(item)){
 //                            gears.removeAt(position)
                             InventoryActivity.gears.add(item as Gear)
-                            saveGearsToDevice(this, "shop_gears", gears)
-                            saveGearsToDevice(this, "inventory_gears", InventoryActivity.gears)
+
+//                            userPrefsManager.saveGearsToDevice(
+//                                this, username,
+//                                "shop_gears", gears
+//                            )
+                            userPrefsManager.saveGearsToDevice(
+                                this, username,
+                                "inventory_gears", InventoryActivity.gears
+                            )
+
                             onResume()
                         }
                         else{
@@ -97,9 +107,18 @@ class ShopActivity : Activity() {
                     this, item,
                     onPurchase = {
                         if(checkCoins(item)){
+
                             InventoryActivity.consumables.add(item as Consumable)
-                            saveConsumablesToDevice(this, "shop_consumables", consumables)
-                            saveConsumablesToDevice(this, "inventory_consumables", InventoryActivity.consumables)
+
+//                            userPrefsManager.saveConsumablesToDevice(
+//                                this, username,
+//                                "shop_consumables", consumables
+//                            )
+                            userPrefsManager.saveConsumablesToDevice(
+                                this, username,
+                                "inventory_consumables", InventoryActivity.consumables
+                            )
+
                             onResume()
                         }
                         else{

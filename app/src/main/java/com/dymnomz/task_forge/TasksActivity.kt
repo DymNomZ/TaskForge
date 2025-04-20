@@ -14,8 +14,7 @@ import com.dymnomz.task_forge.app.UserData
 import com.dymnomz.task_forge.data.Task
 import com.dymnomz.task_forge.helper.CustomListAdapterTask
 import com.dymnomz.task_forge.helper.EquipmentTracker
-import com.dymnomz.task_forge.helper.getTasksFromDevice
-import com.dymnomz.task_forge.helper.saveTasksToDevice
+import com.dymnomz.task_forge.helper.UserPreferenceManager
 import com.dymnomz.task_forge.helper.showBasicDialogue
 
 class TasksActivity : Activity() {
@@ -52,18 +51,15 @@ class TasksActivity : Activity() {
             (application as UserData).level += 1
         }
 
-        var sp = getSharedPreferences("UserData", Context.MODE_PRIVATE)
         var hp = (application as UserData).hp
         var coins = (application as UserData).coins
         var level = (application as UserData).level
         var xp = (application as UserData).xp
 
-        var editor = sp.edit()
-        editor.putInt("hp", hp)
-        editor.putInt("coins", coins)
-        editor.putInt("level", level)
-        editor.putInt("xp", xp)
-        editor.commit()
+        var userPrefsManager = UserPreferenceManager(this)
+        var username = (application as UserData).username
+
+        userPrefsManager.updatePlayerData(this, username, hp, coins, level, xp)
 
         //update values
         updatePlayerValues()
@@ -74,7 +70,11 @@ class TasksActivity : Activity() {
 
         listView = findViewById<ListView>(R.id.tasks_list)
 
-        tasks = getTasksFromDevice(this, "user_tasks")
+        var userPrefsManager = UserPreferenceManager(this)
+        var username = (application as UserData).username
+
+        //get tasks
+        tasks = userPrefsManager.getTasksFromDevice(this, username)
 
         var Head = findViewById<ImageView>(R.id.head)
         var Body = findViewById<ImageView>(R.id.body)
@@ -126,7 +126,7 @@ class TasksActivity : Activity() {
 
                 Toast.makeText(this, "Player earnings logic here!", Toast.LENGTH_SHORT).show()
                 tasks.removeAt(position)
-                saveTasksToDevice(this, "user_tasks", tasks)
+                userPrefsManager.saveTasksToDevice(this, username, tasks)
                 onResume()
             },
             deleteTask = {task, position ->
@@ -137,7 +137,7 @@ class TasksActivity : Activity() {
                     "Confirm",
                     onConfirm = {
                         tasks.removeAt(position)
-                        saveTasksToDevice(this, "user_tasks", tasks)
+                        userPrefsManager.saveTasksToDevice(this, username, tasks)
                         onResume()
                     }
                 )

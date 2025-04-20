@@ -7,9 +7,10 @@ import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.TextView
+import com.dymnomz.task_forge.app.UserData
 import com.dymnomz.task_forge.data.Task
+import com.dymnomz.task_forge.helper.UserPreferenceManager
 import com.dymnomz.task_forge.helper.convertMonth
-import com.dymnomz.task_forge.helper.saveTasksToDevice
 
 class CreateTaskActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +56,10 @@ class CreateTaskActivity : Activity() {
                 )
             )
 
-            saveTasksToDevice(this, "user_tasks", TasksActivity.tasks)
+            var userPrefsManager = UserPreferenceManager(this)
+            var username = (application as UserData).username
+
+            userPrefsManager.saveTasksToDevice(this, username, TasksActivity.tasks)
 
             val intent = Intent(this, TasksActivity::class.java)
             startActivity(intent)
