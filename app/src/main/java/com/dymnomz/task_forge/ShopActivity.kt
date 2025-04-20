@@ -18,24 +18,23 @@ import com.dymnomz.task_forge.helper.showPurchaseItemDialogue
 
 class ShopActivity : Activity() {
     companion object {
-        var lorem = "Dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 
         val gears = mutableListOf(
-            Gear("Helmet", 1, lorem, R.drawable.helmet),
-            Gear("Armor", 2, lorem, R.drawable.armor),
-            Gear("Left Sword", 3, lorem, R.drawable.left_sword),
-            Gear("Right Sword", 4, lorem, R.drawable.right_sword),
-            Gear("Glasses", 5, lorem, R.drawable.glasses),
-            Gear("Wings", 6, lorem, R.drawable.wings),
+            Gear("Helmet", 1, "Protects your noggin from unexpected dragon droppings.", R.drawable.helmet),
+            Gear("Armor", 2, "Shrug off sword swipes like a boss in this shiny getup.", R.drawable.armor),
+            Gear("Left Sword", 3, "For slicing foes with finesse (left-handed style!).", R.drawable.left_sword),
+            Gear("Right Sword", 4, "The perfect partner for your left sword, ready to strike!", R.drawable.right_sword),
+            Gear("Glasses", 5, "See the world with +5 charisma (and maybe read tiny text).", R.drawable.glasses),
+            Gear("Wings", 6, "Soar through the skies, or at least look really cool trying.", R.drawable.wings),
         )
 
         val consumables = mutableListOf(
-            Consumable("Potion", 1, lorem, R.drawable.potion),
-            Consumable("Steak", 2, lorem, R.drawable.steak),
-            Consumable("Mango", 3, lorem, R.drawable.mango),
-            Consumable("Carrot", 4, lorem, R.drawable.carrot),
-            Consumable("Drink", 5, lorem, R.drawable.drink),
-            Consumable("Cake", 300, lorem, R.drawable.cake),
+            Consumable("Potion", 1, "Chug this down for a quick health boost (side effects may include glowing).", R.drawable.potion),
+            Consumable("Steak", 2, "A hearty meal that'll make you strong like a bear... almost.", R.drawable.steak),
+            Consumable("Mango", 3, "This sweet treat gives you a burst of sunshine energy!", R.drawable.mango),
+            Consumable("Carrot", 4, "Crunch on this for super-vision and bunny-like hops.", R.drawable.carrot),
+            Consumable("Drink", 5, "Quench your thirst and maybe gain some liquid courage.", R.drawable.drink),
+            Consumable("Cake", 300, "Indulge in this sugary delight for a massive happiness overload!", R.drawable.cake),
         )
     }
 
