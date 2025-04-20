@@ -12,6 +12,7 @@ import com.dymnomz.task_forge.app.UserData
 import com.dymnomz.task_forge.data.Task
 import com.dymnomz.task_forge.helper.UserPreferenceManager
 import com.dymnomz.task_forge.helper.convertMonth
+import com.dymnomz.task_forge.helper.setDateOnDatePicker
 
 class EditTaskActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,17 +29,23 @@ class EditTaskActivity : Activity() {
         var TaskTitleET = findViewById<EditText>(R.id.task_title_et)
 
         var selectedDifficulty = "Trivial"
+        var position = 0
+        var task = Task("temp", "temp_desc", "date")
 
         Toast.makeText(this, "Task Difficulty: $selectedDifficulty", Toast.LENGTH_LONG).show()
 
         intent?.let {
-            it.getStringExtra("difficulty")?.let { difficulty ->
-                selectedDifficulty = difficulty
-            }
-            it.getStringExtra("title")?.let { title ->
-                TaskTitleET.setText(title)
+            it.getIntExtra("position", 0)?.let { pos ->
+                position = pos
+                task = TasksActivity.tasks[position]
             }
         }
+
+        selectedDifficulty = task.difficulty
+
+        TaskTitleET.setText(task.title)
+
+        setDateOnDatePicker(this, DatePicker, task.due)
 
         CancelButton.setOnClickListener {
             val intent = Intent(this, TasksActivity::class.java)
@@ -72,13 +79,10 @@ class EditTaskActivity : Activity() {
 
             month = convertMonth(month)
 
-            TasksActivity.tasks.add(
-                Task(
-                    TaskTitleET.text.toString(),
-                    month + " " + day + " " + year,
-                    selectedDifficulty
-                )
-            )
+            task.difficulty = selectedDifficulty
+            task.due = month + " " + day + ", " + year
+
+            TasksActivity.tasks[position] = task
 
             var userPrefsManager = UserPreferenceManager(this)
             var username = (application as UserData).username

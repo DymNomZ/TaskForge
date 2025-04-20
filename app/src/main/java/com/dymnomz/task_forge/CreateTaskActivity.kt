@@ -64,8 +64,8 @@ class CreateTaskActivity : Activity() {
             TasksActivity.tasks.add(
                 Task(
                     TaskTitleET.text.toString(),
-                    month + " " + day + " " + year,
-                    selectedDifficulty
+                    selectedDifficulty,
+                    month + " " + day + ", " + year
                 )
             )
 

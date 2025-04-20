@@ -4,8 +4,10 @@ import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.widget.Button
+import android.widget.DatePicker
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.dymnomz.task_forge.R
 import com.dymnomz.task_forge.data.Gear
 import com.dymnomz.task_forge.data.Item
@@ -17,6 +19,31 @@ fun min(a: Int, b: Int): Int {
     return if (a <= b) a else b
 }
 
+fun setDateOnDatePicker(context: Context, datePicker: DatePicker, dateString: String) {
+
+    val dateFormat = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
+
+    try {
+
+        val date = dateFormat.parse(dateString) ?: run {
+            Toast.makeText(context, "Error: Date string is null", Toast.LENGTH_LONG).show()
+            return
+        }
+
+        val calendar = Calendar.getInstance()
+        calendar.time = date
+
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        datePicker.init(year, month, day, null)
+
+    } catch (e: Exception) {
+        e.printStackTrace()
+        Toast.makeText(context, "Error parsing date: ${e.message}", Toast.LENGTH_LONG).show()
+    }
+}
 fun getCurrentDate() : String {
 
     val date = Calendar.getInstance().time
@@ -160,29 +187,6 @@ fun checkGearType(gear: Gear) {
         "right_item" -> {
             EquipmentTracker.rightSelected = img
         }
-    }
-}
-
-fun getWords(text: String): List<String> {
-    return text.split(" ")
-}
-
-fun convertMonthReversed(month: String) : Int {
-
-    return when (month) {
-        "January" -> 1
-        "February" -> 2
-        "March" -> 3
-        "April" -> 4
-        "May" -> 5
-        "June" -> 6
-        "July" -> 7
-        "August" -> 8
-        "September" -> 9
-        "October" -> 10
-        "November" -> 11
-        "December" -> 12
-        else -> 0
     }
 }
 

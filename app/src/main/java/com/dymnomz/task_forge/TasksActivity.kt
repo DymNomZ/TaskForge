@@ -114,8 +114,7 @@ class TasksActivity : Activity() {
             onClick = {task, position ->
 
                 var intent = Intent(this, EditTaskActivity::class.java).apply{
-                    putExtra("difficulty", task.difficulty)
-                    putExtra("title", task.title)
+                    putExtra("position", position)
                 }
                 startActivity(intent)
                 finish()
