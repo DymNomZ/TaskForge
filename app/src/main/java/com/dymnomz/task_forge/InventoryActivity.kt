@@ -11,6 +11,7 @@ import com.dymnomz.task_forge.app.UserData
 import com.dymnomz.task_forge.data.Consumable
 import com.dymnomz.task_forge.data.Gear
 import com.dymnomz.task_forge.helper.CustomListAdapterInventory
+import com.dymnomz.task_forge.helper.EquipmentTracker
 import com.dymnomz.task_forge.helper.checkGearType
 import com.dymnomz.task_forge.helper.getConsumablesFromDevice
 import com.dymnomz.task_forge.helper.getGearsFromDevice
@@ -58,7 +59,9 @@ class InventoryActivity : Activity() {
                         //check what type
                         checkGearType(gear)
 
+                        //save
                         saveGearsToDevice(this, "user_tasks", gears)
+                        EquipmentTracker.saveEquipment(this)
 
                     },
                     onDiscard = {

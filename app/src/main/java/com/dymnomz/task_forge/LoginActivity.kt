@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.dymnomz.task_forge.app.UserData
+import com.dymnomz.task_forge.helper.EquipmentTracker
 import com.dymnomz.task_forge.helper.getCurrentDate
 
 class LoginActivity : Activity() {
@@ -67,6 +68,9 @@ class LoginActivity : Activity() {
                     (application as UserData).coins = coins!!
                     (application as UserData).level = level!!
                     (application as UserData).xp = xp!!
+
+                    //get equipments
+                    EquipmentTracker.loadEquipment(this)
 
                     val intent = Intent(this, TasksActivity::class.java)
                     startActivity(intent)
