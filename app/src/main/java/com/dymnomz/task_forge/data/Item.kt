@@ -6,5 +6,6 @@ open class Item(
     var name: String = "",
     var cost: Int = 0,
     var description: String = "",
-    var img: Int = R.drawable.dymes
+    var img: Int = R.drawable.dymes,
+    var type: String
 )

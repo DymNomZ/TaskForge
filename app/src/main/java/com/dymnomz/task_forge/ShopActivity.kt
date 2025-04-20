@@ -20,21 +20,21 @@ class ShopActivity : Activity() {
     companion object {
 
         val gears = mutableListOf(
-            Gear("Helmet", 1, "Protects your noggin from unexpected dragon droppings.", R.drawable.helmet),
-            Gear("Armor", 2, "Shrug off sword swipes like a boss in this shiny getup.", R.drawable.armor),
-            Gear("Left Sword", 3, "For slicing foes with finesse (left-handed style!).", R.drawable.left_sword),
-            Gear("Right Sword", 4, "The perfect partner for your left sword, ready to strike!", R.drawable.right_sword),
-            Gear("Glasses", 5, "See the world with +5 charisma (and maybe read tiny text).", R.drawable.glasses),
-            Gear("Wings", 6, "Soar through the skies, or at least look really cool trying.", R.drawable.wings),
+            Gear("Helmet", 1, "Protects your noggin from unexpected dragon droppings.", R.drawable.helmet, "head_item", false),
+            Gear("Armor", 2, "Shrug off sword swipes like a boss in this shiny getup.", R.drawable.armor, "body_item", false),
+            Gear("Left Sword", 3, "For slicing foes with finesse (left-handed style!).", R.drawable.left_sword, "left_item", false),
+            Gear("Right Sword", 4, "The perfect partner for your left sword, ready to strike!", R.drawable.right_sword, "right_item", false),
+            Gear("Glasses", 5, "See the world with +5 charisma (and maybe read tiny text).", R.drawable.glasses, "eye_tem", false),
+            Gear("Wings", 6, "Soar through the skies, or at least look really cool trying.", R.drawable.wings, "back_item", false),
         )
 
         val consumables = mutableListOf(
-            Consumable("Potion", 1, "Chug this down for a quick health boost (side effects may include glowing).", R.drawable.potion),
-            Consumable("Steak", 2, "A hearty meal that'll make you strong like a bear... almost.", R.drawable.steak),
-            Consumable("Mango", 3, "This sweet treat gives you a burst of sunshine energy!", R.drawable.mango),
-            Consumable("Carrot", 4, "Crunch on this for super-vision and bunny-like hops.", R.drawable.carrot),
-            Consumable("Drink", 5, "Quench your thirst and maybe gain some liquid courage.", R.drawable.drink),
-            Consumable("Cake", 300, "Indulge in this sugary delight for a massive happiness overload!", R.drawable.cake),
+            Consumable("Potion", 1, "Chug this down for a quick health boost (side effects may include glowing).", R.drawable.potion, "potion"),
+            Consumable("Steak", 2, "A hearty meal that'll make you strong like a bear... almost.", R.drawable.steak, "meat"),
+            Consumable("Mango", 3, "This sweet treat gives you a burst of sunshine energy!", R.drawable.mango, "fruit"),
+            Consumable("Carrot", 4, "Crunch on this for super-vision and bunny-like hops.", R.drawable.carrot, "vegetable"),
+            Consumable("Drink", 5, "Quench your thirst and maybe gain some liquid courage.", R.drawable.drink, "drink"),
+            Consumable("Cake", 300, "Indulge in this sugary delight for a massive happiness overload!", R.drawable.cake, "snack"),
         )
     }
 

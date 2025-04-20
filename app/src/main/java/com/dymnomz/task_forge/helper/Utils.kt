@@ -196,6 +196,35 @@ fun showBasicDialogue(
     alertDialog.show()
 }
 
+fun checkGearType(gear: Gear) {
+    when(gear.type){
+        "back_item" -> {
+            EquipmentTracker.backSelected = gear.img
+            EquipmentTracker.backEquipped = gear.isEquipped
+        }
+        "head_item" -> {
+            EquipmentTracker.headSelected = gear.img
+            EquipmentTracker.headEquipped = gear.isEquipped
+        }
+        "body_item" -> {
+            EquipmentTracker.bodySelected = gear.img
+            EquipmentTracker.bodyEquipped = gear.isEquipped
+        }
+        "eye_item" -> {
+            EquipmentTracker.eyeSelected = gear.img
+            EquipmentTracker.eyeEquipped = gear.isEquipped
+        }
+        "left_item" -> {
+            EquipmentTracker.leftSelected = gear.img
+            EquipmentTracker.leftEquipped = gear.isEquipped
+        }
+        "right_item" -> {
+            EquipmentTracker.rightSelected = gear.img
+            EquipmentTracker.rightEquipped = gear.isEquipped
+        }
+    }
+}
+
 fun getWords(text: String): List<String> {
     return text.split(" ")
 }

@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
@@ -73,6 +74,21 @@ class TasksActivity : Activity() {
         listView = findViewById<ListView>(R.id.tasks_list)
 
         tasks = getTasksFromDevice(this, "user_tasks")
+
+        var BackItem = findViewById<ImageView>(R.id.back_item)
+        var EyeWear = findViewById<ImageView>(R.id.eye_wear)
+        var LeftItem = findViewById<ImageView>(R.id.left_hand_item)
+        var RightItem = findViewById<ImageView>(R.id.right_hand_item)
+        var Helmet = findViewById<ImageView>(R.id.helmet)
+        var Armor = findViewById<ImageView>(R.id.armor)
+
+        //anti blurry
+        BackItem.drawable?.isFilterBitmap = false
+        EyeWear.drawable?.isFilterBitmap = false
+        LeftItem.drawable?.isFilterBitmap = false
+        RightItem.drawable?.isFilterBitmap = false
+        Helmet.drawable?.isFilterBitmap = false
+        Armor.drawable?.isFilterBitmap = false
 
         HPTV = findViewById<TextView>(R.id.hp_tv)
         CoinsTV = findViewById<TextView>(R.id.coins_tv)

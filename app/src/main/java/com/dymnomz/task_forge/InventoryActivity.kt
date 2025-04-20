@@ -11,12 +11,11 @@ import com.dymnomz.task_forge.app.UserData
 import com.dymnomz.task_forge.data.Consumable
 import com.dymnomz.task_forge.data.Gear
 import com.dymnomz.task_forge.helper.CustomListAdapterInventory
-import com.dymnomz.task_forge.helper.CustomListAdapterItem
+import com.dymnomz.task_forge.helper.checkGearType
 import com.dymnomz.task_forge.helper.getConsumablesFromDevice
 import com.dymnomz.task_forge.helper.getGearsFromDevice
 import com.dymnomz.task_forge.helper.saveConsumablesToDevice
 import com.dymnomz.task_forge.helper.saveGearsToDevice
-import com.dymnomz.task_forge.helper.showBasicDialogue
 import com.dymnomz.task_forge.helper.showInventoryItemDialogue
 
 class InventoryActivity : Activity() {
@@ -43,10 +42,24 @@ class InventoryActivity : Activity() {
         gearsAdapter = CustomListAdapterInventory(
             this, gears,
             onClick = {item, position ->
+
+                var gear = gears[position]
+                var msg: String
+
+                if(gear.isEquipped) msg = "Unequip" else msg = "Equip"
+
                 showInventoryItemDialogue(
-                    this, item, "Equip",
+                    this, item, msg,
                     onAction = {
-                              //logic
+
+                        gear.isEquipped = !gear.isEquipped
+                        gears[position] = gear
+
+                        //check what type
+                        checkGearType(gear)
+
+                        saveGearsToDevice(this, "user_tasks", gears)
+
                     },
                     onDiscard = {
                         gears.removeAt(position)

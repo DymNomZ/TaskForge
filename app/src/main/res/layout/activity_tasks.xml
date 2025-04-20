@@ -52,6 +52,7 @@
 
 <!--        back items-->
             <ImageView
+                android:id="@+id/back_item"
                 android:layout_width="120dp"
                 android:layout_height="80dp"
                 android:layout_margin="20dp"
@@ -91,6 +92,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/eye_wear"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
@@ -98,6 +100,7 @@
                 </ImageView>
 
                 <ImageView
+                    android:id="@+id/armor"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
@@ -115,6 +118,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/left_hand_item"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
@@ -130,6 +134,7 @@
                 </ImageView>
 
                 <ImageView
+                    android:id="@+id/right_hand_item"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
@@ -149,6 +154,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/helmet"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
