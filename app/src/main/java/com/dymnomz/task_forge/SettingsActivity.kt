@@ -2,6 +2,7 @@ package com.dymnomz.task_forge
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
@@ -9,6 +10,7 @@ import com.dymnomz.task_forge.app.UserData
 import com.dymnomz.task_forge.helper.EquipmentTracker
 import com.dymnomz.task_forge.helper.UserPreferenceManager
 import com.dymnomz.task_forge.helper.showBasicDialogue
+import java.io.File
 
 class SettingsActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,7 +73,30 @@ class SettingsActivity : Activity() {
         }
 
         DeleteAccButton.setOnClickListener {
-            //logic here
+
+            showBasicDialogue(
+                this,
+                "Goodbye?",
+                "This account will be gone forever. Are you sure?",
+                "Confirm",
+                onConfirm = {
+
+                    var userPrefsManager = UserPreferenceManager(this)
+                    var username = (application as UserData).username
+
+                    userPrefsManager.removeUser(username)
+
+                    //remove profile picture used
+                    val userPicture = File(applicationContext.filesDir, username + "_profile_picture.png")
+                    if (userPicture.exists()) {
+                        userPicture.delete()
+                    }
+
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            )
         }
 
         LogoutButton.setOnClickListener {
