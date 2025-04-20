@@ -5,6 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import com.dymnomz.task_forge.app.UserData
+import com.dymnomz.task_forge.helper.EquipmentTracker
+import com.dymnomz.task_forge.helper.UserPreferenceManager
 import com.dymnomz.task_forge.helper.showBasicDialogue
 
 class SettingsActivity : Activity() {
@@ -36,7 +39,35 @@ class SettingsActivity : Activity() {
         }
 
         ResetProgressButton.setOnClickListener {
-            //logic here
+
+            showBasicDialogue(
+                this,
+                "Start over?",
+                "This action cannot be undone. Are you sure?",
+                "Confirm",
+                onConfirm = {
+
+                    var userPrefsManager = UserPreferenceManager(this)
+                    var username = (application as UserData).username
+
+                    //reset logic
+                    (application as UserData).hp = 100
+                    (application as UserData).coins = 0
+                    (application as UserData).level = 1
+                    (application as UserData).xp = 0
+
+                    userPrefsManager.updatePlayerData(this, username, 100, 0, 1, 0)
+                    userPrefsManager.saveTasksToDevice(this, username, mutableListOf())
+                    userPrefsManager.saveGearsToDevice(this, username, "inventory_gears", mutableListOf())
+                    userPrefsManager.saveConsumablesToDevice(this, username, "inventory_consumables", mutableListOf())
+
+                    EquipmentTracker.resetEquipment(this, username)
+
+                    val intent = Intent(this, TasksActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            )
         }
 
         DeleteAccButton.setOnClickListener {

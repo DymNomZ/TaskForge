@@ -21,6 +21,17 @@ class EquipmentTracker{
         var headSelected = R.drawable.blank
         var bodySelected = R.drawable.blank
 
+        fun resetEquipment(context: Context, username: String){
+            backSelected = R.drawable.blank_large
+            eyeSelected = R.drawable.blank
+            leftSelected = R.drawable.blank
+            rightSelected = R.drawable.blank
+            headSelected = R.drawable.blank
+            bodySelected = R.drawable.blank
+
+            saveEquipment(context, username)
+        }
+
         fun saveEquipment(context: Context, username: String) {
             val sharedPrefs = context.getSharedPreferences(username, Context.MODE_PRIVATE)
             val editor = sharedPrefs.edit()

@@ -15,21 +15,6 @@ class UserPreferenceManager(private val context: Context) {
         return sp.contains("username")
     }
 
-    fun updatePlayerData(
-        context: Context, username: String,
-        hp: Int, coins: Int, level: Int, xp: Int
-    ){
-
-        var sp = context.getSharedPreferences(username, Context.MODE_PRIVATE)
-
-        var editor = sp.edit()
-        editor.putInt("hp", hp)
-        editor.putInt("coins", coins)
-        editor.putInt("level", level)
-        editor.putInt("xp", xp)
-        editor.commit()
-    }
-
     fun saveTasksToDevice(context: Context, username: String, gears: MutableList<Task>) {
         val sharedPreferences = context.getSharedPreferences(username, Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
@@ -127,6 +112,21 @@ class UserPreferenceManager(private val context: Context) {
         editor.putString("logged_in_date", date)
         editor.commit()
 
+    }
+
+    fun updatePlayerData(
+        context: Context, username: String,
+        hp: Int, coins: Int, level: Int, xp: Int
+    ){
+
+        var sp = context.getSharedPreferences(username, Context.MODE_PRIVATE)
+
+        var editor = sp.edit()
+        editor.putInt("hp", hp)
+        editor.putInt("coins", coins)
+        editor.putInt("level", level)
+        editor.putInt("xp", xp)
+        editor.commit()
     }
 
     fun updateCoins(username: String, coins: Int){
