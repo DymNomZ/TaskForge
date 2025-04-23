@@ -62,6 +62,9 @@ class SettingsActivity : Activity() {
                     userPrefsManager.saveTasksToDevice(this, username, mutableListOf())
                     userPrefsManager.saveGearsToDevice(this, username, "inventory_gears", mutableListOf())
                     userPrefsManager.saveConsumablesToDevice(this, username, "inventory_consumables", mutableListOf())
+                    userPrefsManager.saveBossesToDevice(this, username, BossesActivity.initialBosses)
+                    userPrefsManager.saveSelectedBossToDevice(this, username, BossesActivity.blankBoss)
+
 
                     EquipmentTracker.resetEquipment(this, username)
 

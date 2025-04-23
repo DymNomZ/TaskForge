@@ -19,7 +19,10 @@ class BossesActivity : Activity() {
 
     companion object{
         var lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        var bosses = mutableListOf(
+
+        var bosses: MutableList<Boss> = mutableListOf()
+
+        var initialBosses = mutableListOf(
             Boss("Kaido", lorem, 100, 10, 1, R.drawable.kaido),
             Boss("Kaido", lorem, 200, 10, 5, R.drawable.kaido),
             Boss("Kaido", lorem, 300, 10, 10, R.drawable.kaido),
@@ -69,6 +72,12 @@ class BossesActivity : Activity() {
         var userPrefsManager = UserPreferenceManager(this)
         var username = (application as UserData).username
 
+        //get boss list from device
+        bosses = userPrefsManager.getBossesFromDevice(this, username)
+
+        //get boss from device
+        selectedBoss = userPrefsManager.getSelectedBossFromDevice(this, username)
+
         bossImageView = findViewById<ImageView>(R.id.boss_img)
         bossNameTV = findViewById<TextView>(R.id.boss_name_tv)
         bossDescTV = findViewById<TextView>(R.id.boss_desc_tv)
@@ -82,6 +91,9 @@ class BossesActivity : Activity() {
         //check if boss is still alive
         if(selectedBoss.checkIfDead()){
             selectedBoss = blankBoss
+
+            //save to device
+            userPrefsManager.saveSelectedBossToDevice(this, username, selectedBoss)
 
             //set resources
             setBossDetails()
@@ -113,8 +125,13 @@ class BossesActivity : Activity() {
 
                             selectedBoss = boss
 
+                            userPrefsManager.saveSelectedBossToDevice(this, username, selectedBoss)
+
                             //remove from list
                             bosses.removeAt(position);
+
+                            //save list to device
+                            userPrefsManager.saveBossesToDevice(this, username, bosses)
 
                             //refresh
                             onResume()
@@ -144,10 +161,14 @@ class BossesActivity : Activity() {
                         selectedBoss.resetValues()
                         bosses.add(selectedBoss)
 
+
                         //sort by required level
                         bosses.sortBy { it.required_level }
 
                         selectedBoss = blankBoss
+
+                        userPrefsManager.saveSelectedBossToDevice(this, username, selectedBoss)
+                        userPrefsManager.saveBossesToDevice(this, username, bosses)
 
                         finish()
                         val intent = Intent(this, BossesActivity::class.java)

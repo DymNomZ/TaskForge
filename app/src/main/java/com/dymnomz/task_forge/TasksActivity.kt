@@ -118,6 +118,7 @@ class TasksActivity : Activity() {
                 //damage boss, but check first if there is a boss selected
                 if(BossesActivity.selectedBoss.name.isNotEmpty()){
                     BossesActivity.selectedBoss.getDamage(10)
+                    userPrefsManager.saveSelectedBossToDevice(this, username, BossesActivity.selectedBoss)
                 }
 
                 tasks.removeAt(position)

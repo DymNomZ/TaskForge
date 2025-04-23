@@ -2,7 +2,9 @@ package com.dymnomz.task_forge.helper
 
 import android.content.Context
 import android.widget.Toast
-import com.dymnomz.task_forge.app.UserData
+import com.dymnomz.task_forge.BossesActivity
+import com.dymnomz.task_forge.R
+import com.dymnomz.task_forge.data.Boss
 import com.dymnomz.task_forge.data.Consumable
 import com.dymnomz.task_forge.data.Gear
 import com.dymnomz.task_forge.data.Task
@@ -13,6 +15,63 @@ class UserPreferenceManager(private val context: Context) {
     fun userExists(username: String): Boolean {
         val sp = context.getSharedPreferences(username, Context.MODE_PRIVATE)
         return sp.contains("username")
+    }
+
+    fun saveSelectedBossToDevice(context: Context, username: String, boss: Boss){
+        val sharedPreferences = context.getSharedPreferences(username, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        val gson = Gson()
+        val bossJson = gson.toJson(boss)
+        val key = "${username}_selected_boss"
+        editor.putString(key, bossJson)
+        editor.commit()
+    }
+
+    fun getSelectedBossFromDevice(context: Context, username: String): Boss {
+        val sharedPreferences = context.getSharedPreferences(username, Context.MODE_PRIVATE)
+        val gson = Gson()
+        val key = "${username}_selected_boss"
+        val bossJson = sharedPreferences.getString(key, null) // Use null as default
+        return if (bossJson != null) {
+            try {
+                gson.fromJson(bossJson, Boss::class.java)
+            } catch (e: Exception) {
+                // Handle JSON parsing error, e.g., log it and return null
+                e.printStackTrace()
+                BossesActivity.blankBoss
+            }
+        } else {
+            BossesActivity.blankBoss
+        }
+    }
+
+    fun saveBossesToDevice(context: Context, username: String, bosses: MutableList<Boss>) {
+        val sharedPreferences = context.getSharedPreferences(username, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        val gson = Gson()
+        val jsonString = gson.toJson(bosses)
+        editor.putString("user_bosses", jsonString)
+        editor.commit()
+    }
+
+    fun getBossesFromDevice(context: Context, username: String): MutableList<Boss> {
+        val sharedPreferences = context.getSharedPreferences(username, Context.MODE_PRIVATE)
+        val jsonString = sharedPreferences.getString("user_bosses", null)
+        if (jsonString != null) {
+            val gson = Gson()
+            val type = object : TypeToken<MutableList<Boss>>() {}.type
+            return gson.fromJson(jsonString, type)
+        }
+        return mutableListOf(
+            Boss("Kaido", BossesActivity.lorem, 100, 10, 1, R.drawable.kaido),
+            Boss("Kaido", BossesActivity.lorem, 200, 10, 5, R.drawable.kaido),
+            Boss("Kaido", BossesActivity.lorem, 300, 10, 10, R.drawable.kaido),
+            Boss("Kaido", BossesActivity.lorem, 400, 10, 15, R.drawable.kaido),
+            Boss("Kaido", BossesActivity.lorem, 500, 10, 20, R.drawable.kaido),
+            Boss("Kaido", BossesActivity.lorem, 600, 10, 25, R.drawable.kaido),
+            Boss("Kaido", BossesActivity.lorem, 700, 10, 30, R.drawable.kaido)
+        )
+
     }
 
     fun saveTasksToDevice(context: Context, username: String, gears: MutableList<Task>) {
