@@ -79,6 +79,7 @@
         android:textColorHint="@color/orange_1"
         android:hint="Task Title"
         android:padding="12dp"
+        android:inputType="text"
         android:fontFamily="@font/poppins_regular"
         android:textColor="@color/orange_1">
     </EditText>

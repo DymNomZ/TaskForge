@@ -1,7 +1,6 @@
 package com.dymnomz.task_forge
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -13,6 +12,7 @@ import com.dymnomz.task_forge.data.Gear
 import com.dymnomz.task_forge.data.Item
 import com.dymnomz.task_forge.helper.CustomListAdapterItem
 import com.dymnomz.task_forge.helper.UserPreferenceManager
+import com.dymnomz.task_forge.helper.checkIfExists
 import com.dymnomz.task_forge.helper.showPurchaseItemDialogue
 
 class ShopActivity : Activity() {
@@ -44,15 +44,11 @@ class ShopActivity : Activity() {
 
     fun checkCoins(item: Item) : Boolean{
 
-        var coins = (application as UserData).coins
-
-        if(item.cost <= coins){
-
-            (application as UserData).coins -= item.cost
-            coins = (application as UserData).coins
+        if((application as UserData).makePurchase(item.cost)){
 
             var userPrefsManager = UserPreferenceManager(this)
             var username = (application as UserData).username
+            var coins = (application as UserData).coins
             userPrefsManager.updateCoins(username, coins)
 
             return true
@@ -78,18 +74,26 @@ class ShopActivity : Activity() {
                     onPurchase = {
                         if(checkCoins(item)){
 //                            gears.removeAt(position)
-                            InventoryActivity.gears.add(item as Gear)
+
+                            //temporary 'til scalable (?)
+                            if(!checkIfExists(item)){
+                                InventoryActivity.gears.add(item as Gear)
 
 //                            userPrefsManager.saveGearsToDevice(
 //                                this, username,
 //                                "shop_gears", gears
 //                            )
-                            userPrefsManager.saveGearsToDevice(
-                                this, username,
-                                "inventory_gears", InventoryActivity.gears
-                            )
+                                userPrefsManager.saveGearsToDevice(
+                                    this, username,
+                                    "inventory_gears", InventoryActivity.gears
+                                )
 
-                            onResume()
+                                onResume()
+                            }
+                            else{
+                                Toast.makeText(this, "Already has item!", Toast.LENGTH_SHORT).show()
+                            }
+
                         }
                         else{
                             Toast.makeText(this, "Not enough coins!", Toast.LENGTH_SHORT).show()
@@ -131,13 +135,13 @@ class ShopActivity : Activity() {
         gearsListView.adapter = gearsAdapter
         consumablesListView.adapter = consumablesAdapter
 
-        val ToQuestsButton = findViewById<Button>(R.id.to_quests_btn)
+        val ToBossesButton = findViewById<Button>(R.id.to_bosses_btn)
         val ToInventoryButton = findViewById<Button>(R.id.to_inventory_btn)
         val ToTasksButton = findViewById<Button>(R.id.to_tasks_btn)
         val ToMenuButton = findViewById<Button>(R.id.to_menu_btn)
 
-        ToQuestsButton.setOnClickListener {
-            val intent = Intent(this, QuestsActivity::class.java)
+        ToBossesButton.setOnClickListener {
+            val intent = Intent(this, BossesActivity::class.java)
             startActivity(intent)
             finish()
         }

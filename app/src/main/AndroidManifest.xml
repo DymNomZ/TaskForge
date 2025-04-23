@@ -28,7 +28,7 @@
             android:name=".InventoryActivity"
             android:exported="false" />
         <activity
-            android:name=".QuestsActivity"
+            android:name=".BossesActivity"
             android:exported="false" />
         <activity
             android:name=".EditTaskActivity"

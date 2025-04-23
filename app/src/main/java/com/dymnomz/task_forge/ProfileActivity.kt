@@ -18,7 +18,7 @@ class ProfileActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        val ToQuestsButton = findViewById<Button>(R.id.to_quests_btn)
+        val ToBossesButton = findViewById<Button>(R.id.to_bosses_btn)
         val ToInventoryButton = findViewById<Button>(R.id.to_inventory_btn)
         val ToTasksButton = findViewById<Button>(R.id.to_tasks_btn)
         val ToShopButton = findViewById<Button>(R.id.to_shop_btn)
@@ -60,8 +60,8 @@ class ProfileActivity : Activity() {
             finish()
         }
 
-        ToQuestsButton.setOnClickListener {
-            val intent = Intent(this, QuestsActivity::class.java)
+        ToBossesButton.setOnClickListener {
+            val intent = Intent(this, BossesActivity::class.java)
             startActivity(intent)
             finish()
         }

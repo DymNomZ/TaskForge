@@ -8,7 +8,9 @@ import android.widget.DatePicker
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import com.dymnomz.task_forge.InventoryActivity
 import com.dymnomz.task_forge.R
+import com.dymnomz.task_forge.data.Boss
 import com.dymnomz.task_forge.data.Gear
 import com.dymnomz.task_forge.data.Item
 import java.text.SimpleDateFormat
@@ -17,6 +19,10 @@ import java.util.Locale
 
 fun min(a: Int, b: Int): Int {
     return if (a <= b) a else b
+}
+
+fun checkIfExists(item: Item): Boolean{
+    return InventoryActivity.gears.contains(item);
 }
 
 fun setDateOnDatePicker(context: Context, datePicker: DatePicker, dateString: String) {
@@ -49,6 +55,38 @@ fun getCurrentDate() : String {
     val date = Calendar.getInstance().time
     val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
     return formatter.format(date)
+}
+
+fun showBossViewDialogue(
+    context: Context,
+    boss: Boss,
+    onAction: () -> Unit,
+) {
+    val builder = AlertDialog.Builder(context)
+    val inflater = LayoutInflater.from(context)
+    val dialogView = inflater.inflate(R.layout.boss_view_dialogue_layout, null)
+
+    val titleTextView = dialogView.findViewById<TextView>(R.id.dialog_title)
+    val descriptionTextView = dialogView.findViewById<TextView>(R.id.dialog_description)
+    val actionButton = dialogView.findViewById<Button>(R.id.action_btn)
+    val imageView = dialogView.findViewById<ImageView>(R.id.imageview_img)
+    val requiredLevel = dialogView.findViewById<TextView>(R.id.required_level_tv)
+
+    builder.setView(dialogView)
+    val alertDialog = builder.create()
+
+    titleTextView.text = boss.name
+    descriptionTextView.text = boss.desc
+    requiredLevel.text = boss.required_level.toString()
+    imageView.setImageResource(boss.img)
+    imageView.drawable?.isFilterBitmap = false
+
+    actionButton.setOnClickListener {
+        onAction()
+        alertDialog.dismiss()
+    }
+
+    alertDialog.show()
 }
 
 fun showInventoryItemDialogue(

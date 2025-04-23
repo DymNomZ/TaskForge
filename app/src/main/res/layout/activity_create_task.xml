@@ -78,6 +78,7 @@
         android:textSize="20dp"
         android:textColorHint="@color/orange_1"
         android:hint="Task Title"
+        android:inputType="text"
         android:padding="12dp"
         android:fontFamily="@font/poppins_regular"
         android:textColor="@color/orange_1">

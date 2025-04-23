@@ -1,7 +1,6 @@
 package com.dymnomz.task_forge
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -42,14 +41,7 @@ class TasksActivity : Activity() {
 
     fun awardPlayer(){
 
-        (application as UserData).coins += 10
-        (application as UserData).xp += 10
-
-        //check xp
-        if((application as UserData).xp >= 100){
-            (application as UserData).xp = 0;
-            (application as UserData).level += 1
-        }
+        (application as UserData).award()
 
         var hp = (application as UserData).hp
         var coins = (application as UserData).coins
@@ -144,7 +136,7 @@ class TasksActivity : Activity() {
         )
         listView.adapter = adapter
 
-        val ToQuestsButton = findViewById<Button>(R.id.to_quests_btn)
+        val ToBossesButton = findViewById<Button>(R.id.to_bosses_btn)
         val ToInventoryButton = findViewById<Button>(R.id.to_inventory_btn)
         val ToShopButton = findViewById<Button>(R.id.to_shop_btn)
         val ToProfileButton = findViewById<Button>(R.id.to_menu_btn)
@@ -156,8 +148,8 @@ class TasksActivity : Activity() {
             finish()
         }
 
-        ToQuestsButton.setOnClickListener {
-            val intent = Intent(this, QuestsActivity::class.java)
+        ToBossesButton.setOnClickListener {
+            val intent = Intent(this, BossesActivity::class.java)
             startActivity(intent)
             finish()
         }

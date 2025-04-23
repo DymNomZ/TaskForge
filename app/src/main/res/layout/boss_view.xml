@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:padding="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/basic">
+
+        <ImageView
+            android:padding="12dp"
+            android:id="@+id/imageview_img"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/basic"/>
+
+        <TextView
+            android:layout_marginHorizontal="12dp"
+            android:id="@+id/boss_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:letterSpacing="0.05">
+
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/heart"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="12dp">
+            </ImageView>
+
+            <TextView
+                android:id="@+id/boss_hp_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/orange_2"
+                android:textSize="20dp"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.05">
+
+            </TextView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BossesActivity"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bosses"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:layout_centerInParent="true"
+        android:letterSpacing="0.05"
+        android:layout_marginVertical="25dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/boss_name_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No Boss Selected"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/orange_1"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:layout_centerInParent="true"
+        android:letterSpacing="0.05"
+        android:padding="8dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/basic">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/basic"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/boss_img"
+                android:layout_width="120dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="20dp">
+            </ImageView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="16dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/heart"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="12dp">
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/boss_hp_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/orange_2"
+                    android:textSize="20dp"
+                    android:gravity="center_horizontal"
+                    android:letterSpacing="0.05">
+
+                </TextView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/boss_desc_tv"
+                android:paddingHorizontal="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.05"
+                android:layout_marginTop="15dp">
+            </TextView>
+
+            <Button
+                android:id="@+id/forfeit_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="15dp"
+                android:backgroundTint="@color/orange_2"
+                android:background="@drawable/rounded_button"
+                android:text=""
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="20dp"
+                android:letterSpacing="0.05"
+                android:textAlignment="center">
+            </Button>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="List of Bosses"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/orange_1"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:layout_centerInParent="true"
+        android:letterSpacing="0.05"
+        android:padding="12dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/basic">
+    </TextView>
+
+    <ListView
+        android:id="@+id/bosses_list"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_margin="20dp">
+    </ListView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/to_quests_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/quests"
+            android:backgroundTint="@color/white" />
+
+        <Button
+            android:id="@+id/to_inventory_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@id/to_quests_btn"
+            android:background="@drawable/inventory"
+            android:backgroundTint="@color/red_1" />
+
+        <Button
+            android:id="@+id/to_tasks_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:layout_toEndOf="@id/to_inventory_btn"
+            android:layout_marginStart="40dp"
+            android:background="@drawable/tasks"
+            android:backgroundTint="@color/red_1" />
+
+        <Button
+            android:id="@+id/to_shop_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@id/to_tasks_btn"
+            android:background="@drawable/shop"
+            android:backgroundTint="@color/red_1" />
+
+        <Button
+            android:id="@+id/to_menu_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@id/to_shop_btn"
+            android:background="@drawable/menu"
+            android:backgroundTint="@color/red_1" />
+
+    </RelativeLayout>
+
+</LinearLayout>
