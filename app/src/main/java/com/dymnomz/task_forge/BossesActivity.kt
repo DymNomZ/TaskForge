@@ -29,15 +29,35 @@ class BossesActivity : Activity() {
             Boss("Kaido", lorem, 700, 10, 30, R.drawable.kaido)
         )
 
-        var blankBoss = Boss("", "", 0, 0, R.drawable.blank_large)
+        var blankBoss = Boss("", "", 0, 0, 0, R.drawable.blank_large)
 
         var selectedBoss = blankBoss
     }
 
     fun checkLevel(boss: Boss): Boolean{
-        var xp = (application as UserData).xp
+        var level = (application as UserData).level
 
-        return xp >= boss.required_level
+        return level >= boss.required_level
+    }
+
+    lateinit var bossImageView: ImageView
+    lateinit var bossNameTV: TextView
+    lateinit var bossDescTV: TextView
+    lateinit var bossHPTV: TextView
+    lateinit var ForfeitBtn: Button
+
+    fun setBossDetails(){
+
+        if(selectedBoss.name.isNotEmpty()) bossNameTV.setText(selectedBoss.name)
+        else bossNameTV.setText("No Boss Selected")
+
+        bossDescTV.setText(selectedBoss.desc)
+        bossHPTV.setText(selectedBoss.hp.toString())
+        bossImageView.setImageResource(selectedBoss.img)
+        bossImageView.drawable?.isFilterBitmap = false //prevents blurring
+
+        if(selectedBoss.name.isNotEmpty()) ForfeitBtn.setText("FORFEIT")
+        else ForfeitBtn.setText("")
     }
 
     lateinit var bossesListView: ListView
@@ -49,23 +69,26 @@ class BossesActivity : Activity() {
         var userPrefsManager = UserPreferenceManager(this)
         var username = (application as UserData).username
 
-        val bossImageView = findViewById<ImageView>(R.id.boss_img)
-        bossImageView.setImageResource(R.drawable.blank_large)
-        bossImageView.drawable?.isFilterBitmap = false //prevents blurring
+        bossImageView = findViewById<ImageView>(R.id.boss_img)
+        bossNameTV = findViewById<TextView>(R.id.boss_name_tv)
+        bossDescTV = findViewById<TextView>(R.id.boss_desc_tv)
+        bossHPTV = findViewById<TextView>(R.id.boss_hp_tv)
+        ForfeitBtn = findViewById<Button>(R.id.forfeit_btn)
 
-        val bossNameTV = findViewById<TextView>(R.id.boss_name_tv)
-        val bossDescTV = findViewById<TextView>(R.id.boss_desc_tv)
-        val bossHPTV = findViewById<TextView>(R.id.boss_hp_tv)
-
-        val ForfeitBtn = findViewById<Button>(R.id.forfeit_btn)
+        setBossDetails()
 
         bossesListView = findViewById<ListView>(R.id.bosses_list)
 
         //check if boss is still alive
         if(selectedBoss.checkIfDead()){
             selectedBoss = blankBoss
+
+            //set resources
+            setBossDetails()
+
             Toast.makeText(this, "Boss defeated!", Toast.LENGTH_SHORT).show()
-            //award player logic here
+            //award player logic
+            (application as UserData).award(50, 100)
         }
 
         bossesAdapter = CustomListAdapterBoss(
@@ -74,6 +97,11 @@ class BossesActivity : Activity() {
                 showBossViewDialogue(
                     this, boss,
                     onAction = {
+                        //check if currently in battle
+                        if(selectedBoss.name.isNotEmpty()){
+                            Toast.makeText(this, "Currently in battle with ${selectedBoss.name}!", Toast.LENGTH_SHORT).show()
+                            return@showBossViewDialogue
+                        }
                         if(checkLevel(boss)){
                             //set resources
                             bossImageView.setImageResource(boss.img)
@@ -93,6 +121,7 @@ class BossesActivity : Activity() {
                         }
                         else{
                             Toast.makeText(this, "You do not meet the required level!", Toast.LENGTH_SHORT).show()
+                            return@showBossViewDialogue
                         }
                     }
                 )

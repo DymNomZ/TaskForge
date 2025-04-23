@@ -120,7 +120,6 @@ class TasksActivity : Activity() {
                     BossesActivity.selectedBoss.getDamage(10)
                 }
 
-                Toast.makeText(this, "Player earnings logic here!", Toast.LENGTH_SHORT).show()
                 tasks.removeAt(position)
                 userPrefsManager.saveTasksToDevice(this, username, tasks)
                 onResume()

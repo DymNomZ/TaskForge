@@ -23,11 +23,12 @@ class UserData : Application() {
 
     fun checkXP(){
         if(xp >= 100){
-            xp = 0;
+            xp %= 100
             level += 1
         }
         else if(xp <= 0){
-            xp = 90;
+            if(level > 1) xp = 100 + xp
+            else xp = 0
             level -= 1
             checkLevel()
         }
@@ -58,6 +59,12 @@ class UserData : Application() {
 
         checkXP()
     }
+
+    fun award(c: Int, x: Int){
+        coins += c
+        xp += x
+    }
+
     override fun onCreate() {
         super.onCreate()
     }

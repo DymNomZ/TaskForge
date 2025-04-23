@@ -16,7 +16,7 @@ class Boss(
     }
 
     fun checkIfDead(): Boolean{
-        if(hp <= 100) return true
+        if(hp <= 0 && name.isNotEmpty()) return true
         return false
     }
 
