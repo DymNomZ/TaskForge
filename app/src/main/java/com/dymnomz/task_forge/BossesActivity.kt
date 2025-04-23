@@ -61,6 +61,13 @@ class BossesActivity : Activity() {
 
         bossesListView = findViewById<ListView>(R.id.bosses_list)
 
+        //check if boss is still alive
+        if(selectedBoss.checkIfDead()){
+            selectedBoss = blankBoss
+            Toast.makeText(this, "Boss defeated!", Toast.LENGTH_SHORT).show()
+            //award player logic here
+        }
+
         bossesAdapter = CustomListAdapterBoss(
             this, bosses,
             onClick = { boss, position ->

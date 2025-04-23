@@ -15,6 +15,15 @@ class Boss(
         hp = 100
     }
 
+    fun checkIfDead(): Boolean{
+        if(hp <= 100) return true
+        return false
+    }
+
+    fun getDamage(damage: Int){
+        if(!checkIfDead()) hp -= damage
+    }
+
     fun doDamage(): Int {
         return damage;
     }

@@ -115,6 +115,11 @@ class TasksActivity : Activity() {
 
                 awardPlayer()
 
+                //damage boss, but check first if there is a boss selected
+                if(BossesActivity.selectedBoss.name.isNotEmpty()){
+                    BossesActivity.selectedBoss.getDamage(10)
+                }
+
                 Toast.makeText(this, "Player earnings logic here!", Toast.LENGTH_SHORT).show()
                 tasks.removeAt(position)
                 userPrefsManager.saveTasksToDevice(this, username, tasks)
