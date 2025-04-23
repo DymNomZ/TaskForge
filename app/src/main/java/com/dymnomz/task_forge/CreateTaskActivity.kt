@@ -61,9 +61,16 @@ class CreateTaskActivity : Activity() {
 
             month = convertMonth(month)
 
+            var title = TaskTitleET.text.toString()
+
+            if(title.isEmpty()){
+                Toast.makeText(this, "Must input task title!", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
             TasksActivity.tasks.add(
                 Task(
-                    TaskTitleET.text.toString(),
+                    title,
                     selectedDifficulty,
                     month + " " + day + ", " + year
                 )

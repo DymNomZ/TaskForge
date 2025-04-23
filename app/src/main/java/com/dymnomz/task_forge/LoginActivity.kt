@@ -33,8 +33,8 @@ class LoginActivity : Activity() {
         val LoginButton = findViewById<Button>(R.id.login_button)
         LoginButton.setOnClickListener {
 
-            var username = UsernameET.text.toString()
-            var password = PasswordET.text.toString()
+            var username = UsernameET.text.toString().trimEnd()
+            var password = PasswordET.text.toString().trimEnd()
 
             //get details via shared prefs
             val userPrefsManager = UserPreferenceManager(this)

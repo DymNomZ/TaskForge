@@ -23,10 +23,10 @@ class RegisterActivity : Activity() {
         val RegisterButton = findViewById<Button>(R.id.register_button)
         RegisterButton.setOnClickListener {
 
-            val username = UsernameET.text.toString()
-            val email = EmailET.text.toString()
-            val password = PasswordET.text.toString()
-            val confirmpassword = ConfirmPasswordET.text.toString()
+            val username = UsernameET.text.toString().trimEnd()
+            val email = EmailET.text.toString().trimEnd()
+            val password = PasswordET.text.toString().trimEnd()
+            val confirmpassword = ConfirmPasswordET.text.toString().trimEnd()
 
             if(username.isEmpty() || password.isEmpty() || confirmpassword.isEmpty()){
                 Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_LONG).show()
