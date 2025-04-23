@@ -2,10 +2,10 @@ package com.dymnomz.task_forge
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.LinearLayout
 import com.dymnomz.task_forge.app.UserData
 import com.dymnomz.task_forge.helper.EquipmentTracker
 import com.dymnomz.task_forge.helper.UserPreferenceManager
@@ -17,12 +17,22 @@ class SettingsActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
+        var mainLayout = findViewById<LinearLayout>(R.id.main)
         var AboutTheDevButton = findViewById<Button>(R.id.developer_btn)
         var ToggleDarkModeButton = findViewById<Button>(R.id.dark_mode_btn)
         var ResetProgressButton = findViewById<Button>(R.id.reset_btn)
         var DeleteAccButton = findViewById<Button>(R.id.delete_acc_btn)
         var LogoutButton = findViewById<Button>(R.id.logout_btn)
         var BackButton = findViewById<ImageButton>(R.id.back_btn)
+
+        var userPrefsManager = UserPreferenceManager(this)
+        var username = (application as UserData).username
+
+        if (userPrefsManager.isDarkMode("dark_mode_pref")) {
+            mainLayout.setBackgroundResource(R.drawable.background_dark)
+        } else {
+            mainLayout.setBackgroundResource(R.drawable.background)
+        }
 
         BackButton.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
@@ -37,7 +47,16 @@ class SettingsActivity : Activity() {
         }
 
         ToggleDarkModeButton.setOnClickListener {
-            //logic here
+            //logic
+            val isDarkMode = userPrefsManager.toggleDarkMode("dark_mode_pref")
+
+            if (isDarkMode) {
+                mainLayout.setBackgroundResource(R.drawable.background_dark)
+            } else {
+                mainLayout.setBackgroundResource(R.drawable.background)
+            }
+
+            recreate()
         }
 
         ResetProgressButton.setOnClickListener {

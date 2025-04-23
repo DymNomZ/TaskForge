@@ -17,6 +17,19 @@ class UserPreferenceManager(private val context: Context) {
         return sp.contains("username")
     }
 
+    fun isDarkMode(username: String): Boolean {
+        val sharedPreferences = context.getSharedPreferences(username, Context.MODE_PRIVATE)
+        return sharedPreferences.getBoolean("dark_mode", false)
+    }
+
+    fun toggleDarkMode(username: String): Boolean {
+        val sharedPreferences = context.getSharedPreferences(username, Context.MODE_PRIVATE)
+        var currentMode = isDarkMode(username)
+        currentMode = !currentMode
+        sharedPreferences.edit().putBoolean("dark_mode", currentMode).commit()
+        return currentMode
+    }
+
     fun saveSelectedBossToDevice(context: Context, username: String, boss: Boss){
         val sharedPreferences = context.getSharedPreferences(username, Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()

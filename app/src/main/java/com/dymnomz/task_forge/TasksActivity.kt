@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
@@ -64,6 +65,14 @@ class TasksActivity : Activity() {
 
         var userPrefsManager = UserPreferenceManager(this)
         var username = (application as UserData).username
+
+        var mainLayout = findViewById<LinearLayout>(R.id.main)
+
+        if (userPrefsManager.isDarkMode("dark_mode_pref")) {
+            mainLayout.setBackgroundResource(R.drawable.background_dark)
+        } else {
+            mainLayout.setBackgroundResource(R.drawable.background)
+        }
 
         //get tasks
         tasks = userPrefsManager.getTasksFromDevice(this, username)

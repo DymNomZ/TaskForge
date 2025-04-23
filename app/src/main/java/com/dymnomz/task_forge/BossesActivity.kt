@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
@@ -71,6 +72,14 @@ class BossesActivity : Activity() {
 
         var userPrefsManager = UserPreferenceManager(this)
         var username = (application as UserData).username
+
+        var mainLayout = findViewById<LinearLayout>(R.id.main)
+
+        if (userPrefsManager.isDarkMode("dark_mode_pref")) {
+            mainLayout.setBackgroundResource(R.drawable.background_dark)
+        } else {
+            mainLayout.setBackgroundResource(R.drawable.background)
+        }
 
         //get boss list from device
         bosses = userPrefsManager.getBossesFromDevice(this, username)
@@ -170,9 +179,7 @@ class BossesActivity : Activity() {
                         userPrefsManager.saveSelectedBossToDevice(this, username, selectedBoss)
                         userPrefsManager.saveBossesToDevice(this, username, bosses)
 
-                        finish()
-                        val intent = Intent(this, BossesActivity::class.java)
-                        startActivity(intent)
+                        recreate()
                     }
                 )
             }

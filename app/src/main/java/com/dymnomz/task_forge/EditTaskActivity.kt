@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.dymnomz.task_forge.app.UserData
@@ -27,6 +28,16 @@ class EditTaskActivity : Activity() {
         var HardBtn = findViewById<Button>(R.id.hard_btn)
         var DatePicker = findViewById<DatePicker>(R.id.datepicker)
         var TaskTitleET = findViewById<EditText>(R.id.task_title_et)
+        var mainLayout = findViewById<LinearLayout>(R.id.main)
+
+        var userPrefsManager = UserPreferenceManager(this)
+        var username = (application as UserData).username
+
+        if (userPrefsManager.isDarkMode("dark_mode_pref")) {
+            mainLayout.setBackgroundResource(R.drawable.background_dark)
+        } else {
+            mainLayout.setBackgroundResource(R.drawable.background)
+        }
 
         var selectedDifficulty = "Trivial"
         var position = 0

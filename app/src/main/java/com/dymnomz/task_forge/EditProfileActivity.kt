@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
 import com.dymnomz.task_forge.app.UserData
 import com.dymnomz.task_forge.helper.UserPreferenceManager
@@ -37,6 +38,16 @@ class EditProfileActivity : Activity() {
         PlayernameET.setText(playername)
         EmailET.setText(email)
         PasswordET.setText(password)
+
+        var mainLayout = findViewById<LinearLayout>(R.id.main)
+
+        var userPrefsManager = UserPreferenceManager(this)
+
+        if (userPrefsManager.isDarkMode("dark_mode_pref")) {
+            mainLayout.setBackgroundResource(R.drawable.background_dark)
+        } else {
+            mainLayout.setBackgroundResource(R.drawable.background)
+        }
 
         val userPicture = File(applicationContext.filesDir, username + "_profile_picture.png")
         if (userPicture.exists()) {

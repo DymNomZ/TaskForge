@@ -6,8 +6,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashActivity"
-    android:background="@drawable/splash_screen"
+    android:background="@drawable/background"
     android:orientation="vertical"
     android:gravity="center">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/logo_white"
+        android:cropToPadding="true">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/task_forge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TaskForge"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="35dp"
+        android:gravity="center_horizontal"
+        android:letterSpacing="0.05"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="50dp">
+    </TextView>
 
 </LinearLayout>

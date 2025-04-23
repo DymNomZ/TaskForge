@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.Toast
 import com.dymnomz.task_forge.app.UserData
@@ -62,6 +63,14 @@ class ShopActivity : Activity() {
 
         var userPrefsManager = UserPreferenceManager(this)
         var username = (application as UserData).username
+
+        var mainLayout = findViewById<LinearLayout>(R.id.main)
+
+        if (userPrefsManager.isDarkMode("dark_mode_pref")) {
+            mainLayout.setBackgroundResource(R.drawable.background_dark)
+        } else {
+            mainLayout.setBackgroundResource(R.drawable.background)
+        }
 
         gearsListView = findViewById<ListView>(R.id.gears_list)
         consumablesListView = findViewById<ListView>(R.id.consumables_list)
