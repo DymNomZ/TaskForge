@@ -143,6 +143,10 @@ class BossesActivity : Activity() {
                         //replace selectedBoss
                         selectedBoss.resetValues()
                         bosses.add(selectedBoss)
+
+                        //sort by required level
+                        bosses.sortBy { it.required_level }
+
                         selectedBoss = blankBoss
 
                         finish()
