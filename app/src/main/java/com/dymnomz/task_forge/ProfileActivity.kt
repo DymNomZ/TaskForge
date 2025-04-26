@@ -2,6 +2,7 @@ package com.dymnomz.task_forge
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.widget.Button
@@ -67,6 +68,18 @@ class ProfileActivity : Activity() {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
             finish()
+        }
+
+        if (userPrefsManager.isDarkMode("dark_mode_pref")) {
+            ToBossesButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.orange_1))
+            ToTasksButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.orange_1))
+            ToShopButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.orange_1))
+            ToInventoryButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.orange_1))
+        } else {
+            ToBossesButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.red_1))
+            ToTasksButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.red_1))
+            ToShopButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.red_1))
+            ToInventoryButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.red_1))
         }
 
         ToBossesButton.setOnClickListener {

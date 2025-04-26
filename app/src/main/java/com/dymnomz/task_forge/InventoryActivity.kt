@@ -2,6 +2,7 @@ package com.dymnomz.task_forge
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
@@ -138,6 +139,19 @@ class InventoryActivity : Activity() {
         val ToTasksButton = findViewById<Button>(R.id.to_tasks_btn)
         val ToShopButton = findViewById<Button>(R.id.to_shop_btn)
         val ToProfileButton = findViewById<Button>(R.id.to_menu_btn)
+
+        if (userPrefsManager.isDarkMode("dark_mode_pref")) {
+            ToBossesButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.orange_1))
+            ToTasksButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.orange_1))
+            ToShopButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.orange_1))
+            ToProfileButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.orange_1))
+        } else {
+            ToBossesButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.red_1))
+            ToTasksButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.red_1))
+            ToShopButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.red_1))
+            ToProfileButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.red_1))
+        }
+
 
         ToBossesButton.setOnClickListener {
             val intent = Intent(this, BossesActivity::class.java)

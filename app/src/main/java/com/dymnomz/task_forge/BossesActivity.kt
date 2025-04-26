@@ -2,6 +2,7 @@ package com.dymnomz.task_forge
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
@@ -11,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.dymnomz.task_forge.app.UserData
 import com.dymnomz.task_forge.data.Boss
+import com.dymnomz.task_forge.data.Descriptions
 import com.dymnomz.task_forge.helper.CustomListAdapterBoss
 import com.dymnomz.task_forge.helper.UserPreferenceManager
 import com.dymnomz.task_forge.helper.showBasicDialogue
@@ -19,18 +21,17 @@ import com.dymnomz.task_forge.helper.showBossViewDialogue
 class BossesActivity : Activity() {
 
     companion object{
-        var lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
 
         var bosses: MutableList<Boss> = mutableListOf()
 
         var initialBosses = mutableListOf(
-            Boss("Kaido", lorem, 100, 10, 1, R.drawable.kaido),
-            Boss("Kaido", lorem, 200, 10, 5, R.drawable.kaido),
-            Boss("Kaido", lorem, 300, 10, 10, R.drawable.kaido),
-            Boss("Kaido", lorem, 400, 10, 15, R.drawable.kaido),
-            Boss("Kaido", lorem, 500, 10, 20, R.drawable.kaido),
-            Boss("Kaido", lorem, 600, 10, 25, R.drawable.kaido),
-            Boss("Kaido", lorem, 700, 10, 30, R.drawable.kaido)
+            Boss("Blazefin", Descriptions.BLAZEFIN, 100, 10, 1, R.drawable.blazefin),
+            Boss("Sir Cutthroat", Descriptions.SIR_CUTTHROAT, 200, 10, 5, R.drawable.sir_cutthroat),
+            Boss("Head Crab", Descriptions.HEAD_CRAB, 300, 10, 10, R.drawable.head_crab),
+            Boss("The Gaze", Descriptions.THE_GAZE, 400, 10, 15, R.drawable.the_gaze),
+            Boss("Kaido", Descriptions.KAIDO, 500, 10, 20, R.drawable.kaido),
+            Boss("Emrakul", Descriptions.EMRAKUL, 600, 10, 25, R.drawable.emrakul),
+            Boss("Nika", Descriptions.NIKA, 700, 10, 30, R.drawable.nika)
         )
 
         var blankBoss = Boss("", "", 0, 0, 0, R.drawable.blank_large)
@@ -189,6 +190,18 @@ class BossesActivity : Activity() {
         val ToTasksButton = findViewById<Button>(R.id.to_tasks_btn)
         val ToShopButton = findViewById<Button>(R.id.to_shop_btn)
         val ToProfileButton = findViewById<Button>(R.id.to_menu_btn)
+
+        if (userPrefsManager.isDarkMode("dark_mode_pref")) {
+            ToInventoryButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.orange_1))
+            ToTasksButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.orange_1))
+            ToShopButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.orange_1))
+            ToProfileButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.orange_1))
+        } else {
+            ToInventoryButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.red_1))
+            ToTasksButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.red_1))
+            ToShopButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.red_1))
+            ToProfileButton.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.red_1))
+        }
 
         ToInventoryButton.setOnClickListener {
             val intent = Intent(this, InventoryActivity::class.java)

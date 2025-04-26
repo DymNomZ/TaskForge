@@ -6,6 +6,7 @@ import com.dymnomz.task_forge.BossesActivity
 import com.dymnomz.task_forge.R
 import com.dymnomz.task_forge.data.Boss
 import com.dymnomz.task_forge.data.Consumable
+import com.dymnomz.task_forge.data.Descriptions
 import com.dymnomz.task_forge.data.Gear
 import com.dymnomz.task_forge.data.Task
 import com.google.gson.Gson
@@ -76,13 +77,13 @@ class UserPreferenceManager(private val context: Context) {
             return gson.fromJson(jsonString, type)
         }
         return mutableListOf(
-            Boss("Kaido", BossesActivity.lorem, 100, 10, 1, R.drawable.kaido),
-            Boss("Kaido", BossesActivity.lorem, 200, 10, 5, R.drawable.kaido),
-            Boss("Kaido", BossesActivity.lorem, 300, 10, 10, R.drawable.kaido),
-            Boss("Kaido", BossesActivity.lorem, 400, 10, 15, R.drawable.kaido),
-            Boss("Kaido", BossesActivity.lorem, 500, 10, 20, R.drawable.kaido),
-            Boss("Kaido", BossesActivity.lorem, 600, 10, 25, R.drawable.kaido),
-            Boss("Kaido", BossesActivity.lorem, 700, 10, 30, R.drawable.kaido)
+            Boss("Blazefin", Descriptions.BLAZEFIN, 100, 10, 1, R.drawable.blazefin),
+            Boss("Sir Cutthroat", Descriptions.SIR_CUTTHROAT, 200, 10, 5, R.drawable.sir_cutthroat),
+            Boss("Head Crab", Descriptions.HEAD_CRAB, 300, 10, 10, R.drawable.head_crab),
+            Boss("The Gaze", Descriptions.THE_GAZE, 400, 10, 15, R.drawable.the_gaze),
+            Boss("Kaido", Descriptions.KAIDO, 500, 10, 20, R.drawable.kaido),
+            Boss("Emrakul", Descriptions.EMRAKUL, 600, 10, 25, R.drawable.emrakul),
+            Boss("Nika", Descriptions.NIKA, 700, 10, 30, R.drawable.nika)
         )
 
     }
